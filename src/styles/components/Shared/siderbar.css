@@ -1,0 +1,19 @@
+
+#m-siderbar{
+    min-height: 100vh;
+    min-width: 104px!important;
+    background-color: #232427;
+}
+.ant-layout-sider-collapsed .ant-layout-sider-children{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ant-menu,.ant-menu-item{
+    background-color: #232427;
+    
+}
+.ant-menu-item-selected{
+    background-color: rgba(230,240,255,0.2)!important;
+
+}

@@ -1,0 +1,33 @@
+.btn {
+    position: relative;
+    align-items: center;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    justify-content: center;
+    line-height: 1.2rem;
+    padding: 0.4rem 1.2rem;
+    text-align: center;
+    transition: 0.2s ease-in;
+}
+.btn--green:hover {
+    box-shadow: 1px 2px 1px 2px #626262;
+}
+.btn--green {
+    background-color: #09c478;
+    border: 2px solid #09c478;
+}
+.btn--green-outline {
+    background-color: white;
+    border: 2px solid #09c478;
+    box-sizing: border-box;
+    color: #09c478;
+}
+.btn--green-outline:hover{
+    background-color: #09c478;
+    color: #ffffff;
+    box-shadow: 1px 2px 1px 2px #626262;
+}
