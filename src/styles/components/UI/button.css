@@ -1,4 +1,4 @@
-.btn {
+.btn  {
     position: relative;
     align-items: center;
     border-radius: 0.2rem;
@@ -13,6 +13,7 @@
     text-align: center;
     transition: 0.2s ease-in;
 }
+
 .btn--green:hover {
     box-shadow: 1px 2px 1px 2px #626262;
 }

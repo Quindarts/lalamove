@@ -1,0 +1,26 @@
+.input_search {
+    background-color: #26262a;
+    border-radius: 0.5rem;
+    margin: 0;
+}
+.input_search input {
+    background-color: #26262a;
+    border: 0px solid !important;
+    outline: none;
+}
+.ant-input:focus .ant-input:hover {
+    border: 0px solid !important;
+}
+.input_search button {
+    border: none;
+}
+.input_search svg,
+button,
+button:hover,
+.ant-input,
+.ant-input::placeholder {
+    color: gray;
+}
+.input_search button :hover {
+    border: none;
+}

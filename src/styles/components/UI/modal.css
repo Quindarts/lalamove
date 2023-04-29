@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 9999;
 }
 .modal-overlay{
     width: 100%;
@@ -20,6 +20,7 @@
     padding: 1rem 2.4rem;
     border-radius: 0.3rem;
     transition: 0.1s ease-in;
+    z-index: 999;
 }
 @keyframes open-top {
     0% {
@@ -48,18 +49,20 @@
     display: block;
     top: 0;
     transform: translateY(0px);
-    background-color: white;
-    box-shadow: 5px 5px 5px #5d5252;
+    background-color: rgba(33,33,42,0.9);
+    color: white;
+    box-shadow:  2px 2px 2px 2px #494949;
     border-radius: 0.3rem;
     font-size: 1.2rem;
     padding: 20px;
+    z-index: 999;
 }
 .modal-body button {
     float: right;
 }
 .modal-top {
     top:50px;
-    width: 50%;
+    width: 35%;
     height: auto;
     min-height: 30rem;
     animation: open-top 0.5s;

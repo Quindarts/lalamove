@@ -9,7 +9,6 @@ interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
     const {children,className = "",variant = "",size = "sm", color,...rest} = props;
-
     return (
         <button
             {...rest}

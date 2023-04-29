@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Login from "../../../page/auth/Login";
 import Button from "../../UI/Button/Button";
 import Modal from "../../UI/Modal/Modal";
+import "../../../styles/components/Shared/header.css"
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
 
@@ -43,6 +44,7 @@ function MHeader() {
                 }}
             >
                 <Search
+                className="input_search"
                     placeholder="input search text"
                     onSearch={onSearch}
                     style={{ width: 500, background: "gray!important" }}

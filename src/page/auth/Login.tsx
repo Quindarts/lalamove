@@ -33,7 +33,7 @@ function Login(prop: any) {
     return (
         <>
             {contextHolder}
-
+            <div className="title text-center font-bold text-[2rem]">LOGIN</div>
             <Form
                 name="basic"
                 labelCol={{ span: 8 }}
@@ -45,6 +45,7 @@ function Login(prop: any) {
                 autoComplete="off"
             >
                 <Form.Item
+                className="text-white"
                     label="Username"
                     name="username"
                     rules={[

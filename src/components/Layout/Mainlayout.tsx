@@ -1,19 +1,23 @@
-import { Layout, Menu, theme } from "antd";
+import { Layout } from "antd";
 import Siderbar from "../Shared/Siderbar/Siderbar";
 import MHeader from "../Shared/Header/MHeader";
-import ComponentPage from "../../page/ComponentPage";
 import { Outlet } from "react-router";
+import MFooter from "../Shared/Footer/MFooter";
 
 function Mainlayout() {
     return (
-        <Layout>
-            <Siderbar />
-            <Layout style={{ background: "#171719" }}>
-                <MHeader />
-                {/* <ComponentPage /> */}
-                <Outlet/>
+        <>
+            <Layout>
+                <Siderbar />
+                <Layout style={{ background: "#171719" }}>
+                    <MHeader />
+                    {/* <ComponentPage /> */}
+                    <Outlet />
+                    <div className="outlet-footer h-[70px]"></div>
+                </Layout>
             </Layout>
-        </Layout>
+            <MFooter />
+        </>
     );
 }
 
