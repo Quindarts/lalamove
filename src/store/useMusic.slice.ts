@@ -29,12 +29,15 @@ export type MusicItemType = {
 type MusicState = {
     musics: MusicItemType[];
     mplay: MusicItemType;
+    search: MusicItemType[];
 };
 
 // Define the initial state using that type
 const initialState: any = {
     musics: [],
-    mplay: [],
+    mplay: {},
+    search: [],
+    history: [],
 };
 
 export const useMusic = createSlice({
@@ -50,13 +53,22 @@ export const useMusic = createSlice({
             { payload }: PayloadAction<MusicItemType>,
         ) => {
             state.mplay = payload;
-            console.log("payload",state.mplay);
+            console.log("mlplay:",payload);
             
+        },
+        searchByQuery: (state: any, { payload }: PayloadAction<any>) => {
+            state.search = payload;
+            console.log("search:", state.mplay);
+        },
+        updateHistory: (state: any, { payload }: PayloadAction<any>) => {
+            state.history = payload;
+            console.log("store: ",state.history);
         },
     },
 });
 
-export const { setMusic, setPlayMusic } = useMusic.actions;
+export const { setMusic, setPlayMusic, searchByQuery, updateHistory } =
+    useMusic.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 

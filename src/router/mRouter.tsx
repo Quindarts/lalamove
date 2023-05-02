@@ -4,12 +4,12 @@ import Mainlayout from "../components/Layout/Mainlayout";
 import ComponentPage from "../page/ComponentPage";
 import FavoritePage from "../page/FavoritePage";
 import HomePage from "../page/HomePage";
-import ListenedSongPage from "../page/ListenedSongPage";
+import PlaylistAccountPage from "../page/PlaylistAccountPage";
 import UploadMusicPage from "../page/UploadMusicPage";
 const APP_ROUTES = {
     INDEX: "/",
     FAVORITE: "/favorite",
-    LISTENED_SONG: "/listened-song",
+    MYPLAYLIST: "/playlist-account",
     UPLOAD_MUSIC: "/upload-music",
 };
 const Routing: React.FC = () => {
@@ -24,8 +24,8 @@ const Routing: React.FC = () => {
                 />
                 <Route
                     index
-                    path={APP_ROUTES.LISTENED_SONG}
-                    element={<ListenedSongPage />}
+                    path={APP_ROUTES.MYPLAYLIST}
+                    element={<PlaylistAccountPage />}
                 />
                 <Route
                     index

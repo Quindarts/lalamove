@@ -7,16 +7,57 @@ import sl2 from "../assets/image/sl2.jpg";
 import sl3 from "../assets/image/sl3.jpg";
 import sl4 from "../assets/image/sl4.jpg";
 import "../styles/pages/homepage.css";
-import { Virtual } from "swiper";
-import { Image } from "antd";
+import { Autoplay, Navigation, Virtual } from "swiper";
+import { Image, Spin } from "antd";
+import { getAllFavoriteMusicbyParams } from "../services/favoriteApi";
+import useMusic from "../hooks/useMusic";
+import MusicItem from "../components/UI/Music/MusicItem";
+import { getAllNewsMusicByParams } from "../services/newMusicApi";
 function HomePage() {
     const listSlide = [sl1, sl2, sl3, sl4];
     const [listView, setlistView] = useState({ data: [], panigation: {} });
+    const [listNewsMusic, setlistNewsMusic] = useState({
+        data: [],
+        panigation: {},
+    });
+
+    const { musics, updateMusic } = useMusic();
+    const [loading, setLoading] = useState(false);
+    const toggle = (checked: boolean) => {
+        setLoading(checked);
+    };
     useEffect(() => {
         getAllTopViewbyParams(12, 1, "million")
             .then((res: any) => {
                 if (res.status === 200) {
                     setlistView(res.data);
+                    setLoading(true);
+                }
+                if (res.status === 400) {
+                    console.log(res);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        getAllFavoriteMusicbyParams(20, 2)
+            .then((res: any) => {
+                if (res.status === 200) {
+                    updateMusic(res.data.data);
+                    setLoading(true);
+                }
+                if (res.status === 400) {
+                    console.log(res);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        getAllNewsMusicByParams(20, 1)
+            .then((res: any) => {
+                if (res.status === 200) {
+                    setlistNewsMusic(res.data);
+                    setLoading(true);
                 }
                 if (res.status === 400) {
                     console.log(res);
@@ -26,15 +67,20 @@ function HomePage() {
                 console.log(err);
             });
     }, []);
-    console.log(listView?.data);
 
     return (
         <div className="homePage">
-            <h1 className="my-1 font-bold text-[25px]">HOT</h1>
             <Swiper
                 modules={[Virtual]}
                 spaceBetween={10}
                 slidesPerView={3}
+                autoplay={{
+                    delay: 1000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                    stopOnLastSlide: false,
+                    reverseDirection: false,
+                }}
                 virtual
                 className="homeSlide-top my-3"
             >
@@ -44,13 +90,45 @@ function HomePage() {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <h1 className="my-1 font-bold text-[25px]">Top View</h1>
-            <div className="top_views_slide flex flex-wrap gap-2">
-                {listView?.data.map((music, index) => (
-                    <MusicGridItem key={index} music={music} />
-                ))}
+            <h1 className="my-5 font-bold text-[25px]">Top View</h1>
+            <div className="top_views_slide flex flex-wrap gap-2 justify-center align-middle">
+                {loading ? (
+                    listView?.data.map((music, index) => (
+                        <MusicGridItem key={index} music={music} />
+                    ))
+                ) : (
+                    <Spin className="" size="large" />
+                )}
             </div>
-
+            <h1 className="my-5 font-bold text-[25px]">YÊU THÍCH</h1>
+            <Swiper
+                slidesPerView={6}
+                navigation={true}
+                modules={[Navigation, Autoplay]}
+                autoplay={{
+                    delay: 1000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                    stopOnLastSlide: false,
+                    reverseDirection: false,
+                }}
+            >
+                {musics?.musics.map((music: any, index: number) => (
+                    <SwiperSlide key={index} virtualIndex={index}>
+                        <MusicItem mMusic={music} />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+            <h1 className="my-5 font-bold text-[25px]">MỚI RA MẮT </h1>
+            <div className="news_music_slide flex flex-wrap gap-1">
+                {loading ? (
+                    listNewsMusic?.data.map((music, index) => (
+                        <MusicGridItem key={index} music={music} />
+                    ))
+                ) : (
+                    <Spin className="" size="large" />
+                )}
+            </div>
         </div>
     );
 }

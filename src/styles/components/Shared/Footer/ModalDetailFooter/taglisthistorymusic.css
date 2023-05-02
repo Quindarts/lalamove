@@ -1,0 +1,11 @@
+.list-history {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: calc(100vh - 120px);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.list-history::-webkit-scrollbar {
+    display: none;
+}

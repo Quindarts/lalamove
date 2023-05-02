@@ -1,20 +1,19 @@
 import React, { useRef, useState } from "react";
-import "../../../styles/components/UI/Music/audio.css";
 import TimeSlider from "react-input-slider";
+import "../../../styles/components/UI/Music/audio.css";
 import {
-    PauseOutlined,
     StepBackwardOutlined,
     CaretRightOutlined,
+    PauseOutlined,
     StepForwardOutlined,
 } from "@ant-design/icons";
-
 function Audio(props: any) {
-    const { src_music, name_singer, name_music, id } = props;
+    const { src_music } = props;
     const audioRef: any = useRef();
     const [audioIndex, setAudioIndex] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [isPlay, setPlay] = useState(false);
+    const [isPlay, setPlay] = useState(true);
 
     const handleLoadedData = () => {
         setDuration(audioRef.current.duration);
@@ -41,15 +40,9 @@ function Audio(props: any) {
     };
 
     return (
-        <div className="Maudio">
-            <PauseOutlined />
-            <h2 className="Song-Title">{name_music}</h2>
-            <p className="Singer">{name_singer}</p>
+        <div className="App">
             <div className="Control-Button-Group">
-                <div
-                    className="Prev-Button"
-                    onClick={() => setAudioIndex(id - 1)}
-                >
+                <div className="Prev-Button" onClick={() => setAudioIndex(1)}>
                     <StepBackwardOutlined />
                 </div>
                 <div
@@ -58,10 +51,7 @@ function Audio(props: any) {
                 >
                     {isPlay ? <PauseOutlined /> : <CaretRightOutlined />}
                 </div>
-                <div
-                    className="Next-Button"
-                    onClick={() => setAudioIndex(id + 1)}
-                >
+                <div className="Next-Button" onClick={() => setAudioIndex(3)}>
                     <StepForwardOutlined />
                 </div>
             </div>
@@ -76,19 +66,20 @@ function Audio(props: any) {
                         height: "2px",
                     },
                     active: {
-                        backgroundColor: "#333",
+                        backgroundColor: "#09c478",
                         height: "2px",
                     },
                     thumb: {
                         marginTop: "-3px",
                         width: "8px",
                         height: "8px",
-                        backgroundColor: "#333",
+                        backgroundColor: "#09c478",
                         borderRadius: 0,
                     },
                 }}
             />
             <audio
+                autoPlay
                 ref={audioRef}
                 src={src_music}
                 onLoadedData={handleLoadedData}

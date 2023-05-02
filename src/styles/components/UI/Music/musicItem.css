@@ -1,7 +1,6 @@
 .music_item {
     width: calc(100% - 1rem);
     transform: translate3d(0px, 0px, 0px);
-    border-radius: 0.5rem;
     margin-left: 0.2rem;
     cursor: pointer;
     transition: 0.5 ease-in;

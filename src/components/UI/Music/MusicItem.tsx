@@ -1,16 +1,13 @@
 import React from "react";
 import { EyeOutlined, HeartFilled } from "@ant-design/icons";
 import "../../../styles/components/UI/Music/musicItem.css";
-import Audio from "./Audio";
 import useMusic from "../../../hooks/useMusic";
 import { MusicItemType } from "../../../store/useMusic.slice";
 function MusicItem(props: any) {
-    const { musics,playMusic } = useMusic();
+    const { musics, playMusic } = useMusic();
     const handlePlayMusic = (mMusic: MusicItemType) => {
         playMusic(mMusic);
     };
-    console.log(musics.mplay);
-    
     const { mMusic } = props;
     return (
         <button

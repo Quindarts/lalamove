@@ -1,19 +1,25 @@
-
-#m-siderbar{
+#m-siderbar {
     min-height: 100vh;
-    min-width: 104px!important;
+    min-width: 104px !important;
     background-color: #232427;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.ant-layout-sider-collapsed .ant-layout-sider-children{
+.ant-layout-sider-collapsed .ant-layout-sider-children {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.ant-menu,.ant-menu-item{
+.ant-menu,
+.ant-menu-item {
     background-color: #232427;
-    
 }
-.ant-menu-item-selected{
-    background-color: rgba(230,240,255,0.2)!important;
-
+.ant-menu-item-selected {
+    background-color: rgba(230, 240, 255, 0.2) !important;
+}
+.conainer-siderbar {
+    position: fixed;
+    top: 0;
+    left: 0;
 }

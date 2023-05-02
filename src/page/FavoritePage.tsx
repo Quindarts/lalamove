@@ -28,14 +28,14 @@ function FavoritePage() {
     }, []);
     return (
         <div className="favoritePage">
-            <h1 className="my-1 font-bold text-[25px]">Xu Hướng</h1>
+            <h1 className="my-1 font-bold text-[25px] my-5">Xu Hướng</h1>
 
             <Swiper
                 slidesPerView={6}
                 navigation={true}
                 modules={[Navigation, Autoplay]}
                 autoplay={{
-                    delay: 3000,
+                    delay: 1000,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true,
                     stopOnLastSlide: false,

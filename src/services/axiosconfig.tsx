@@ -23,7 +23,7 @@ axiosConfig.interceptors.request.use(
 );
 axiosConfig.interceptors.response.use(
     function (response) {
-        console.log("transform:", response);
+        // console.log("transform:", response);
         return response;
     },
     function (error) {

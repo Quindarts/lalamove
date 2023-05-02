@@ -1,4 +1,4 @@
-.btn  {
+.btn {
     position: relative;
     align-items: center;
     border-radius: 0.2rem;
@@ -13,7 +13,9 @@
     text-align: center;
     transition: 0.2s ease-in;
 }
-
+.btn:hover{
+    color: black;
+}
 .btn--green:hover {
     box-shadow: 1px 2px 1px 2px #626262;
 }
@@ -27,8 +29,14 @@
     box-sizing: border-box;
     color: #09c478;
 }
-.btn--green-outline:hover{
+.btn--green-outline:hover {
     background-color: #09c478;
     color: #ffffff;
     box-shadow: 1px 2px 1px 2px #626262;
+}
+.btn--red {
+    background-color: rgb(235, 98, 98);
+}
+.btn--yellow {
+    background-color: #fcbe00;
 }

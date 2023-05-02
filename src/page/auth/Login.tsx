@@ -2,7 +2,7 @@ import { Checkbox, Form, Input, message } from "antd";
 import React from "react";
 import Button from "../../components/UI/Button/Button";
 import { login } from "../../services/userApi";
-
+import "../../styles/pages/auth/login.css"
 
 function Login(prop: any) {
     const { onClose,mlogin } = prop;
@@ -43,6 +43,7 @@ function Login(prop: any) {
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
+                className="form_login"
             >
                 <Form.Item
                 className="text-white"

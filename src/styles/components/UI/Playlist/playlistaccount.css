@@ -1,0 +1,14 @@
+.playlistAccount{
+    padding: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+.control_playlist{
+    display: none;
+}
+.playlistAccount:hover{
+    background-color: rgb(78, 78, 78);
+}
+.playlistAccount:hover .control_playlist{
+    display: flex;
+}

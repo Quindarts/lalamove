@@ -8,15 +8,16 @@
     align-items: center;
     z-index: 9999;
 }
-.modal-overlay{
+.modal-overlay {
     width: 100%;
-    height: 100%;
-    position: absolute;
+    height: auto;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
+
     padding: 1rem 2.4rem;
     border-radius: 0.3rem;
     transition: 0.1s ease-in;
@@ -49,9 +50,9 @@
     display: block;
     top: 0;
     transform: translateY(0px);
-    background-color: rgba(33,33,42,0.9);
+    background-color: rgba(33, 33, 42, 0.9);
     color: white;
-    box-shadow:  2px 2px 2px 2px #494949;
+    box-shadow: 2px 2px 2px 2px #494949;
     border-radius: 0.3rem;
     font-size: 1.2rem;
     padding: 20px;
@@ -61,12 +62,15 @@
     float: right;
 }
 .modal-top {
-    top:50px;
-    width: 35%;
+    top: 50px;
+    left: calc(50vw - 200px);
+    min-width: 500px;
     height: auto;
     min-height: 30rem;
     animation: open-top 0.5s;
     transition: 0.5s ease-in;
+    justify-content: center;
+    align-items: center;
 }
 .modal-right {
     width: 20rem;
