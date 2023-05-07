@@ -5,27 +5,26 @@ import {
     HeartOutlined,
     PlusCircleOutlined,
     PlayCircleOutlined,
-    PlusOutlined,
-    MehFilled,
 } from "@ant-design/icons";
+import {
+    addNewMusicToPlayListAccount,
+    fethAllPlaylistAccount,
+} from "../../../services/playlistApi";
 import { MusicItemType } from "../../../store/useMusic.slice";
 import useMusic from "../../../hooks/useMusic";
 import Modal from "../Modal/Modal";
 import usePlaylist from "../../../hooks/usePlaylist";
-import { Image, Input, message } from "antd";
-import Button from "../Button/Button";
-import {
-    addNewMusicToPlayListAccount,
-    createNewPlayListAccount,
-    fethAllPlaylistAccount,
-} from "../../../services/playlistApi";
+import { message } from "antd";
+import { createMuisicToFavoriteList } from "../../../services/favoriteApi";
+import ModalPlaylistDetail from "./ModalPlaylistDetail";
+
 function MusicGridItem(props: any) {
+    const { music } = props;
     const [messageApi, contextHolder] = message.useMessage();
     const { playlist, getAllPlaylistAccount } = usePlaylist();
-    const { music } = props;
     const { playMusic } = useMusic();
-    const [namePlaylist, setNamePlaylist] = useState("");
     const [isOpen, setIsOpen] = useState({ open: false, id: "" });
+
     const handleOpen = (id: string) => {
         setIsOpen({ open: true, id: id });
     };
@@ -35,17 +34,22 @@ function MusicGridItem(props: any) {
     const handlePlayMusic = (music: MusicItemType) => {
         playMusic(music);
     };
-    const handleMusicToPlayList = (nameList: string, _id: string) => {
-        const musicToPlaylist = { idMusic: _id, nameList: nameList };
-        createNewPlayListAccount(musicToPlaylist).then((res) => {
+    const handleAddMusicToFavorite = (idMusic: string) => {
+        createMuisicToFavoriteList({ idMusic: idMusic }).then((res) => {
             console.log(res);
+
             if (res.status === 200) {
                 messageApi.open({
                     type: "success",
-                    content: "Tạo Playlist  thành công mới",
+                    content:
+                        "Thêm thành công bài hát vào Danh sách bài hát yêu thích",
                 });
-                fethAllPlaylistAccount().then((res: any) => {
-                    getAllPlaylistAccount(res.data.data);
+            }
+            else if (res.status === 401) {
+                messageApi.open({
+                    type: "warning",
+                    content:
+                        "Bạn phải đăng nhập để thêm bài hát vào danh sạch yêu thích",
                 });
             }
         });
@@ -60,11 +64,8 @@ function MusicGridItem(props: any) {
             _id_music: _id_music,
             nameList: nameList,
         };
-        console.log(addmusicdata);
 
         addNewMusicToPlayListAccount(addmusicdata).then((res) => {
-            console.log(res);
-            console.log(playlist);
             if (res.status === 200) {
                 messageApi.open({
                     type: "success",
@@ -74,6 +75,11 @@ function MusicGridItem(props: any) {
             }
         });
     };
+    useEffect(() => {
+        fethAllPlaylistAccount().then((res: any) => {
+            getAllPlaylistAccount(res.data.data);
+        });
+    }, []);
     return (
         <>
             {contextHolder}
@@ -89,7 +95,7 @@ function MusicGridItem(props: any) {
                         <PlayCircleOutlined />
                     </button>
                     <button
-                        onClick={() => alert("heart")}
+                        onClick={() => handleAddMusicToFavorite(music._id)}
                         className="text-rose-600"
                     >
                         <HeartOutlined />
@@ -126,85 +132,14 @@ function MusicGridItem(props: any) {
                     open={isOpen.open}
                     onClose={handleClose}
                 >
-                    <h1 className="my-5 font-bold text-[25px] text-white my-2">
-                        Playlist của bạn
-                    </h1>
-                    {playlist ? (
-                        <div className="">
-                            {playlist.playlist?.map(
-                                (item: any, index: number) => (
-                                    <div>
-                                        <div
-                                            onClick={() => {
-                                                handleAddNewMusicToPlaylist(
-                                                    item.name_list,
-                                                    music._id,
-                                                    item._id,
-                                                );
-                                            }}
-                                            className="mplaylist flex align-middle"
-                                        >
-                                            <div className="w-[40px] h-[40px] ">
-                                                <Image
-                                                    style={{
-                                                        borderRadius: "3px",
-                                                    }}
-                                                    src={`${item.image_list}`}
-                                                />
-                                            </div>
-                                            <h1 className=" font-[600] text-[1rem] pt-2  mr-5 ml-1">
-                                                {item.name_list}
-                                            </h1>
-                                        </div>
-
-                                        <div
-                                            style={{
-                                                position: "fixed",
-                                                bottom: "1rem",
-                                                right: "1rem",
-                                                left: "1rem",
-                                            }}
-                                            className="flex"
-                                        >
-                                            <Input
-                                                onChange={(e) => {
-                                                    setNamePlaylist(
-                                                        e.target.value,
-                                                    );
-                                                }}
-                                                placeholder="Nhập vào tên playlist mới"
-                                                className="text-[16px] mr-1"
-                                            />
-
-                                            <Button
-                                                onClick={() =>
-                                                    handleMusicToPlayList(
-                                                        namePlaylist,
-                                                        music._id,
-                                                    )
-                                                }
-                                                type="submit"
-                                                color="yellow"
-                                                className="text-black w-[10rem]"
-                                            >
-                                                New playlist
-                                            </Button>
-                                        </div>
-                                    </div>
-                                ),
-                            )}
-                        </div>
-                    ) : (
-                        <div className="flex justif-center align-middle">
-                            <div className="h-[50px] text-center">
-                                <h1 className="text-[16px]">
-                                    Bạn phải đăng nhập để sử dụng chức năng
-                                    này  
-                                    <MehFilled className="text-[18px] text-yellow-600 my-5 " /> !!
-                                </h1>
-                            </div>
-                        </div>
-                    )}
+                    <ModalPlaylistDetail
+                        playlist={playlist}
+                        messageApi={messageApi}
+                        music={music}
+                        handleAddNewMusicToPlaylist={
+                            handleAddNewMusicToPlaylist
+                        }
+                    />
                 </Modal>
             </div>
         </>

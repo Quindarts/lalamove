@@ -13,7 +13,6 @@ function Mainlayout() {
                 <Siderbar />
                 <Layout style={{ background: "#171719" }}>
                     <MHeader />
-                    {/* <ComponentPage /> */}
                     <SearchDetail />
                     <Outlet />
                     <div className="outlet-footer h-[70px]"></div>

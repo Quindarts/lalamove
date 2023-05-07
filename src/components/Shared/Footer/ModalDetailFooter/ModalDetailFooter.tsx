@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
 import { MehFilled } from "@ant-design/icons";
-
 import TagListHistoryMusic from "./TagListHistoryMusic";
 import TagMPlaylistAccount from "./TagMPlaylistAccount";
-
-const onChange = (key: string) => {
-    console.log(key);
-};
-
 const items: TabsProps["items"] = [
     {
         key: "1",
@@ -38,10 +32,7 @@ const Btnlogin: TabsProps["items"] = [
         ),
     },
 ];
-function ModalDetailFooter(props: any) {
-    const { open } = props;
-    console.log("xem open", open);
-
+function ModalDetailFooter() {
     const [access_token, setAccess_token] = useState<string | null>();
     useEffect(() => {
         setAccess_token(localStorage.getItem("access_token"));
@@ -54,7 +45,6 @@ function ModalDetailFooter(props: any) {
                 className="text-[gray]"
                 defaultActiveKey="1"
                 items={access_token !== null ? items : Btnlogin}
-                onChange={onChange}
             />
         </>
     );

@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 
 function Siderbar() {
     const [collapsed, setCollapsed] = useState(false);
-
     return (
         <Sider id="m-siderbar" trigger={null} collapsible collapsed={collapsed}>
             <div className="conainer-siderbar">

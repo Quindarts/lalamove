@@ -97,7 +97,7 @@ function Playlist(props: any) {
                 open={isOpen}
                 onClose={handleClose}
             >
-                <ModalDetailFooter open={isOpen} />
+                <ModalDetailFooter />
             </Modal>
         </>
     );

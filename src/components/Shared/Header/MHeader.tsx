@@ -7,36 +7,36 @@ import Modal from "../../UI/Modal/Modal";
 import useMusic from "../../../hooks/useMusic";
 import "../../../styles/components/Shared/header.css";
 import { apiSearchMusicByQuery } from "../../../services/appApi";
-function setAvt() {
-    const token = localStorage.getItem("access_token");
-    console.log("token:", token);
-    return token;
-}
+import useUSer from "../../../hooks/useUser";
+
 function MHeader() {
     const { Search } = Input;
+    const [isOpen, setIsOpen] = useState({ open: false, id: "" });
+    const [search, setSearch] = useState<string>();
+    const { searchMusicByQuery } = useMusic();
+    const [isOpenLogin, setIsOpenLogin] = useState<boolean>(true);
     const [isLogin, setIsLogin] = useState(
         localStorage.getItem("access_token") !== null,
     );
-    const [isOpen, setIsOpen] = useState({ open: false, id: "" });
-    const [search, setSearch] = useState<string>();
+    const { getLogoutAccount, user } = useUSer();
     const handleOpen = (id: string) => {
         setIsOpen({ open: true, id: id });
+        setIsOpenLogin(true);
     };
     const handleClose = () => {
         setIsOpen({ ...isOpen, open: false });
     };
     const handleLogout = () => {
         setIsLogin(false);
+        // getLogoutAccount();
         localStorage.removeItem("access_token");
+        console.log("user store logout:", user.userLogin);
     };
-    const { searchMusicByQuery } = useMusic();
     useEffect(() => {
         if (search !== "") {
             apiSearchMusicByQuery(search).then((res: any) => {
                 if (res.status === 200) {
                     searchMusicByQuery(res);
-                } else {
-                    console.log(res);
                 }
             });
         }
@@ -68,7 +68,7 @@ function MHeader() {
                 {isLogin ? (
                     <div className="flex">
                         <span className="mx-5 mb-2 text-emerald-600">
-                            Xin Chào, Quang
+                            Xin Chào,{user?.userLogin?.data?.user_name}
                         </span>
                         <Button
                             className=""
@@ -94,8 +94,14 @@ function MHeader() {
                 id={isOpen.id}
                 open={isOpen.open}
                 onClose={handleClose}
+                color={"#12192c"}
             >
-                <Login onClose={handleClose} mlogin={setIsLogin} />
+                <Login
+                    onClose={handleClose}
+                    mlogin={setIsLogin}
+                    isOpenLogin={isOpenLogin}
+                    setIsOpenLogin={setIsOpenLogin}
+                />
             </Modal>
         </Header>
     );

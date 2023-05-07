@@ -21,18 +21,13 @@ function Audio(props: any) {
     };
 
     const handlePausePlayClick = () => {
-        if (isPlay) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play();
-        }
+        isPlay ? audioRef.current.pause() : audioRef.current.play();
         setPlay(!isPlay);
     };
 
     const handleTimeSliderChange = ({ x }: any) => {
         audioRef.current.currentTime = x;
         setCurrentTime(x);
-
         if (!isPlay) {
             setPlay(true);
             audioRef.current.play();

@@ -17,7 +17,7 @@ axiosConfig.interceptors.request.use(
         return request;
     },
     function (error: AxiosError) {
-        console.log(error);
+        // console.log(error);
         return error;
     },
 );
@@ -27,7 +27,7 @@ axiosConfig.interceptors.response.use(
         return response;
     },
     function (error) {
-        console.log("transform:", error);
+        // console.log("transform:", error);
         return error.response;
     },
 );

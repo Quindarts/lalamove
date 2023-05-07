@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Modal from "../../UI/Modal/Modal";
 import ModalDetailFooter from "./ModalDetailFooter/ModalDetailFooter";
 import { createHistoryApi } from "../../../services/historyApi";
+import PlayMusicAnimation from "../../UI/PlayMusicAnimation/PlayMusicAnimation";
 function MFooter() {
     const { musics } = useMusic();
     const [isOpen, setIsOpen] = useState({ open: false, id: "" });
@@ -17,13 +18,13 @@ function MFooter() {
         setIsOpen({ ...isOpen, open: false });
     };
     useEffect(() => {
-        createHistoryApi(musics.mplay._id).then((res) => {
-            console.log(res);
-        });
+        createHistoryApi(musics.mplay._id);
     }, [musics.mplay]);
 
     return (
         <div>
+           
+
             <footer className="flex justify-between">
                 <div className="flex">
                     {musics.mplay.image_music ? (
@@ -82,7 +83,7 @@ function MFooter() {
                 open={isOpen.open}
                 onClose={handleClose}
             >
-                <ModalDetailFooter open={isOpen.open} />
+                <ModalDetailFooter />
             </Modal>
         </div>
     );

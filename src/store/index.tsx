@@ -2,11 +2,15 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import useMusicReducer from "./useMusic.slice";
 import usePlaylistReducer from "./usePlaylist.slice";
+import useFavoriteReducer from "./useFavorite.slice";
+import useUserReducer from "./useUser.slice";
 
 export const store = configureStore({
     reducer: {
         musics: useMusicReducer,
         playlist: usePlaylistReducer,
+        favorite: useFavoriteReducer,
+        user: useUserReducer,
     },
 });
 

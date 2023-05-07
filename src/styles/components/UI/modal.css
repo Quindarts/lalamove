@@ -47,30 +47,25 @@
 }
 .modal_body {
     position: fixed;
-    display: block;
     top: 0;
     transform: translateY(0px);
-    background-color: rgba(33, 33, 42, 0.9);
+    background-color: rgba(40, 36, 42, 0.9);
     color: white;
-    box-shadow: 2px 2px 2px 2px #494949;
+    box-shadow: 4px 20px 20px 20px #131212;
     border-radius: 0.3rem;
     font-size: 1.2rem;
-    padding: 20px;
     z-index: 999;
 }
-.modal-body button {
-    float: right;
-}
+
 .modal-top {
     top: 50px;
     left: calc(50vw - 200px);
-    min-width: 500px;
     height: auto;
     min-height: 30rem;
     animation: open-top 0.5s;
     transition: 0.5s ease-in;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 .modal-right {
     width: 20rem;

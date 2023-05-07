@@ -13,10 +13,8 @@ function TagListHistoryMusic() {
             }
         });
     }, [musics.mplay]);
-    
     return (
-        <div>
-            TagListHistoryMusic
+        <>
             <div className="list-history">
                 {musics?.history?.data?.map((item: any, index: number) =>
                     index < 21 ? (
@@ -26,7 +24,7 @@ function TagListHistoryMusic() {
                     ),
                 )}
             </div>
-        </div>
+        </>
     );
 }
 

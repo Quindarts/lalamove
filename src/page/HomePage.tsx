@@ -13,8 +13,11 @@ import { getAllFavoriteMusicbyParams } from "../services/favoriteApi";
 import useMusic from "../hooks/useMusic";
 import MusicItem from "../components/UI/Music/MusicItem";
 import { getAllNewsMusicByParams } from "../services/newMusicApi";
+import { fethAllPlaylistAccount } from "../services/playlistApi";
+import usePlaylist from "../hooks/usePlaylist";
 function HomePage() {
     const listSlide = [sl1, sl2, sl3, sl4];
+    const { playlist, getAllPlaylistAccount } = usePlaylist();
     const [listView, setlistView] = useState({ data: [], panigation: {} });
     const [listNewsMusic, setlistNewsMusic] = useState({
         data: [],
@@ -27,6 +30,9 @@ function HomePage() {
         setLoading(checked);
     };
     useEffect(() => {
+        fethAllPlaylistAccount().then((res: any) => {
+            getAllPlaylistAccount(res.data.data);
+        });
         getAllTopViewbyParams(12, 1, "million")
             .then((res: any) => {
                 if (res.status === 200) {
@@ -71,22 +77,20 @@ function HomePage() {
     return (
         <div className="homePage">
             <Swiper
-                modules={[Virtual]}
-                spaceBetween={10}
-                slidesPerView={3}
+                slidesPerView={2}    
+                modules={[Autoplay]}
                 autoplay={{
-                    delay: 1000,
+                    delay: 2000,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true,
                     stopOnLastSlide: false,
                     reverseDirection: false,
                 }}
-                virtual
                 className="homeSlide-top my-3"
             >
                 {listSlide.map((slideContent, index) => (
                     <SwiperSlide key={slideContent} virtualIndex={index}>
-                        <Image src={`${slideContent}`} />
+                        <Image width={820} height={500} src={`${slideContent}`} />
                     </SwiperSlide>
                 ))}
             </Swiper>

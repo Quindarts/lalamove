@@ -11,15 +11,5 @@ export default function usePlaylist() {
     const getPlaylistDetailAccount = (data: any) => {
         dispatch(setPlaylistDetailAcccount(data));
     };
-    // const addNewMusicToPlayListAccount  = (data: any) =>{
-    const addNewMusicToPlaylistAccount = (data : any)=>{
-
-    }
-    // {
-    //     "_id": "644f8b2840ed640009857663",
-    //     "_id_music": "6438cbb5aa9627ecf49365d3",
-    //     "nameList": "Ablum Tháng Năm Quang"
-    //   }
-    // }
     return { playlist, getAllPlaylistAccount,getPlaylistDetailAccount };
 }

@@ -18,3 +18,17 @@ code {
 .ant-spin .ant-spin-dot-item {
     background-color: grey;
 }
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: calc(100vh - 120px);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+.swiper-button-next, .swiper-button-prev{
+    color: #09c478!important;
+}
