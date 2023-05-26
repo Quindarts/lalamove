@@ -32,7 +32,6 @@ type MusicState = {
     search: MusicItemType[];
 };
 
-// Define the initial state using that type
 const initialState: any = {
     musics: [],
     mplay: {},
@@ -42,7 +41,6 @@ const initialState: any = {
 
 export const useMusic = createSlice({
     name: "musicSlice",
-    // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
         setMusic: (state: any, { payload }: PayloadAction<MusicItemType[]>) => {
@@ -53,8 +51,7 @@ export const useMusic = createSlice({
             { payload }: PayloadAction<MusicItemType>,
         ) => {
             state.mplay = payload;
-            console.log("mlplay:",payload);
-            
+            console.log("mlplay:", payload);
         },
         searchByQuery: (state: any, { payload }: PayloadAction<any>) => {
             state.search = payload;
@@ -62,14 +59,12 @@ export const useMusic = createSlice({
         },
         updateHistory: (state: any, { payload }: PayloadAction<any>) => {
             state.history = payload;
-            console.log("store: ",state.history);
+            console.log("store: ", state.history);
         },
     },
 });
 
 export const { setMusic, setPlayMusic, searchByQuery, updateHistory } =
     useMusic.actions;
-
-// Other code such as selectors can use the imported `RootState` type
 
 export default useMusic.reducer;

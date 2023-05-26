@@ -24,7 +24,6 @@ export type AllPlaylistAccountType = {
     };
     data: [];
 };
-// export type PlaylistDetailType = {};
 const initialState: any = {
     playlist: [],
     createPlaylist: [],

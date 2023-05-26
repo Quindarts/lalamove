@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 import Mainlayout from "../components/Layout/Mainlayout";
-import ComponentPage from "../page/ComponentPage";
 import FavoritePage from "../page/FavoritePage";
 import HomePage from "../page/HomePage";
 import PlaylistAccountPage from "../page/PlaylistAccountPage";
@@ -17,18 +16,12 @@ const Routing: React.FC = () => {
         <Routes>
             <Route path={APP_ROUTES.INDEX} element={<Mainlayout />}>
                 <Route index element={<HomePage />} />
+                <Route path={APP_ROUTES.FAVORITE} element={<FavoritePage />} />
                 <Route
-                    index
-                    path={APP_ROUTES.FAVORITE}
-                    element={<FavoritePage />}
-                />
-                <Route
-                    index
                     path={APP_ROUTES.MYPLAYLIST}
                     element={<PlaylistAccountPage />}
                 />
                 <Route
-                    index
                     path={APP_ROUTES.UPLOAD_MUSIC}
                     element={<UploadMusicPage />}
                 />

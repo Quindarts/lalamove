@@ -9,7 +9,6 @@ const axiosConfig = axios.create({
 });
 axiosConfig.interceptors.request.use(
     function (request: any) {
-        /*...*/
         const access_token: string = localStorage.getItem("access_token") || "";
         if (request.headers) {
             request.headers["Authorization"] = `Bearer ${access_token}`;
@@ -17,17 +16,14 @@ axiosConfig.interceptors.request.use(
         return request;
     },
     function (error: AxiosError) {
-        // console.log(error);
         return error;
     },
 );
 axiosConfig.interceptors.response.use(
     function (response) {
-        // console.log("transform:", response);
         return response;
     },
     function (error) {
-        // console.log("transform:", error);
         return error.response;
     },
 );
