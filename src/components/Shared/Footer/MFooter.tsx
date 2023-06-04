@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 import Modal from "../../UI/Modal/Modal";
 import ModalDetailFooter from "./ModalDetailFooter/ModalDetailFooter";
 import { createHistoryApi } from "../../../services/historyApi";
-import PlayMusicAnimation from "../../UI/PlayMusicAnimation/PlayMusicAnimation";
 function MFooter() {
     const { musics } = useMusic();
     const [isOpen, setIsOpen] = useState({ open: false, id: "" });
+    
     const handleOpen = (id: string) => {
         setIsOpen({ open: true, id: id });
     };
@@ -23,8 +23,6 @@ function MFooter() {
 
     return (
         <div>
-           
-
             <footer className="flex justify-between">
                 <div className="flex">
                     {musics.mplay.image_music ? (

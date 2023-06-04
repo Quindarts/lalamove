@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import useMusic from "../../../../hooks/useMusic";
 import { MusicItemType } from "../../../../store/useMusic.slice";
 import MusicGridItem from "../../../UI/Music/MusicGridItem";
@@ -16,10 +15,7 @@ function SearchDetail() {
             ) : (
                 <></>
             )}
-            <div
-                // style={{ borderBottom: "0.1px solid gray" }}
-                className="m-[1rem] pb-4 flex flex-wrap gap-2"
-            >
+            <div className="m-[1rem] pb-4 flex flex-wrap gap-2">
                 {data?.map((item: MusicItemType, index: number) => (
                     <MusicGridItem key={index} music={item} />
                 ))}

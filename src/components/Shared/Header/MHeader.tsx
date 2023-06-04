@@ -18,7 +18,7 @@ function MHeader() {
     const [isLogin, setIsLogin] = useState(
         localStorage.getItem("access_token") !== null,
     );
-    const { getLogoutAccount, user } = useUSer();
+    const { user } = useUSer();
     const handleOpen = (id: string) => {
         setIsOpen({ open: true, id: id });
         setIsOpenLogin(true);

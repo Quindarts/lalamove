@@ -6,7 +6,6 @@ import MFooter from "../Shared/Footer/MFooter";
 import SearchDetail from "../Shared/Header/Search/SearchDetail";
 
 function Mainlayout() {
-    // localStorage.removeItem("access_token");
     return (
         <>
             <Layout>
