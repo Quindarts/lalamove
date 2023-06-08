@@ -1,5 +1,5 @@
 import { Image, message, Spin } from "antd";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
     fetchAllPlaylistDetailAccount,
     removePlaylistAccount,
@@ -79,7 +79,7 @@ function Playlist(props: any) {
                         color="green"
                         className="mx-2"
                     >
-                        <CaretRightOutlined /> Phát playlist
+                        <CaretRightOutlined /> Phát danh sach
                     </Button>
                     <Button color="yellow">Đổi tên</Button>
                     <Button

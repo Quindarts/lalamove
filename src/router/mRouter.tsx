@@ -6,13 +6,7 @@ import HomePage from "../page/HomePage";
 import PlaylistAccountPage from "../page/PlaylistAccountPage";
 import SearchPage from "../page/SearchPage";
 import UploadMusicPage from "../page/UploadMusicPage";
-const APP_ROUTES = {
-    INDEX: "/",
-    FAVORITE: "/favorite",
-    MYPLAYLIST: "/playlist-account",
-    UPLOAD_MUSIC: "/upload-music",
-    SEARCH_PAGE: "/search",
-};
+import { APP_ROUTES } from "../types/constants";
 const Routing: React.FC = () => {
     return (
         <Routes>

@@ -32,24 +32,31 @@ function HomePage() {
     const [typeTopView, setTypeTopView] = useState<String>("million");
     const { musics, updateMusic } = useMusic();
     const [loading, setLoading] = useState(false);
+    const [renderInfinitySlide, setRenderInfinitySlide] = useState<number>(3);
+    const [widthApp, setWidthApp] = useState<number>(0);
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            setWidthApp(window.innerWidth);
+        });
+
+        if (window.innerWidth > 1200) setRenderInfinitySlide(6);
+        if (window.innerWidth > 1000 && window.innerWidth <= 1200)
+            setRenderInfinitySlide(4);
+        if (window.innerWidth > 600 && window.innerWidth <= 1000)
+            setRenderInfinitySlide(2);
+        if (window.innerWidth <= 600) setRenderInfinitySlide(1);
+    }, [widthApp]);
 
     const handleSetTopView = (typeTopView: String) => {
         setTypeTopView(typeTopView);
     };
     useEffect(() => {
-        getAllTopViewbyParams(12, 1, `${typeTopView}`)
-            .then((res: any) => {
-                if (res.status === 200) {
-                    setlistView(res.data);
-                    setLoading(true);
-                }
-                if (res.status === 400) {
-                    console.log(res);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        getAllTopViewbyParams(12, 1, `${typeTopView}`).then((res: any) => {
+            if (res.status === 200) {
+                setlistView(res.data);
+                setLoading(true);
+            }
+        });
     }, [typeTopView]);
 
     useEffect(() => {
@@ -59,32 +66,18 @@ function HomePage() {
             });
         }
 
-        getAllFavoriteMusicbyParams(20, 2)
-            .then((res: any) => {
-                if (res.status === 200) {
-                    updateMusic(res.data.data);
-                    setLoading(true);
-                }
-                if (res.status === 400) {
-                    console.log(res);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        getAllNewsMusicByParams(40, 2)
-            .then((res: any) => {
-                if (res.status === 200) {
-                    setlistNewsMusic(res.data);
-                    setLoading(true);
-                }
-                if (res.status === 400) {
-                    console.log(res);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        getAllFavoriteMusicbyParams(20, 2).then((res: any) => {
+            if (res.status === 200 || res.status === 204) {
+                updateMusic(res.data.data);
+                setLoading(true);
+            }
+        });
+        getAllNewsMusicByParams(40, 2).then((res: any) => {
+            if (res.status === 200 || res.status === 204) {
+                setlistNewsMusic(res.data);
+                setLoading(true);
+            }
+        });
     }, [loading]);
 
     return (
@@ -102,18 +95,18 @@ function HomePage() {
                 }}
                 className="homeSlide-top my-3"
             >
-                {listSlide.map((slideContent, index) => (
-                    <SwiperSlide key={slideContent} virtualIndex={index}>
+                {listSlide.map((slide, index) => (
+                    <SwiperSlide key={index} virtualIndex={index}>
                         <Image
                             width={500}
                             height={300}
-                            src={`${slideContent}`}
+                            src={`${slide}`}
                             className="rounded-lg"
                         />
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <h1 className="my-5 font-bold text-[25px]">
+            <h1 className="my-5 mt-[5rem] font-bold text-[25px]">
                 TOP VIEW{" "}
                 <Icon
                     icon="solar:star-bold"
@@ -121,7 +114,7 @@ function HomePage() {
                     style={{ display: "inline-block" }}
                 />
             </h1>
-            <div className="text-white m-5 flex gap-2">
+            <div className="text-white m-5  flex gap-2">
                 <Button
                     onClick={() => handleSetTopView("million")}
                     color={
@@ -151,9 +144,9 @@ function HomePage() {
                     <Spin className="" size="large" />
                 )}
             </div>
-            <h1 className="my-5 font-bold text-[25px]">YÊU THÍCH</h1>
+            <h1 className="mb-5 mt-[5rem] font-bold text-[25px]">YÊU THÍCH</h1>
             <Swiper
-                slidesPerView={6}
+                slidesPerView={renderInfinitySlide}
                 navigation={true}
                 modules={[Navigation, Autoplay]}
                 autoplay={{
@@ -170,7 +163,9 @@ function HomePage() {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <h1 className="my-5 font-bold text-[25px]">MỚI RA MẮT </h1>
+            <h1 className="mb-5 mt-[5rem] font-bold text-[25px]">
+                MỚI RA MẮT{" "}
+            </h1>
             <div className="news_music_slide flex flex-wrap gap-1">
                 {loading ? (
                     listNewsMusic?.data.map(

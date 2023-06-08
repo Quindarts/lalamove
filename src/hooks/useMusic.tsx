@@ -7,6 +7,7 @@ import {
     setPlayMusic,
     updateHistory,
 } from "../store/useMusic.slice";
+
 export default function useMusic() {
     const musics = useSelector((state: RootState) => state.musics);
     const dispatch = useDispatch();

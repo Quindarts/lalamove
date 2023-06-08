@@ -23,8 +23,8 @@ function PlaylistAccountPage() {
         <>
             {playlist.playlist ? (
                 <div className="playlist_accountPage ">
-                    <h1 className="my-5 font-bold text-[25px] text-white my-2">
-                        Playlist của bạn
+                    <h1 className="my-5 font-bold text-[25px] text-white ">
+                        Danh sách của bạn
                     </h1>
                     {playlist.playlist?.map((item: any, index: number) => (
                         <Playlist
@@ -37,7 +37,7 @@ function PlaylistAccountPage() {
                 </div>
             ) : (
                 <h1 className="my-5 font-bold text-[25px] text-white text-center">
-                    Playlist của bạn trống
+                    Danh sách của bạn trống
                 </h1>
             )}
         </>

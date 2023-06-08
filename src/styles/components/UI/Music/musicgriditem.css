@@ -3,17 +3,19 @@
     flex: 1;
     min-width: 350px;
     max-width: 400px;
-    height: 90px;
+    height: 100px;
     padding: 12px;
     transition: 0.2s ease-in;
     cursor: pointer;
-    line-height: 1.5rem;
-    border-radius: 0.3rem;
+    line-height: 1.8rem;
+    border-radius: 1rem;
 }
 .music_Grid_Item:hover .overlay {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 1rem;
+
 }
 .music_Grid_Item-img img {
     border-radius: 0.5rem;

@@ -18,7 +18,7 @@ import { Image } from "antd";
 import { createMuisicToFavoriteList } from "../../../services/favoriteApi";
 import ModalPlaylistDetail from "./ModalPlaylistDetail";
 import { notification } from "antd";
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 type NotificationType = "success" | "info" | "warning" | "error";
 function MusicGridItem(props: any) {
     const { music } = props;
@@ -121,13 +121,22 @@ function MusicGridItem(props: any) {
                     />
                 </div>
                 <div className="music_Grid_Item-content">
-                    <div className="">
-                        <h6 className="font-bold" style={{ color: "#09c478" }}>
-                            {music.name_music}
-                        </h6>
-                        <p className="font-[600]" style={{ color: "#908d8d" }}>
-                            {music.name_singer}
-                        </p>
+                    <div className="flex justify-between align-middle w-[300px]">
+                        <div className="">
+                            <h6
+                                className="font-bold"
+                                style={{ color: "#09c478" }}
+                            >
+                                {music.name_music}
+                            </h6>
+                            <p
+                                className="font-[600]"
+                                style={{ color: "#908d8d" }}
+                            >
+                                {music.name_singer}
+                            </p>
+                        </div>
+                        <div className="text-[#a7a4a4] text-[1rem] ">{music.time_format}</div>
                     </div>
                     <div className="flex">
                         <div className="flex mr-2   ">

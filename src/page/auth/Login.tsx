@@ -37,7 +37,7 @@ function Login(prop: any) {
         login(data).then((res) => {
             if (res.status === 400) {
                 const message = res.data.message;
-                openNotificationWithIcon("error", "Đăng nhập", message);
+                openNotificationWithIcon("error", "Đăng nhập", "Đăng nhập thất bại");
             }
             if (res.status === 200) {
                 openNotificationWithIcon(

@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
-const APP_API = "https://api-kaito-music.vercel.app/api";
+import { APP_API } from "../types/constants";
+
 const axiosConfig = axios.create({
     baseURL: APP_API,
     timeout: 10000,
@@ -7,6 +8,7 @@ const axiosConfig = axios.create({
         "Context-Type": "application/json",
     },
 });
+
 axiosConfig.interceptors.request.use(
     function (request: any) {
         const access_token: string = localStorage.getItem("access_token") || "";
@@ -19,11 +21,12 @@ axiosConfig.interceptors.request.use(
         return error;
     },
 );
+
 axiosConfig.interceptors.response.use(
     function (response) {
         return response;
     },
-    function (error) {
+    function (error: AxiosError) {
         return error.response;
     },
 );

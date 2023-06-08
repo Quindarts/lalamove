@@ -16,6 +16,19 @@ function FavoritePage() {
     const { favorite, getAllListFavoriteAccount } = useFavorite();
     const { musics } = useMusic();
     const [loading, setLoading] = useState(false);
+    const [renderInfinitySlide, setRenderInfinitySlide] = useState<number>(3);
+    const [widthApp, setWidthApp] = useState<number>(0);
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            setWidthApp(window.innerWidth);
+        });
+        if (window.innerWidth > 1200) setRenderInfinitySlide(6);
+        if (window.innerWidth > 1000 && window.innerWidth <= 1200)
+            setRenderInfinitySlide(4);
+        if (window.innerWidth > 600 && window.innerWidth <= 1000)
+            setRenderInfinitySlide(2);
+        if (window.innerWidth <= 600) setRenderInfinitySlide(1);
+    }, [widthApp]);
     useEffect(() => {
         getAllFavoriteMusicAccount()
             .then((res: any) => {
@@ -43,7 +56,7 @@ function FavoritePage() {
                     </h1>
 
                     <Swiper
-                        slidesPerView={6}
+                        slidesPerView={renderInfinitySlide}
                         navigation={true}
                         modules={[Navigation, Autoplay]}
                         autoplay={{
