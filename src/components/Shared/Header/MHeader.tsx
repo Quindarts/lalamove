@@ -8,35 +8,35 @@ import useMusic from "../../../hooks/useMusic";
 import "../../../styles/components/Shared/header.css";
 import { apiSearchMusicByQuery } from "../../../services/appApi";
 import useUSer from "../../../hooks/useUser";
+import { useNavigate } from "react-router";
+import { Icon } from "@iconify/react";
 
 function MHeader() {
     const { Search } = Input;
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState({ open: false, id: "" });
-    const [search, setSearch] = useState<string>();
+    const [search, setSearch] = useState<string>("");
     const { searchMusicByQuery } = useMusic();
-    const [isOpenLogin, setIsOpenLogin] = useState<boolean>(true);
-    const [isLogin, setIsLogin] = useState(
-        localStorage.getItem("access_token") !== null,
-    );
+    const [isOpenLoginModal, setIsOpenLoginModal] = useState<boolean>(true);
+    const [isLoginAccount, setIsLoginAccount] = useState(false);
     const { user } = useUSer();
-    const handleOpen = (id: string) => {
+    const handleOpenModal = (id: string) => {
         setIsOpen({ open: true, id: id });
-        setIsOpenLogin(true);
+        setIsOpenLoginModal(true);
     };
-    const handleClose = () => {
+    const handleCloseModal = () => {
         setIsOpen({ ...isOpen, open: false });
     };
-    const handleLogout = () => {
-        setIsLogin(false);
-        // getLogoutAccount();
+    const handleLogoutAccount = () => {
+        setIsLoginAccount(false);
         localStorage.removeItem("access_token");
-        console.log("user store logout:", user.userLogin);
     };
     useEffect(() => {
         if (search !== "") {
             apiSearchMusicByQuery(search).then((res: any) => {
                 if (res.status === 200) {
                     searchMusicByQuery(res);
+                    navigate("/search");
                 }
             });
         }
@@ -47,11 +47,11 @@ function MHeader() {
             style={{
                 background: "#171719",
                 padding: "1rem",
-                margin: " 0 0 0 24px",
+                margin: " 0 0 2rem 24px",
             }}
         >
             <div
-                className="h-[35px]"
+                className="h-[35px] my-5"
                 style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -59,33 +59,36 @@ function MHeader() {
                 }}
             >
                 <Search
-                    className="input_search"
-                    placeholder="input search text"
+                    className="input_search text-white"
+                    placeholder="Tìm kiếm bài hát, ca sĩ ..."
                     onSearch={setSearch}
+                    size="large"
                     enterButton
-                    style={{ width: 500, background: "gray!important" }}
+                    style={{ width: 400, background: "gray!important" }}
                 />
-                {isLogin ? (
+                {isLoginAccount ? (
                     <div className="flex">
                         <span className="mx-5 mb-2 text-emerald-600">
-                            Xin Chào,{user?.userLogin?.data?.user_name}
+                            Xin Chào,{" "}{user?.userLogin?.data?.user_name}
                         </span>
                         <Button
                             className=""
-                            color="green"
+                            color="yellow"
                             variant="container"
-                            onClick={handleLogout}
+                            onClick={handleLogoutAccount}
                         >
-                            Logout
+                            Đăng xuất
                         </Button>
                     </div>
                 ) : (
                     <Button
-                        color="green"
+                        color="green-outline"
                         variant="container"
-                        onClick={() => handleOpen("login")}
+                        onClick={() => handleOpenModal("login")}
+                        style={{ borderRadius: "50%",padding:'0.6rem' }}
+                        size="lg"
                     >
-                        Sign up
+                        <Icon icon="ri:user-fill" className="text-[1rem]" />
                     </Button>
                 )}
             </div>
@@ -93,14 +96,14 @@ function MHeader() {
                 type="top"
                 id={isOpen.id}
                 open={isOpen.open}
-                onClose={handleClose}
+                onClose={handleCloseModal}
                 color={"#12192c"}
             >
                 <Login
-                    onClose={handleClose}
-                    mlogin={setIsLogin}
-                    isOpenLogin={isOpenLogin}
-                    setIsOpenLogin={setIsOpenLogin}
+                    onClose={handleCloseModal}
+                    setIsLoginAccount={setIsLoginAccount}
+                    isOpenLoginModal={isOpenLoginModal}
+                    setIsOpenLoginModal={setIsOpenLoginModal}
                 />
             </Modal>
         </Header>

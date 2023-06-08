@@ -81,7 +81,7 @@ function Playlist(props: any) {
                     >
                         <CaretRightOutlined /> Phát playlist
                     </Button>
-                    <Button color="yellow">Rename</Button>
+                    <Button color="yellow">Đổi tên</Button>
                     <Button
                         color="red"
                         onClick={handelRemovePlaylist}

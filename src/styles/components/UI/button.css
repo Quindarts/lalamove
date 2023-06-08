@@ -38,5 +38,7 @@
     background-color: rgb(235, 98, 98);
 }
 .btn--yellow {
+    color: black;
+    font-weight: 500;
     background-color: #fcbe00;
 }

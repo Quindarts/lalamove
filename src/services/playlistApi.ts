@@ -3,7 +3,7 @@ import axiosConfig from "./axiosconfig";
 export const fethAllPlaylistAccount = async () => {
     return await axiosConfig.get("/list-music/get-list?Params");
 };
-export const removePlaylistAccount = async (_id: any) => {
+export const removePlaylistAccount = async (_id: String) => {
     return await axiosConfig.delete(`/list-music/delete-list-music?_id=${_id}`);
 };
 export const fetchAllPlaylistDetailAccount = async (_id: string) => {

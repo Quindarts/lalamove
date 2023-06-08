@@ -3,16 +3,17 @@ import Siderbar from "../Shared/Siderbar/Siderbar";
 import MHeader from "../Shared/Header/MHeader";
 import { Outlet } from "react-router";
 import MFooter from "../Shared/Footer/MFooter";
-import SearchDetail from "../Shared/Header/Search/SearchDetail";
 
 function Mainlayout() {
+    window.addEventListener("load", function () {
+        localStorage.removeItem("access_token");
+    });
     return (
         <>
             <Layout>
                 <Siderbar />
                 <Layout style={{ background: "#171719" }}>
                     <MHeader />
-                    <SearchDetail />
                     <Outlet />
                     <div className="outlet-footer h-[70px]"></div>
                 </Layout>

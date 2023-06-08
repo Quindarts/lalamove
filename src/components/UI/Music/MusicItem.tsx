@@ -2,6 +2,7 @@ import { EyeOutlined, HeartFilled } from "@ant-design/icons";
 import "../../../styles/components/UI/Music/musicItem.css";
 import useMusic from "../../../hooks/useMusic";
 import { MusicItemType } from "../../../store/useMusic.slice";
+import { Image } from "antd";
 
 function MusicItem(props: any) {
     const { playMusic } = useMusic();
@@ -17,8 +18,15 @@ function MusicItem(props: any) {
         >
             <div
                 className="music_item-image"
-                style={{ backgroundImage: `url(${mMusic.image_music})` }}
-            ></div>
+            >
+                <Image
+                    width={250}
+                    height={250}
+                    src={`${mMusic.image_music}`}
+                    alt=""
+
+                />
+            </div>
             <div className="music_item-content text-center">
                 <div className="">
                     <h6 className="font-bold" style={{ color: "#09c478" }}>

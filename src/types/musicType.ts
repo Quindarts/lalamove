@@ -23,4 +23,3 @@ export interface MusicItemType {
     slug_subscribe?: string;
 }
 export interface AccountFavoriteType {}
-export interface 

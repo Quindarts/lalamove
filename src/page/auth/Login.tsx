@@ -1,14 +1,32 @@
-import { Checkbox, Form, Input, message } from "antd";
-import React, { useState } from "react";
+import { Checkbox, Form, Input } from "antd";
 import Button from "../../components/UI/Button/Button";
 import useUSer from "../../hooks/useUser";
-import { login } from "../../services/userApi";
+import { login, register } from "../../services/userApi";
 import "../../styles/pages/auth/login.css";
+import { notification } from "antd";
+
+type NotificationType = "success" | "info" | "warning" | "error";
 
 function Login(prop: any) {
-    const { onClose, mlogin, isOpenLogin, setIsOpenLogin } = prop;
+    const {
+        onClose,
+        setIsLoginAccount,
+        isOpenLoginModal,
+        setIsOpenLoginModal,
+    } = prop;
     const { user, getLoginAccount } = useUSer();
-    const [messageApi, contextHolder] = message.useMessage();
+    const [messageApi, contextHolder] = notification.useNotification();
+
+    const openNotificationWithIcon = (
+        type: NotificationType,
+        message: String,
+        des: String,
+    ) => {
+        messageApi[type]({
+            message: message,
+            description: des,
+        });
+    };
     const onFinishLogin = (values: any) => {
         const switchData = Object.assign({}, values);
         const data = {
@@ -19,15 +37,19 @@ function Login(prop: any) {
         login(data).then((res) => {
             if (res.status === 400) {
                 const message = res.data.message;
-                messageApi.open({ type: "error", content: message });
+                openNotificationWithIcon("error", "Đăng nhập", message);
             }
             if (res.status === 200) {
-                messageApi.open({ type: "success", content: "Login success" });
+                openNotificationWithIcon(
+                    "success",
+                    "Đăng nhập",
+                    "Đăng nhập thành công",
+                );
+
                 localStorage.setItem("access_token", res.data.accessToken);
                 getLoginAccount(res.data);
-                mlogin(true);
+                setIsLoginAccount(true);
                 onClose();
-                console.log("user store:", user.userLogin.data.user_name);
             }
         });
     };
@@ -37,17 +59,32 @@ function Login(prop: any) {
     const onFinishRegister = (values: any) => {
         const switchData = Object.assign({}, values);
         const data = {
-            username: switchData.username,
-            email: switchData.email,
+            userName: switchData.username,
             password: switchData.password,
+            email: switchData.email,
         };
         console.log("register:", data);
+        register(data).then((res) => {
+            console.log(res);
+            if (res.status === 200 || res.status === 204) {
+                openNotificationWithIcon(
+                    "success",
+                    "Đăng kí",
+                    "Đăng kí thành công",
+                );
+
+                localStorage.setItem("access_token", res.data.accessToken);
+                getLoginAccount(res.data);
+                setIsLoginAccount(true);
+                onClose();
+            }
+        });
     };
     return (
         <>
             {contextHolder}
 
-            {isOpenLogin ? (
+            {isOpenLoginModal ? (
                 <>
                     <div className="title text-center font-bold text-[2rem]">
                         Đăng nhập
@@ -113,7 +150,7 @@ function Login(prop: any) {
                                 type="submit"
                                 color="yellow"
                                 onClick={() => {
-                                    setIsOpenLogin(false);
+                                    setIsOpenLoginModal(false);
                                 }}
                             >
                                 Đăng kí
@@ -198,7 +235,7 @@ function Login(prop: any) {
                                 type="submit"
                                 color="yellow"
                                 onClick={() => {
-                                    setIsOpenLogin(false);
+                                    setIsOpenLoginModal(false);
                                 }}
                             >
                                 Đăng kí ngay

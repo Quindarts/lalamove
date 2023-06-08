@@ -1,5 +1,5 @@
 .centered {
-    position: fixed;
+    position: absolute;
     margin: auto;
     top: 0;
     bottom: 0;
@@ -10,23 +10,25 @@
 }
 
 .face {
-    width: 150px;
-    height: 150px;
-    background-color: #ebebeb;
+    width: 50px;
+    height: 50px;
+    margin-left: 1.5rem;
+    margin-top: 0.7rem;
+    background-color: #fff;
     border-radius: 50%;
     -webkit-mask: url(https://i.imgur.com/RlyofWb.png) top left / cover;
     mask: url(https://i.imgur.com/RlyofWb.png) top left / cover;
 }
 
 .back {
-    width: 160px;
-    height: 160px;
+    width: 60px;
+    height: 50px;
     border-radius: 50%;
     background: -webkit-linear-gradient(
         top,
         #ff694c 0%,
         #f15378 40%,
-        #e053d5 50%,
+        #f15378 50%,
         #b54beb 60%,
         #5b86ee 70%,
         #00eeeb 100%
@@ -35,7 +37,7 @@
         top,
         #ff694c 0%,
         #f15378 30%,
-        #e053d5 40%,
+        #f15378 40%,
         #b54beb 60%,
         #5b86ee 70%,
         #00eeeb 100%
@@ -50,19 +52,19 @@
 }
 
 .headphones {
-    width: 320px;
-    height: 120px;
+    width: 100px;
+    height: 10px;
     -webkit-animation: bounce 0.3s linear infinite alternate;
     animation: bounce 0.3s linear infinite alternate;
 }
 
 .earmuff {
     float: left;
-    width: 20px;
-    height: 120px;
-    background: #fa7b57;
+    width:10px;
+    height:30px;
+    background: rgb(208, 116, 116);
     border-radius: 50% 10px 10px 50%;
-    border-right: #fa8e57 solid 20px;
+    border-right: #f15378 solid 5px;
 }
 .earmuff:nth-child(2) {
     float: right;
@@ -71,18 +73,18 @@
 }
 
 .band {
-    width: 320px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background-color: trnasparent;
-    border-top: #fa7b57 solid 40px;
+    border-top: #f15378 solid 10px;
     z-index: -99;
 }
 
-.music {
-    width: 450px;
-    height: 50px;
-}
+/* .music {
+    width: 80px;
+    height: 0px;
+} */
 .group1 {
     float: left;
 }
@@ -92,10 +94,8 @@
 }
 .wave {
     display: inline-block;
-    width: 10px;
-    height: 50px;
     opacity: 0.2;
-    background-color: #fa7b57;
+    background-color: #f15378;
     -webkit-animation: wave 0.3s 0.2s linear infinite alternate;
     animation: wave 0.3s 0.2s linear infinite alternate;
 }
@@ -111,26 +111,26 @@
 @keyframes spin {
     to {
         -webkit-filter: saturate(1);
-        -webkit-transform: scale(1.05) rotate(-25deg);
+        -webkit-transform: scale(1.1) rotate(-25deg);
     }
 }
 
 @-webkit-keyframes spin {
     to {
         -webkit-filter: saturate(1);
-        -webkit-transform: scale(1.05) rotate(-25deg);
+        -webkit-transform: scale(1.1) rotate(-25deg);
     }
 }
 
 @keyframes bounce {
     to {
-        -webkit-transform: scale(1.05);
+        -webkit-transform: scale(1.1);
     }
 }
 
 @-webkit-keyframes bounce {
     to {
-        -webkit-transform: scale(1.05);
+        -webkit-transform: scale(1.1);
     }
 }
 

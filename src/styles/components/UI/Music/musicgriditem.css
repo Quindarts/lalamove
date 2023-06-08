@@ -1,5 +1,5 @@
-.music_Grid_Item{
-    position:relative;
+.music_Grid_Item {
+    position: relative;
     flex: 1;
     min-width: 350px;
     max-width: 400px;
@@ -10,24 +10,27 @@
     line-height: 1.5rem;
     border-radius: 0.3rem;
 }
-.music_Grid_Item:hover .overlay{
+.music_Grid_Item:hover .overlay {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.music_Grid_Item-img{
+.music_Grid_Item-img img {
+    border-radius: 0.5rem;
+}
+.music_Grid_Item-img {
     width: 70px;
     height: 70px;
     background-clip: cover;
-
+    background-position: 0 0, center;
+    background-image: cover;
 }
-.music_Grid_Item-content{
+.music_Grid_Item-content {
     color: gray;
     font-weight: 500;
     text-align: start;
-
 }
-.overlay{
+.overlay {
     display: none;
     background-color: rgba(134, 132, 132, 0.5);
     transition: 0.2s ease-in;
@@ -39,16 +42,16 @@
     font-size: 20px;
     font-weight: bold;
 }
-.overlay button{
+.overlay button {
     margin: 1rem;
 }
-.mplaylist{
+.mplaylist {
     cursor: pointer;
     margin: 1rem 0 1rem 0;
     transition: 0.3s ease-in;
     border-radius: 0.3rem;
     padding: 0.3rem;
 }
-.mplaylist:hover{
+.mplaylist:hover {
     background-color: rgba(134, 132, 132, 0.5);
 }

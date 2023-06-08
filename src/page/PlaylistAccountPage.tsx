@@ -1,3 +1,4 @@
+import { Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import Playlist from "../components/UI/Playlist/Playlist";
 import usePlaylist from "../hooks/usePlaylist";
@@ -6,28 +7,40 @@ import "../styles/pages/playlistaccountpage.css";
 function PlaylistAccountPage() {
     const { playlist, getAllPlaylistAccount } = usePlaylist();
     const [remove, setRemove] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const handleRemove = () => {
         setRemove(!remove);
     };
     useEffect(() => {
         fethAllPlaylistAccount().then((res: any) => {
-            getAllPlaylistAccount(res.data.data);
+            if (res.status === 200) {
+                setIsLoading(false);
+                getAllPlaylistAccount(res.data.data);
+            }
         });
     }, [remove]);
     return (
-        <div className="playlist_accountPage ">
-            <h1 className="my-5 font-bold text-[25px] text-white my-2">
-                Playlist của bạn
-            </h1>
-            {playlist.playlist?.map((item: any, index: number) => (
-                <Playlist
-                    key={index}
-                    playlist={item}
-                    handleRemove={handleRemove}
-                    _id={item._id}
-                />
-            ))}
-        </div>
+        <>
+            {playlist.playlist ? (
+                <div className="playlist_accountPage ">
+                    <h1 className="my-5 font-bold text-[25px] text-white my-2">
+                        Playlist của bạn
+                    </h1>
+                    {playlist.playlist?.map((item: any, index: number) => (
+                        <Playlist
+                            key={index}
+                            playlist={item}
+                            handleRemove={handleRemove}
+                            _id={item._id}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <h1 className="my-5 font-bold text-[25px] text-white text-center">
+                    Playlist của bạn trống
+                </h1>
+            )}
+        </>
     );
 }
 

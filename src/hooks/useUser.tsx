@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
-import { setLogin } from "../store/useUser.slice";
+import { setLogin, setRegister } from "../store/useUser.slice";
 
 export default function useUSer() {
     const user = useSelector((state: RootState) => state.user);
@@ -11,6 +11,8 @@ export default function useUSer() {
     const getLogoutAccount = () => {
         dispatch(setLogin({}));
     };
-    return { user, getLoginAccount,getLogoutAccount };
-
+    const getRegisterAccount = (data: any) => {
+        dispatch(setRegister(data));
+    };
+    return { user, getLoginAccount, getLogoutAccount, getRegisterAccount };
 }

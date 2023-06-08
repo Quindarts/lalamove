@@ -29,6 +29,11 @@ html {
 html::-webkit-scrollbar {
     display: none;
 }
-.swiper-button-next, .swiper-button-prev{
-    color: #09c478!important;
+.swiper-button-next,
+.swiper-button-prev {
+    color: #09c478 !important;
 }
+/* .ant-notification-notice-with-icon {
+    background-color: black;
+    color: rgb(187, 184, 184);
+} */

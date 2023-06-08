@@ -3,8 +3,8 @@ import "../../../styles/components/UI/Music/musicgriditem.css";
 import {
     EyeOutlined,
     HeartOutlined,
-    PlusCircleOutlined,
-    PlayCircleOutlined,
+    PlusOutlined,
+    CaretRightOutlined,
 } from "@ant-design/icons";
 import {
     addNewMusicToPlayListAccount,
@@ -14,18 +14,20 @@ import { MusicItemType } from "../../../store/useMusic.slice";
 import useMusic from "../../../hooks/useMusic";
 import Modal from "../Modal/Modal";
 import usePlaylist from "../../../hooks/usePlaylist";
-import { message } from "antd";
+import { Image } from "antd";
 import { createMuisicToFavoriteList } from "../../../services/favoriteApi";
 import ModalPlaylistDetail from "./ModalPlaylistDetail";
-
+import { notification } from "antd";
+import { Icon } from '@iconify/react';
+type NotificationType = "success" | "info" | "warning" | "error";
 function MusicGridItem(props: any) {
     const { music } = props;
-    const [messageApi, contextHolder] = message.useMessage();
     const { playlist, getAllPlaylistAccount } = usePlaylist();
     const { playMusic } = useMusic();
     const [isOpen, setIsOpen] = useState({ open: false, id: "" });
+    const [messageApi, contextHolder] = notification.useNotification();
 
-    const handleOpen = (id: string) => {
+    const handleOpenPlaylist = (id: string) => {
         setIsOpen({ open: true, id: id });
     };
     const handleClose = () => {
@@ -34,23 +36,30 @@ function MusicGridItem(props: any) {
     const handlePlayMusic = (music: MusicItemType) => {
         playMusic(music);
     };
+    const openNotificationWithIcon = (
+        type: NotificationType,
+        message: String,
+        des: String,
+    ) => {
+        messageApi[type]({
+            message: message,
+            description: des,
+        });
+    };
     const handleAddMusicToFavorite = (idMusic: string) => {
         createMuisicToFavoriteList({ idMusic: idMusic }).then((res) => {
-            console.log(res);
-
             if (res.status === 200) {
-                messageApi.open({
-                    type: "success",
-                    content:
-                        "Thêm thành công bài hát vào Danh sách bài hát yêu thích",
-                });
-            }
-            else if (res.status === 401) {
-                messageApi.open({
-                    type: "warning",
-                    content:
-                        "Bạn phải đăng nhập để thêm bài hát vào danh sạch yêu thích",
-                });
+                openNotificationWithIcon(
+                    "success",
+                    "Yêu thích",
+                    "Thêm thành công bài hát vào Danh sách bài hát yêu thích",
+                );
+            } else if (res.status === 401) {
+                openNotificationWithIcon(
+                    "warning",
+                    "Yêu thích",
+                    "Vui lòng đăng nhập để sử dụng tính năng này",
+                );
             }
         });
     };
@@ -67,10 +76,12 @@ function MusicGridItem(props: any) {
 
         addNewMusicToPlayListAccount(addmusicdata).then((res) => {
             if (res.status === 200) {
-                messageApi.open({
-                    type: "success",
-                    content: "Thêm thành công bài hát vào Playlist",
-                });
+                openNotificationWithIcon(
+                    "success",
+                    "Danh sách phát",
+                    "Thêm thành công bài hát vào danh sách phát " +
+                        addmusicdata.nameList,
+                );
                 handleClose();
             }
         });
@@ -79,49 +90,54 @@ function MusicGridItem(props: any) {
         fethAllPlaylistAccount().then((res: any) => {
             getAllPlaylistAccount(res.data.data);
         });
-    }, []);
+    }, [isOpen.open]);
     return (
         <>
             {contextHolder}
             <div className="music_Grid_Item flex">
                 <div className="overlay">
-                    <button onClick={() => handleOpen("listPlaylist")}>
-                        <PlusCircleOutlined className="text-yellow-500" />
+                    <button onClick={() => handleOpenPlaylist("listPlaylist")}>
+                        <PlusOutlined className="text-white text-[40px]" />
                     </button>
                     <button
                         onClick={() => handlePlayMusic(music)}
                         className="text-white text-[40px]"
                     >
-                        <PlayCircleOutlined />
+                        <CaretRightOutlined />
                     </button>
                     <button
                         onClick={() => handleAddMusicToFavorite(music._id)}
-                        className="text-rose-600"
+                        className="text-rose-600 text-[40px]"
                     >
                         <HeartOutlined />
                     </button>
                 </div>
-                <div
-                    className="music_Grid_Item-img mr-3"
-                    style={{ backgroundImage: `url(${music.image_music})` }}
-                ></div>
+                <div className="music_Grid_Item-img mr-3">
+                    <Image
+                        width={70}
+                        height={70}
+                        src={`${music.image_music}`}
+                        alt=""
+                    />
+                </div>
                 <div className="music_Grid_Item-content">
                     <div className="">
                         <h6 className="font-bold" style={{ color: "#09c478" }}>
                             {music.name_music}
                         </h6>
-                        <p>{music.name_singer}</p>
+                        <p className="font-[600]" style={{ color: "#908d8d" }}>
+                            {music.name_singer}
+                        </p>
                     </div>
                     <div className="flex">
                         <div className="flex mr-2   ">
-                            <EyeOutlined className="py-1 pr-1" />
-                            <p>{Math.round(music.view / 1000000)}K view</p>
+                            <EyeOutlined className=" py-1 pr-1" />
+                            <p>{Math.round(music.view / 10000)}K view</p>
                         </div>
                         <div className="flex">
-                            <HeartOutlined className="py-1 pr-1" />
-
+                            <HeartOutlined className="py-1 pr-1 " />
                             <p>
-                                {Math.round(music.favorite / 1000000)}M favorite
+                                {Math.round(music.favorite / 10000)}M favorite
                             </p>
                         </div>
                     </div>
