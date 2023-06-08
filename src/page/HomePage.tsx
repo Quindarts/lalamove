@@ -10,7 +10,7 @@ import sl5 from "../assets/image/sl5.jpg";
 import sl6 from "../assets/image/sl6.jpg";
 import sl7 from "../assets/image/sl7.jpg";
 import "../styles/pages/homepage.css";
-import { Autoplay, Navigation, Virtual } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 import { Image, Spin } from "antd";
 import { getAllFavoriteMusicbyParams } from "../services/favoriteApi";
 import useMusic from "../hooks/useMusic";
@@ -20,6 +20,7 @@ import { fethAllPlaylistAccount } from "../services/playlistApi";
 import usePlaylist from "../hooks/usePlaylist";
 import { MusicItemType } from "../types/musicType";
 import { Icon } from "@iconify/react";
+import Button from "../components/UI/Button/Button";
 function HomePage() {
     const listSlide = [sl1, sl2, sl3, sl4, sl5, sl6, sl7];
     const { getAllPlaylistAccount } = usePlaylist();
@@ -28,17 +29,15 @@ function HomePage() {
         data: [],
         panigation: {},
     });
-
+    const [typeTopView, setTypeTopView] = useState<String>("million");
     const { musics, updateMusic } = useMusic();
     const [loading, setLoading] = useState(false);
 
+    const handleSetTopView = (typeTopView: String) => {
+        setTypeTopView(typeTopView);
+    };
     useEffect(() => {
-        if (localStorage.getItem("access_token") !== null) {
-            fethAllPlaylistAccount().then((res: any) => {
-                getAllPlaylistAccount(res.data.data);
-            });
-        }
-        getAllTopViewbyParams(20, 2, "million")
+        getAllTopViewbyParams(12, 1, `${typeTopView}`)
             .then((res: any) => {
                 if (res.status === 200) {
                     setlistView(res.data);
@@ -51,6 +50,15 @@ function HomePage() {
             .catch((err) => {
                 console.log(err);
             });
+    }, [typeTopView]);
+
+    useEffect(() => {
+        if (localStorage.getItem("access_token") !== null) {
+            fethAllPlaylistAccount().then((res: any) => {
+                getAllPlaylistAccount(res.data.data);
+            });
+        }
+
         getAllFavoriteMusicbyParams(20, 2)
             .then((res: any) => {
                 if (res.status === 200) {
@@ -106,13 +114,32 @@ function HomePage() {
                 ))}
             </Swiper>
             <h1 className="my-5 font-bold text-[25px]">
-                Top View{" "}
+                TOP VIEW{" "}
                 <Icon
                     icon="solar:star-bold"
                     className="text-yellow-400"
                     style={{ display: "inline-block" }}
                 />
             </h1>
+            <div className="text-white m-5 flex gap-2">
+                <Button
+                    onClick={() => handleSetTopView("million")}
+                    color={
+                        typeTopView === "million" ? "purpleClicked" : "purple"
+                    }
+                >
+                    {" "}
+                    Top triệu view
+                </Button>
+                <Button
+                    onClick={() => handleSetTopView("billion")}
+                    color={
+                        typeTopView === "billion" ? "purpleClicked" : "purple"
+                    }
+                >
+                    Top tỉ view
+                </Button>
+            </div>
             <div className="top_views_slide flex flex-wrap gap-2 justify-center align-middle">
                 {loading ? (
                     listView?.data.map(

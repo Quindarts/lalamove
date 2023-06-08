@@ -5,7 +5,7 @@ interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
     variant?: "container" | "outline";
     size?: "md" | "lg" | "sm" | "icon";
-    color?: "green" | "green-outline" | "grey" | "grey-outline" | "red" | "yellow";
+    color?: "green" | "green-outline" | "purple" |"purpleClicked" | "grey-outline" | "red" | "yellow";
 }
 const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
     const {children,className = "",variant = "",size = "sm", color,...rest} = props;

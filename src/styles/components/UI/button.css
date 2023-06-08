@@ -13,11 +13,12 @@
     text-align: center;
     transition: 0.2s ease-in;
 }
-.btn:hover{
+
+.btn:hover {
     color: black;
 }
 .btn--green:hover {
-    box-shadow: 1px 2px 1px 2px #626262;
+    box-shadow: 1px 2px 1px 2px #343434;
 }
 .btn--green {
     background-color: #09c478;
@@ -41,4 +42,16 @@
     color: black;
     font-weight: 500;
     background-color: #fcbe00;
+}
+.btn--purpleClicked {
+    background-color: #9b4de0;
+    border-radius: 1rem;
+}
+.btn--purple {
+    background-color: #170f23;
+    border-radius: 1rem;
+}
+.btn--purple:hover {
+    background-color: #9b4de0;
+    color: white;
 }

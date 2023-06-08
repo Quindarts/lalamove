@@ -53,9 +53,6 @@ function Login(prop: any) {
             }
         });
     };
-    const onFinishFailed = (errorInfo: any) => {
-        console.log("Failed:", errorInfo);
-    };
     const onFinishRegister = (values: any) => {
         const switchData = Object.assign({}, values);
         const data = {
@@ -63,7 +60,6 @@ function Login(prop: any) {
             password: switchData.password,
             email: switchData.email,
         };
-        console.log("register:", data);
         register(data).then((res) => {
             console.log(res);
             if (res.status === 200 || res.status === 204) {
@@ -90,19 +86,19 @@ function Login(prop: any) {
                         Đăng nhập
                     </div>
                     <Form
-                        name="basic"
+                        name="login"
                         labelCol={{ span: 8 }}
                         wrapperCol={{ span: 16 }}
                         style={{ maxWidth: 400 }}
                         initialValues={{ remember: true }}
                         onFinish={onFinishLogin}
-                        onFinishFailed={onFinishFailed}
                         autoComplete="off"
                         className="form_login flex flex-col justify-center align-middle"
                     >
                         <Form.Item
                             label="Email"
                             name="email"
+                            
                             rules={[
                                 {
                                     required: true,
@@ -110,7 +106,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input />
+                            <Input placeholder="Nhập vào email"/>
                         </Form.Item>
 
                         <Form.Item
@@ -123,7 +119,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input.Password />
+                            <Input.Password placeholder="Nhập vào mật khẩu"/>
                         </Form.Item>
 
                         <Form.Item
@@ -164,13 +160,12 @@ function Login(prop: any) {
                         Đăng ký
                     </div>
                     <Form
-                        name="basic"
+                        name="register"
                         labelCol={{ span: 8 }}
                         wrapperCol={{ span: 16 }}
                         style={{ maxWidth: 400 }}
                         initialValues={{ remember: true }}
                         onFinish={onFinishRegister}
-                        onFinishFailed={onFinishFailed}
                         autoComplete="off"
                         className="form_login flex flex-col justify-center align-middle"
                     >
@@ -185,7 +180,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input />
+                            <Input placeholder="Nhập vào tên người dùng" />
                         </Form.Item>
                         <Form.Item
                             label="Email"
@@ -198,11 +193,11 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input />
+                            <Input placeholder="Nhập vào email"/>
                         </Form.Item>
 
                         <Form.Item
-                            label="Password"
+                            label="Mật khẩu"
                             name="password"
                             rules={[
                                 {
@@ -211,7 +206,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input.Password />
+                            <Input.Password placeholder="Nhập vào mật khẩu"/>
                         </Form.Item>
                         <Form.Item
                             label="Nhập lại mật khẩu"
@@ -223,7 +218,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input.Password />
+                            <Input.Password placeholder="Nhập lại mật khẩu" />
                         </Form.Item>
 
                         <Form.Item
