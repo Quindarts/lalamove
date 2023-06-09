@@ -1,0 +1,30 @@
+.zoomImage-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.zoomImage {
+    transition: transform 0.3s;
+}
+
+.zoomImage-container:hover .zoomImage {
+    transform: scale(1.2);
+}
+.zoom_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 99;
+}
+
+.zoomImage-container:hover .zoom_overlay {
+    opacity: 1;
+}

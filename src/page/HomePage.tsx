@@ -2,13 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MusicGridItem from "../components/UI/Music/MusicGridItem";
 import { getAllTopViewbyParams } from "../services/topViewApi";
-import sl1 from "../assets/image/sl1.jpg";
-import sl2 from "../assets/image/sl2.jpg";
-import sl3 from "../assets/image/sl3.jpg";
-import sl4 from "../assets/image/sl4.jpg";
-import sl5 from "../assets/image/sl5.jpg";
-import sl6 from "../assets/image/sl6.jpg";
-import sl7 from "../assets/image/sl7.jpg";
+
 import "../styles/pages/homepage.css";
 import { Autoplay, Navigation } from "swiper";
 import { Image, Spin } from "antd";
@@ -21,8 +15,9 @@ import usePlaylist from "../hooks/usePlaylist";
 import { MusicItemType } from "../types/musicType";
 import { Icon } from "@iconify/react";
 import Button from "../components/UI/Button/Button";
+import ImageZoom from "../components/UI/ZoomImage/ZoomImage";
+import { listCategoryImage, listSlide } from "../types/constants";
 function HomePage() {
-    const listSlide = [sl1, sl2, sl3, sl4, sl5, sl6, sl7];
     const { getAllPlaylistAccount } = usePlaylist();
     const [listView, setlistView] = useState({ data: [], panigation: {} });
     const [listNewsMusic, setlistNewsMusic] = useState({
@@ -72,7 +67,7 @@ function HomePage() {
                 setLoading(true);
             }
         });
-        getAllNewsMusicByParams(40, 2).then((res: any) => {
+        getAllNewsMusicByParams(24, 2).then((res: any) => {
             if (res.status === 200 || res.status === 204) {
                 setlistNewsMusic(res.data);
                 setLoading(true);
@@ -106,6 +101,7 @@ function HomePage() {
                     </SwiperSlide>
                 ))}
             </Swiper>
+
             <h1 className="my-5 mt-[5rem] font-bold text-[25px]">
                 TOP VIEW{" "}
                 <Icon
@@ -144,6 +140,27 @@ function HomePage() {
                     <Spin className="" size="large" />
                 )}
             </div>
+            <h1 className="mb-5 mt-[5rem] font-bold text-[25px]"> </h1>
+            <div className="flex flex-wrap gap-[2rem] justify-center">
+                {listCategoryImage.map((img, index) =>
+                    index < 7 ? <ImageZoom srcImage={img} /> : <></>,
+                )}
+            </div>
+
+            <h1 className="mb-5 mt-[5rem] font-bold text-[25px]">
+                MỚI RA MẮT{" "}
+            </h1>
+            <div className="news_music_slide flex flex-wrap gap-1 justify-center">
+                {loading ? (
+                    listNewsMusic?.data.map(
+                        (music: MusicItemType, index: number) => (
+                            <MusicGridItem key={index} music={music} />
+                        ),
+                    )
+                ) : (
+                    <Spin className="" size="large" />
+                )}
+            </div>
             <h1 className="mb-5 mt-[5rem] font-bold text-[25px]">YÊU THÍCH</h1>
             <Swiper
                 slidesPerView={renderInfinitySlide}
@@ -163,20 +180,6 @@ function HomePage() {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <h1 className="mb-5 mt-[5rem] font-bold text-[25px]">
-                MỚI RA MẮT{" "}
-            </h1>
-            <div className="news_music_slide flex flex-wrap gap-1">
-                {loading ? (
-                    listNewsMusic?.data.map(
-                        (music: MusicItemType, index: number) => (
-                            <MusicGridItem key={index} music={music} />
-                        ),
-                    )
-                ) : (
-                    <Spin className="" size="large" />
-                )}
-            </div>
         </div>
     );
 }
