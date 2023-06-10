@@ -1,26 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MusicGridItem from "../components/UI/Music/MusicGridItem";
 import { getAllTopViewbyParams } from "../services/topViewApi";
-
 import "../styles/pages/homepage.css";
 import { Autoplay, Navigation } from "swiper";
-import { Image, Spin } from "antd";
-import { getAllFavoriteMusicbyParams } from "../services/favoriteApi";
+import { Image } from "antd";
 import useMusic from "../hooks/useMusic";
 import MusicItem from "../components/UI/Music/MusicItem";
-import { getAllNewsMusicByParams } from "../services/newMusicApi";
-import { fethAllPlaylistAccount } from "../services/playlistApi";
-import usePlaylist from "../hooks/usePlaylist";
 import { MusicItemType } from "../types/musicType";
 import { Icon } from "@iconify/react";
 import Button from "../components/UI/Button/Button";
 import ImageZoom from "../components/UI/ZoomImage/ZoomImage";
 import { listCategoryImage, listSlide } from "../types/constants";
+import { AxiosResponse } from "axios";
 function HomePage() {
     const [typeTopView, setTypeTopView] = useState<String>("million");
     const { musics, fetchAllTopViewType } = useMusic();
-    // const [loading, setLoading] = useState<boolean>(true);
     const [renderInfinitySlide, setRenderInfinitySlide] = useState<number>(3);
     const [widthApp, setWidthApp] = useState<number>(0);
     useEffect(() => {
@@ -40,11 +35,13 @@ function HomePage() {
         setTypeTopView(typeTopView);
     };
     useEffect(() => {
-        getAllTopViewbyParams(12, 1, `${typeTopView}`).then((res: any) => {
-            if (res.status === 200 || res.status === 204) {
-                fetchAllTopViewType(res.data.data);
-            }
-        });
+        getAllTopViewbyParams(12, 1, `${typeTopView}`).then(
+            (res: AxiosResponse) => {
+                if (res.status === 200 || res.status === 204) {
+                    fetchAllTopViewType(res.data.data);
+                }
+            },
+        );
     }, [typeTopView]);
 
     return (
@@ -74,7 +71,7 @@ function HomePage() {
                 ))}
             </Swiper>
 
-            <h1 className="my-5 mt-[5rem] font-bold text-[25px]">
+            <h1 className="my-5 mt-[5rem] font-bold text-[1.6rem]">
                 TOP VIEW{" "}
                 <Icon
                     icon="solar:star-bold"
@@ -108,14 +105,14 @@ function HomePage() {
                     ),
                 )}
             </div>
-            <h1 className="mb-5 mt-[5rem] font-bold text-[25px]"> </h1>
+            <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]"> </h1>
             <div className="flex flex-wrap gap-[2rem] justify-center">
                 {listCategoryImage.map((img, index) =>
                     index < 7 ? <ImageZoom srcImage={img} /> : <></>,
                 )}
             </div>
 
-            <h1 className="mb-5 mt-[5rem] font-bold text-[25px]">
+            <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
                 MỚI RA MẮT{" "}
             </h1>
             <div className="news_music_slide flex flex-wrap gap-1 justify-center">
@@ -123,7 +120,9 @@ function HomePage() {
                     <MusicGridItem key={index} music={music} />
                 ))}
             </div>
-            <h1 className="mb-5 mt-[5rem] font-bold text-[25px]">YÊU THÍCH</h1>
+            <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                YÊU THÍCH
+            </h1>
             <Swiper
                 slidesPerView={renderInfinitySlide}
                 navigation={true}
@@ -136,11 +135,13 @@ function HomePage() {
                     reverseDirection: false,
                 }}
             >
-                {musics?.musics.map((music: MusicItemType, index: number) => (
-                    <SwiperSlide key={index} virtualIndex={index}>
-                        <MusicItem mMusic={music} />
-                    </SwiperSlide>
-                ))}
+                {musics.listFavorite.map(
+                    (music: MusicItemType, index: number) => (
+                        <SwiperSlide key={index} virtualIndex={index}>
+                            <MusicItem mMusic={music} />
+                        </SwiperSlide>
+                    ),
+                )}
             </Swiper>
         </div>
     );

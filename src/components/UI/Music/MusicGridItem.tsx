@@ -9,6 +9,7 @@ import {
 import {
     addNewMusicToPlayListAccount,
     fethAllPlaylistAccount,
+    NewMusicPlaylistAccountType,
 } from "../../../services/playlistApi";
 import useMusic from "../../../hooks/useMusic";
 import Modal from "../Modal/Modal";
@@ -68,7 +69,7 @@ function MusicGridItem(props: any) {
         _id_music: string,
         _id: string,
     ) => {
-        const addmusicdata = {
+        const addmusicdata: NewMusicPlaylistAccountType = {
             _id: _id,
             _id_music: _id_music,
             nameList: nameList,
@@ -136,7 +137,9 @@ function MusicGridItem(props: any) {
                                 {music.name_singer}
                             </p>
                         </div>
-                        <div className="text-[#a7a4a4] text-[1rem] ">{music.time_format}</div>
+                        <div className="text-[#a7a4a4] text-[1rem] ">
+                            {music.time_format}
+                        </div>
                     </div>
                     <div className="flex">
                         <div className="flex mr-2   ">

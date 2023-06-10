@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import { APP_API } from "../types/constants";
 
 const axiosConfig = axios.create({

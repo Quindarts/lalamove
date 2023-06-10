@@ -1,5 +1,10 @@
 import axiosConfig from "./axiosconfig";
 
+export interface NewMusicPlaylistAccountType {
+    _id: String;
+    _id_music: String;
+    nameList: String;
+}
 export const fethAllPlaylistAccount = async () => {
     return await axiosConfig.get("/list-music/get-list?Params");
 };
@@ -16,6 +21,8 @@ export const createNewPlayListAccount = async (data: any) => {
     return await axiosConfig.post("/list-music/create", data);
 };
 
-export const addNewMusicToPlayListAccount = async (data: any) => {
+export const addNewMusicToPlayListAccount = async (
+    data: NewMusicPlaylistAccountType,
+) => {
     return await axiosConfig.put("/list-music/add-list-music", data);
 };

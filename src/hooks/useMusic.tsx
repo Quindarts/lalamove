@@ -2,6 +2,7 @@ import { RootState } from "../store/index";
 import { useSelector, useDispatch } from "react-redux";
 import {
     searchByQuery,
+    setListFavorite,
     setListNews,
     setListTopView,
     setMusic,
@@ -10,6 +11,7 @@ import {
 } from "../store/useMusic.slice";
 import { MusicItemType } from "../types/musicType";
 import { TopViewMusicType } from "../types/topViewsType";
+import { MusicFavoriteItemType } from "../types/favoriteType";
 
 export default function useMusic() {
     const musics = useSelector((state: RootState) => state.musics);
@@ -30,8 +32,11 @@ export default function useMusic() {
     const fetchAllTopViewType = (data: TopViewMusicType) => {
         dispatch(setListTopView(data));
     };
-    const fetchListNewsMusic = (data: TopViewMusicType) => {
+    const fetchListNewsMusic = (data: any) => {
         dispatch(setListNews(data));
+    };
+    const fetchListFavorite = (data: MusicFavoriteItemType[]) => {
+        dispatch(setListFavorite(data));
     };
     return {
         musics,
@@ -41,5 +46,6 @@ export default function useMusic() {
         updateMusicHistory,
         fetchAllTopViewType,
         fetchListNewsMusic,
+        fetchListFavorite,
     };
 }

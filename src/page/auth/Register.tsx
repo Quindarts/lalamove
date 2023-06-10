@@ -1,9 +1,13 @@
-import {  Form, Input } from "antd";
-import React from "react";
+import { Form, Input } from "antd";
+import { Dispatch, SetStateAction } from "react";
 import Button from "../../components/UI/Button/Button";
-
-function Register(props :any) {
-    const {onFinishRegister,onFinishFailed,setIsOpenLoginModal} =props;
+type RegisterPropsType = {
+    onFinishRegister: () => void;
+    onFinishFailed: () => void;
+    setIsOpenLoginModal: Dispatch<SetStateAction<boolean>>;
+};
+function Register(props: RegisterPropsType) {
+    const { onFinishRegister, onFinishFailed, setIsOpenLoginModal } = props;
     return (
         <div>
             <div className="title text-center font-bold text-[2rem]">
@@ -22,7 +26,7 @@ function Register(props :any) {
             >
                 <Form.Item
                     label="Tên tài khoản"
-                    name="username"
+                    name="userName"
                     rules={[
                         {
                             required: true,

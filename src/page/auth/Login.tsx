@@ -4,17 +4,28 @@ import useUSer from "../../hooks/useUser";
 import { login, register } from "../../services/userApi";
 import "../../styles/pages/auth/login.css";
 import { notification } from "antd";
+import { Dispatch, SetStateAction } from "react";
+import { AxiosResponse } from "axios";
+import {
+    UserLoginFormDataType,
+    UserRegisterFormDataType,
+} from "../../types/userType";
 
 type NotificationType = "success" | "info" | "warning" | "error";
-
-function Login(prop: any) {
+type LoginPropsType = {
+    onClose: () => void;
+    setIsLoginAccount: Dispatch<SetStateAction<boolean>>;
+    isOpenLoginModal: SetStateAction<boolean>;
+    setIsOpenLoginModal: Dispatch<SetStateAction<boolean>>;
+};
+function Login(prop: LoginPropsType) {
     const {
         onClose,
         setIsLoginAccount,
         isOpenLoginModal,
         setIsOpenLoginModal,
     } = prop;
-    const { user, getLoginAccount } = useUSer();
+    const { getLoginAccount } = useUSer();
     const [messageApi, contextHolder] = notification.useNotification();
 
     const openNotificationWithIcon = (
@@ -27,19 +38,16 @@ function Login(prop: any) {
             description: des,
         });
     };
-    const onFinishLogin = (values: any) => {
-        const switchData = Object.assign({}, values);
-        const data = {
-            email: switchData.email,
-            password: switchData.password,
-        };
-
-        login(data).then((res) => {
+    const onFinishLogin = (values: UserLoginFormDataType) => {
+        login(values).then((res: AxiosResponse) => {
             if (res.status === 400) {
-                const message = res.data.message;
-                openNotificationWithIcon("error", "Đăng nhập", "Đăng nhập thất bại");
+                openNotificationWithIcon(
+                    "error",
+                    "Đăng nhập",
+                    "Đăng nhập thất bại",
+                );
             }
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 204) {
                 openNotificationWithIcon(
                     "success",
                     "Đăng nhập",
@@ -53,14 +61,14 @@ function Login(prop: any) {
             }
         });
     };
-    const onFinishRegister = (values: any) => {
+    const onFinishRegister = (values: UserRegisterFormDataType) => {
         const switchData = Object.assign({}, values);
-        const data = {
-            userName: switchData.username,
+        const data: UserRegisterFormDataType = {
+            userName: switchData.userName,
             password: switchData.password,
             email: switchData.email,
         };
-        register(data).then((res) => {
+        register(data).then((res: AxiosResponse) => {
             console.log(res);
             if (res.status === 200 || res.status === 204) {
                 openNotificationWithIcon(
@@ -98,7 +106,6 @@ function Login(prop: any) {
                         <Form.Item
                             label="Email"
                             name="email"
-                            
                             rules={[
                                 {
                                     required: true,
@@ -106,7 +113,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input placeholder="Nhập vào email"/>
+                            <Input placeholder="Nhập vào email" />
                         </Form.Item>
 
                         <Form.Item
@@ -119,7 +126,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input.Password placeholder="Nhập vào mật khẩu"/>
+                            <Input.Password placeholder="Nhập vào mật khẩu" />
                         </Form.Item>
 
                         <Form.Item
@@ -171,7 +178,7 @@ function Login(prop: any) {
                     >
                         <Form.Item
                             label="Tên tài khoản"
-                            name="username"
+                            name="userName"
                             rules={[
                                 {
                                     required: true,
@@ -193,7 +200,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input placeholder="Nhập vào email"/>
+                            <Input placeholder="Nhập vào email" />
                         </Form.Item>
 
                         <Form.Item
@@ -206,7 +213,7 @@ function Login(prop: any) {
                                 },
                             ]}
                         >
-                            <Input.Password placeholder="Nhập vào mật khẩu"/>
+                            <Input.Password placeholder="Nhập vào mật khẩu" />
                         </Form.Item>
                         <Form.Item
                             label="Nhập lại mật khẩu"

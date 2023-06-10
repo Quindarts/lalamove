@@ -1,9 +1,10 @@
 import { Spin } from "antd";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Playlist from "../components/UI/Playlist/Playlist";
 import usePlaylist from "../hooks/usePlaylist";
 import { fethAllPlaylistAccount } from "../services/playlistApi";
 import "../styles/pages/playlistaccountpage.css";
+import { PlaylistAccountType } from "../types/playlistType";
 function PlaylistAccountPage() {
     const { playlist, getAllPlaylistAccount } = usePlaylist();
     const [remove, setRemove] = useState(false);
@@ -26,14 +27,16 @@ function PlaylistAccountPage() {
                     <h1 className="my-5 font-bold text-[25px] text-white ">
                         Danh sách của bạn
                     </h1>
-                    {playlist.playlist?.map((item: any, index: number) => (
-                        <Playlist
-                            key={index}
-                            playlist={item}
-                            handleRemove={handleRemove}
-                            _id={item._id}
-                        />
-                    ))}
+                    {playlist.playlist?.map(
+                        (item: PlaylistAccountType, index: number) => (
+                            <Playlist
+                                key={index}
+                                playlist={item}
+                                handleRemove={handleRemove}
+                                _id={item._id}
+                            />
+                        ),
+                    )}
                 </div>
             ) : (
                 <h1 className="my-5 font-bold text-[25px] text-white text-center">

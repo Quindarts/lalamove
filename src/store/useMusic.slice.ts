@@ -20,6 +20,7 @@ const initialState: any = {
     history: [],
     listNews: [],
     listTopView: [],
+    listFavorite: [],
 };
 
 export const useMusic = createSlice({
@@ -50,6 +51,9 @@ export const useMusic = createSlice({
         setListTopView: (state: any, { payload }: PayloadAction<any>) => {
             state.listTopView = payload;
         },
+        setListFavorite: (state: any, { payload }: PayloadAction<any>) => {
+            state.listFavorite = payload;
+        },
     },
 });
 
@@ -60,6 +64,7 @@ export const {
     updateHistory,
     setListTopView,
     setListNews,
+    setListFavorite,
 } = useMusic.actions;
 
 export default useMusic.reducer;
