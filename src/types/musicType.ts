@@ -4,9 +4,9 @@ export interface MusicItemType {
     sum_comment?: null;
     view?: number;
     favorite?: number;
-    account_favorite?: [];
-    createdAt?: Date;
-    updatedAt?: Date;
+    account_favorite?: UserFavoriteMusicType[];
+    createdAt?: String;
+    updatedAt?: String;
     _id?: string;
     id_account?: string;
     name_singer?: string;
@@ -22,4 +22,11 @@ export interface MusicItemType {
     subscribe?: string;
     slug_subscribe?: string;
 }
-export interface AccountFavoriteType {}
+export interface UserFavoriteMusicType {
+    image: String;
+    role: number;
+    createdAt: String;
+    _id: String;
+    user_name: String;
+    id_music: String;
+}

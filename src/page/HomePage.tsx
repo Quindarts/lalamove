@@ -18,15 +18,9 @@ import Button from "../components/UI/Button/Button";
 import ImageZoom from "../components/UI/ZoomImage/ZoomImage";
 import { listCategoryImage, listSlide } from "../types/constants";
 function HomePage() {
-    const { getAllPlaylistAccount } = usePlaylist();
-    const [listView, setlistView] = useState({ data: [], panigation: {} });
-    const [listNewsMusic, setlistNewsMusic] = useState({
-        data: [],
-        panigation: {},
-    });
     const [typeTopView, setTypeTopView] = useState<String>("million");
-    const { musics, updateMusic } = useMusic();
-    const [loading, setLoading] = useState(false);
+    const { musics, fetchAllTopViewType } = useMusic();
+    // const [loading, setLoading] = useState<boolean>(true);
     const [renderInfinitySlide, setRenderInfinitySlide] = useState<number>(3);
     const [widthApp, setWidthApp] = useState<number>(0);
     useEffect(() => {
@@ -47,33 +41,11 @@ function HomePage() {
     };
     useEffect(() => {
         getAllTopViewbyParams(12, 1, `${typeTopView}`).then((res: any) => {
-            if (res.status === 200) {
-                setlistView(res.data);
-                setLoading(true);
+            if (res.status === 200 || res.status === 204) {
+                fetchAllTopViewType(res.data.data);
             }
         });
     }, [typeTopView]);
-
-    useEffect(() => {
-        if (localStorage.getItem("access_token") !== null) {
-            fethAllPlaylistAccount().then((res: any) => {
-                getAllPlaylistAccount(res.data.data);
-            });
-        }
-
-        getAllFavoriteMusicbyParams(20, 2).then((res: any) => {
-            if (res.status === 200 || res.status === 204) {
-                updateMusic(res.data.data);
-                setLoading(true);
-            }
-        });
-        getAllNewsMusicByParams(24, 2).then((res: any) => {
-            if (res.status === 200 || res.status === 204) {
-                setlistNewsMusic(res.data);
-                setLoading(true);
-            }
-        });
-    }, [loading]);
 
     return (
         <div className="homePage">
@@ -130,14 +102,10 @@ function HomePage() {
                 </Button>
             </div>
             <div className="top_views_slide flex flex-wrap gap-2 justify-center align-middle">
-                {loading ? (
-                    listView?.data.map(
-                        (music: MusicItemType, index: number) => (
-                            <MusicGridItem key={index} music={music} />
-                        ),
-                    )
-                ) : (
-                    <Spin className="" size="large" />
+                {musics.listTopView.map(
+                    (music: MusicItemType, index: number) => (
+                        <MusicGridItem key={index} music={music} />
+                    ),
                 )}
             </div>
             <h1 className="mb-5 mt-[5rem] font-bold text-[25px]"> </h1>
@@ -151,15 +119,9 @@ function HomePage() {
                 MỚI RA MẮT{" "}
             </h1>
             <div className="news_music_slide flex flex-wrap gap-1 justify-center">
-                {loading ? (
-                    listNewsMusic?.data.map(
-                        (music: MusicItemType, index: number) => (
-                            <MusicGridItem key={index} music={music} />
-                        ),
-                    )
-                ) : (
-                    <Spin className="" size="large" />
-                )}
+                {musics.listNews.map((music: MusicItemType, index: number) => (
+                    <MusicGridItem key={index} music={music} />
+                ))}
             </div>
             <h1 className="mb-5 mt-[5rem] font-bold text-[25px]">YÊU THÍCH</h1>
             <Swiper

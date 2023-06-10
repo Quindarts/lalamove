@@ -1,7 +1,7 @@
 import React from "react";
 import MusicGridItem from "../components/UI/Music/MusicGridItem";
 import useMusic from "../hooks/useMusic";
-import { MusicItemType } from "../store/useMusic.slice";
+import { MusicItemType } from "../types/musicType";
 
 function SearchPage() {
     const { musics } = useMusic();

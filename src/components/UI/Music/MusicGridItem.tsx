@@ -10,7 +10,6 @@ import {
     addNewMusicToPlayListAccount,
     fethAllPlaylistAccount,
 } from "../../../services/playlistApi";
-import { MusicItemType } from "../../../store/useMusic.slice";
 import useMusic from "../../../hooks/useMusic";
 import Modal from "../Modal/Modal";
 import usePlaylist from "../../../hooks/usePlaylist";
@@ -19,6 +18,7 @@ import { createMuisicToFavoriteList } from "../../../services/favoriteApi";
 import ModalPlaylistDetail from "./ModalPlaylistDetail";
 import { notification } from "antd";
 import { Icon } from "@iconify/react";
+import { MusicItemType } from "../../../types/musicType";
 type NotificationType = "success" | "info" | "warning" | "error";
 function MusicGridItem(props: any) {
     const { music } = props;

@@ -1,8 +1,8 @@
 import { EyeOutlined, HeartFilled } from "@ant-design/icons";
 import "../../../styles/components/UI/Music/musicItem.css";
 import useMusic from "../../../hooks/useMusic";
-import { MusicItemType } from "../../../store/useMusic.slice";
 import { Image } from "antd";
+import { MusicItemType } from "../../../types/musicType";
 
 function MusicItem(props: any) {
     const { playMusic } = useMusic();

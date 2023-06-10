@@ -1,12 +1,15 @@
 import { RootState } from "../store/index";
 import { useSelector, useDispatch } from "react-redux";
 import {
-    MusicItemType,
     searchByQuery,
+    setListNews,
+    setListTopView,
     setMusic,
     setPlayMusic,
     updateHistory,
 } from "../store/useMusic.slice";
+import { MusicItemType } from "../types/musicType";
+import { TopViewMusicType } from "../types/topViewsType";
 
 export default function useMusic() {
     const musics = useSelector((state: RootState) => state.musics);
@@ -24,11 +27,19 @@ export default function useMusic() {
     const updateMusicHistory = (data: any) => {
         dispatch(updateHistory(data));
     };
+    const fetchAllTopViewType = (data: TopViewMusicType) => {
+        dispatch(setListTopView(data));
+    };
+    const fetchListNewsMusic = (data: TopViewMusicType) => {
+        dispatch(setListNews(data));
+    };
     return {
         musics,
         updateMusic,
         playMusic,
         searchMusicByQuery,
         updateMusicHistory,
+        fetchAllTopViewType,
+        fetchListNewsMusic,
     };
 }

@@ -10,8 +10,8 @@ import "swiper/css/navigation";
 import useMusic from "../hooks/useMusic";
 import useFavorite from "../hooks/useFavoriteAccount";
 import MusicGridItem from "../components/UI/Music/MusicGridItem";
-import { MusicItemType } from "../store/useMusic.slice";
 import { Spin } from "antd";
+import { MusicItemType } from "../types/musicType";
 function FavoritePage() {
     const { favorite, getAllListFavoriteAccount } = useFavorite();
     const { musics } = useMusic();
