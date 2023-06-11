@@ -1,14 +1,10 @@
 import React, { useRef, useState } from "react";
 import TimeSlider from "react-input-slider";
 import "../../../styles/components/UI/Music/audio.css";
-import {
-    StepBackwardOutlined,
-    CaretRightOutlined,
-    PauseOutlined,
-    StepForwardOutlined,
-} from "@ant-design/icons";
+import { StepBackwardOutlined, StepForwardOutlined } from "@ant-design/icons";
+import { Icon } from "@iconify/react";
 function Audio(props: any) {
-    const { src_music } = props;
+    const { srcMusic, timeFormat } = props;
     const audioRef: any = useRef();
     const [audioIndex, setAudioIndex] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
@@ -36,47 +32,63 @@ function Audio(props: any) {
 
     return (
         <div className="App">
-            <div className="Control-Button-Group">
+            <div className="Control-Button-Group mb-[10px]">
                 <div className="Prev-Button" onClick={() => setAudioIndex(1)}>
-                    <StepBackwardOutlined />
+                    <StepBackwardOutlined className="text-[1.7rem]" />
                 </div>
                 <div
                     className="Pause-Play-Button"
                     onClick={handlePausePlayClick}
                 >
-                    {isPlay ? <PauseOutlined /> : <CaretRightOutlined />}
+                    {isPlay ? (
+                        <Icon
+                            className="text-[1.7rem]"
+                            icon="zondicons:pause-outline"
+                        />
+                    ) : (
+                        <Icon className="text-[1.7rem]" icon="octicon:play-16" />
+                    )}
                 </div>
+
                 <div className="Next-Button" onClick={() => setAudioIndex(3)}>
-                    <StepForwardOutlined />
+                    <StepForwardOutlined className="text-[1.7rem]" />
                 </div>
             </div>
-            <TimeSlider
-                axis="x"
-                xmax={duration}
-                x={currentTime}
-                onChange={handleTimeSliderChange}
-                styles={{
-                    track: {
-                        backgroundColor: "#e3e3e3",
-                        height: "2px",
-                    },
-                    active: {
-                        backgroundColor: "#09c478",
-                        height: "2px",
-                    },
-                    thumb: {
-                        marginTop: "-3px",
-                        width: "8px",
-                        height: "8px",
-                        backgroundColor: "#09c478",
-                        borderRadius: 0,
-                    },
-                }}
-            />
+            <div className="flex justify-center align-middle gap-3">
+                <div className="time_current">
+                    0{Math.floor(currentTime / 60)} :{" "}
+                    {Math.floor(currentTime % 60)}
+                </div>
+                <TimeSlider
+                    axis="x"
+                    xmax={duration}
+                    x={currentTime}
+                    onChange={handleTimeSliderChange}
+                    styles={{
+                        track: {
+                            backgroundColor: "#787777",
+                            height: "0.2rem",
+                            width: "30rem",
+                        },
+                        active: {
+                            backgroundColor: "#09c478",
+                            height: "0.2rem",
+                        },
+                        thumb: {
+                            marginTop: "-3px",
+                            width: "0.6rem",
+                            height: "0.6rem",
+                            backgroundColor: "#3EE9A5",
+                            borderRadius: "50%",
+                        },
+                    }}
+                />
+                <div className="time_current">{timeFormat}</div>
+            </div>
             <audio
                 autoPlay
                 ref={audioRef}
-                src={src_music}
+                src={srcMusic}
                 onLoadedData={handleLoadedData}
                 onTimeUpdate={() =>
                     setCurrentTime(audioRef.current.currentTime)

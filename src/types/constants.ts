@@ -33,8 +33,8 @@ export const APP_API = "https://api-kaito-music.vercel.app/api";
 export const APP_ROUTES = {
     INDEX: "/",
     FAVORITE: "/favorite",
-    MYPLAYLIST: "/playlist-account",
-    UPLOAD_MUSIC: "/upload-music",
+    MY_PLAYLIST: "/playlist-account",
+    WATCH_MV: "/watch-mv",
     SEARCH_PAGE: "/search",
 };
 export const listBackground = [bg1, bg2, bg3, bg4, bg5, bg6, bg7];

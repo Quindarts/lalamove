@@ -5,7 +5,7 @@ import FavoritePage from "../page/FavoritePage";
 import HomePage from "../page/HomePage";
 import PlaylistAccountPage from "../page/PlaylistAccountPage";
 import SearchPage from "../page/SearchPage";
-import UploadMusicPage from "../page/UploadMusicPage";
+import WatchMVPage from "../page/WatchMVPage";
 import { APP_ROUTES } from "../types/constants";
 const Routing: React.FC = () => {
     return (
@@ -14,12 +14,12 @@ const Routing: React.FC = () => {
                 <Route index element={<HomePage />} />
                 <Route path={APP_ROUTES.FAVORITE} element={<FavoritePage />} />
                 <Route
-                    path={APP_ROUTES.MYPLAYLIST}
+                    path={APP_ROUTES.MY_PLAYLIST}
                     element={<PlaylistAccountPage />}
                 />
                 <Route
-                    path={APP_ROUTES.UPLOAD_MUSIC}
-                    element={<UploadMusicPage />}
+                    path={APP_ROUTES.WATCH_MV}
+                    element={<WatchMVPage />}
                 />
                 <Route path={APP_ROUTES.SEARCH_PAGE} element={<SearchPage />} />
             </Route>

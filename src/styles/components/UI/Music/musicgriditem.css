@@ -5,17 +5,17 @@
     max-width: 400px;
     height: 100px;
     padding: 12px;
-    transition: 0.2s ease-in;
     cursor: pointer;
     line-height: 1.8rem;
     border-radius: 1rem;
+    transition: 1s ease-in;
 }
 .music_Grid_Item:hover .overlay {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
-
+    transition: 1s ease-in;
 }
 .music_Grid_Item-img img {
     border-radius: 0.5rem;
@@ -34,7 +34,7 @@
 }
 .overlay {
     display: none;
-    background-color: rgba(134, 132, 132, 0.5);
+    background-color: rgba(61, 59, 59, 0.7);
     transition: 0.2s ease-in;
     position: absolute;
     top: 0;
@@ -43,9 +43,18 @@
     bottom: 0;
     font-size: 20px;
     font-weight: bold;
+    transition: 1s ease-in;
 }
 .overlay button {
-    margin: 1rem;
+    margin-right: 1rem;
+}
+.overlay button svg {
+    font-size: 2rem;
+}
+.overlay button svg:hover {
+    color: #9b4de0;
+    font-size: 2.6rem;
+    transition: 0.2s ease-in;
 }
 .mplaylist {
     cursor: pointer;

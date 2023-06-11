@@ -1,12 +1,11 @@
 import Sider from "antd/es/layout/Sider";
 import React, { useState } from "react";
 import {
-    HomeOutlined,
-    MenuFoldOutlined,
-    HeartFilled,
+    AppstoreOutlined,
+    BarsOutlined,
+    HeartOutlined,
     MenuOutlined,
-    CloudUploadOutlined,
-    VideoCameraOutlined,
+    YoutubeOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import Button from "../../UI/Button/Button";
@@ -28,13 +27,13 @@ function Siderbar() {
                             alignItems: "center",
                         }}
                     >
-                        {!collapsed ? "QuinMusiz" : ""}
+                        {!collapsed ? "LALAMOV" : ""}
                     </div>
                     <Button
                         type="button"
                         onClick={() => setCollapsed(!collapsed)}
                         style={{
-                            fontSize: "16px",
+                            fontSize: "1rem",
                             width: 64,
                             height: 64,
                             color: "white",
@@ -54,25 +53,25 @@ function Siderbar() {
                     items={[
                         {
                             key: "1",
-                            icon: <HomeOutlined />,
-                            label: <Link to="/">Home </Link>,
+                            icon: <AppstoreOutlined />,
+                            label: <Link to="/">Khám Phá </Link>,
                         },
                         {
                             key: "2",
-                            icon: <HeartFilled />,
-                            label: <Link to="/favorite">Favorite </Link>,
+                            icon:<HeartOutlined />,
+                            label: <Link to="/favorite">Yêu Thích </Link>,
                         },
                         {
                             key: "3",
-                            icon: <MenuFoldOutlined />,
+                            icon: <BarsOutlined />,
                             label: (
-                                <Link to="/playlist-account">My playlist </Link>
+                                <Link to="/playlist-account">Danh Sách Phát </Link>
                             ),
                         },
                         {
                             key: "4",
-                            icon: <CloudUploadOutlined />,
-                            label: <Link to="/upload-music">Upload </Link>,
+                            icon:<YoutubeOutlined />,
+                            label: <Link to="/upload-music">Watch MV </Link>,
                         },
                     ]}
                 />

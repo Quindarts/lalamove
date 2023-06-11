@@ -1,5 +1,11 @@
 import "../../../styles/components/Shared/Footer/footer.css";
-import { EyeOutlined, HeartFilled, MenuFoldOutlined } from "@ant-design/icons";
+import {
+    EyeOutlined,
+    HeartFilled,
+    UnorderedListOutlined,
+    CommentOutlined,
+    YoutubeOutlined,
+} from "@ant-design/icons";
 import useMusic from "../../../hooks/useMusic";
 import { Image } from "antd";
 import Audio from "../../UI/Music/Audio";
@@ -27,7 +33,7 @@ function MFooter() {
         <div>
             {Object.values(musics.mplay).length !== 0 ? (
                 <footer className="flex justify-between">
-                    <div className="flex">
+                    <div className="flex  flex-1">
                         {musics.mplay.image_music ? (
                             <div style={{ position: "relative" }}>
                                 <PlayMusicAnimation />
@@ -44,7 +50,7 @@ function MFooter() {
                         ) : (
                             <></>
                         )}
-                        <div className="mx-[3rem]">
+                        <div className="mx-[3rem] ">
                             <div>
                                 <h6
                                     className="font-bold text-[1rem]"
@@ -77,13 +83,26 @@ function MFooter() {
                             </div>
                         </div>
                     </div>
-                    <Audio src_music={musics.mplay.src_music} />
-                    <button
-                        onClick={() => handleOpen("playlist")}
-                        className="text-white p-2 text-[20px]"
-                    >
-                        <MenuFoldOutlined />
-                    </button>
+                    <div className=" flex-1">
+                        <Audio
+                            srcMusic={musics.mplay.src_music}
+                            timeFormat={musics.mplay.time_format}
+                        />
+                    </div>
+                    <div className="icon_control flex-1 flex justify-end">
+                        <button
+                            onClick={() => handleOpen("playlist")}
+                            className=""
+                        >
+                            <UnorderedListOutlined />
+                        </button>
+                        <button>
+                            <CommentOutlined />
+                        </button>
+                        <button>
+                            <YoutubeOutlined />
+                        </button>
+                    </div>
                 </footer>
             ) : (
                 <footer className="flex justify-between"></footer>

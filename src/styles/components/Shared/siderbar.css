@@ -1,6 +1,5 @@
 #m-siderbar {
     min-height: 100vh;
-    min-width: 104px !important;
     background-color: #232427;
     display: flex;
     justify-content: center;
@@ -14,12 +13,18 @@
 .ant-menu,
 .ant-menu-item {
     background-color: #232427;
+    margin-top: 1rem;
+}
+.ant-menu-dark .ant-menu-item-selected {
+    background-color: rgba(230, 240, 255, 0.2) ;
+
 }
 .ant-menu-item-selected {
-    background-color: rgba(230, 240, 255, 0.2) !important;
+    background-color: rgba(230, 240, 255, 0.2) ;
 }
-.conainer-siderbar {
-    position: fixed;
-    top: 0;
-    left: 0;
+.ant-layout .ant-layout-sider-children .ant-menu.ant-menu-inline-collapsed {
+    width: 5rem;
+}
+.ant-menu-item .ant-menu-item-selected .ant-menu-title-content,.ant-menu-item .ant-menu-item-selected svg{
+    font-size: 1rem;
 }

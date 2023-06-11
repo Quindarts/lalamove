@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "./index";
 import { MusicItemType } from "../types/musicType";
 import { TopViewMusicType } from "../types/topViewsType";
 
 export type StateInitialStateMusicType = {
     musics: MusicItemType[];
-    mplay: Object;
     search: [];
     history: [];
     listNews: [];

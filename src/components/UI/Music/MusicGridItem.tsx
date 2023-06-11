@@ -18,8 +18,8 @@ import { Image } from "antd";
 import { createMuisicToFavoriteList } from "../../../services/favoriteApi";
 import ModalPlaylistDetail from "./ModalPlaylistDetail";
 import { notification } from "antd";
-import { Icon } from "@iconify/react";
 import { MusicItemType } from "../../../types/musicType";
+import { Icon } from "@iconify/react";
 type NotificationType = "success" | "info" | "warning" | "error";
 function MusicGridItem(props: any) {
     const { music } = props;
@@ -98,20 +98,14 @@ function MusicGridItem(props: any) {
             <div className="music_Grid_Item flex">
                 <div className="overlay">
                     <button onClick={() => handleOpenPlaylist("listPlaylist")}>
-                        <PlusOutlined className="text-white text-[40px]" />
+                        <Icon icon="subway:add-playlist" />
                     </button>
-                    <button
-                        onClick={() => handlePlayMusic(music)}
-                        className="text-white text-[40px]"
-                    >
-                        <CaretRightOutlined />
+                    <button onClick={() => handlePlayMusic(music)}>
+                        <Icon icon="fluent:music-note-2-play-20-filled" />  
                     </button>
-                    <button
-                        onClick={() => handleAddMusicToFavorite(music._id)}
-                        className="text-rose-600 text-[40px]"
-                    >
-                        <HeartOutlined />
-                    </button>
+                    <button onClick={() => handleAddMusicToFavorite(music._id)}>
+                        <Icon icon="solar:heart-bold" />
+                    </button>   
                 </div>
                 <div className="music_Grid_Item-img mr-3">
                     <Image
