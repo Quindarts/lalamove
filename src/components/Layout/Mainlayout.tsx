@@ -41,7 +41,7 @@ function Mainlayout() {
         <>
             <Layout>
                 <Siderbar />
-                <Layout style={{ background: "#171719" }}>
+                <Layout style={{ background: "#151818" }}>
                     <MHeader />
                     <Outlet />
                     <div className="outlet-footer h-[70px]"></div>

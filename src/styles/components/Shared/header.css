@@ -1,26 +1,34 @@
-.input_search {
-    background-color: #26262a;
-    border-radius: 0.5rem;
-    margin: 0;
+
+.ant-layout-header{
+    line-height: normal;
 }
-.input_search input {
-    background-color: #26262a;
-    border: 0px solid !important;
-    outline: none;
+.ant-input-search
+    > .ant-input-group
+    > .ant-input-group-addon:last-child
+    .ant-input-search-button {
+    /* background-color: rgb(20, 179, 115); */
+    background-color: rgb(83, 82, 82);
+
 }
-.ant-input:focus .ant-input:hover {
-    border: 0px solid !important;
+.ant-input-search
+    > .ant-input-group
+    > .ant-input-group-addon:last-child
+    .ant-input-search-button:hover{
+        background-color: rgb(27, 95, 61);
+
+    }
+.ant-input-group >.ant-input:first-child{
+    background-color: rgb(91, 88, 88);
+    border:1px solid rgb(91, 88, 88);
+    color: white;
+}  
+.header-icon_control svg{
+    background-color: rgb(83, 82, 82);
+    padding: 0.5rem;
+    border-radius: 50%;
 }
-.input_search button {
-    border: none;
-}
-.input_search svg,
-button,
-button:hover,
-.ant-input,
-.ant-input::placeholder {
-    color: gray;
-}
-.input_search button :hover {
-    border: none;
+.header-icon_control svg:hover{
+    background-color: rgb(24, 142, 81);
+    color: white;
+    transition: 0.2s ease-in;
 }

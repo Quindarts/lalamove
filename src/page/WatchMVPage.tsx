@@ -1,7 +1,7 @@
 import React from "react";
 
 function WatchMVPage() {
-    return <div  className="text-white">MV</div>;
+    return <div>WatchMVPage</div>;
 }
 
 export default WatchMVPage;

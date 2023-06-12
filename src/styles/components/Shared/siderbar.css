@@ -14,17 +14,23 @@
 .ant-menu-item {
     background-color: #232427;
     margin-top: 1rem;
+    position: fixed;
+    left: 0;
+}
+.conainer-siderbar {
+    position: fixed;
+    left: 0;
 }
 .ant-menu-dark .ant-menu-item-selected {
-    background-color: rgba(230, 240, 255, 0.2) ;
-
+    background-color: rgba(230, 240, 255, 0.2);
 }
 .ant-menu-item-selected {
-    background-color: rgba(230, 240, 255, 0.2) ;
+    background-color: rgba(230, 240, 255, 0.2);
 }
 .ant-layout .ant-layout-sider-children .ant-menu.ant-menu-inline-collapsed {
     width: 5rem;
 }
-.ant-menu-item .ant-menu-item-selected .ant-menu-title-content,.ant-menu-item .ant-menu-item-selected svg{
+.ant-menu-item .ant-menu-item-selected .ant-menu-title-content,
+.ant-menu-item .ant-menu-item-selected svg {
     font-size: 1rem;
 }

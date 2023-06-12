@@ -3,6 +3,7 @@ import TimeSlider from "react-input-slider";
 import "../../../styles/components/UI/Music/audio.css";
 import { StepBackwardOutlined, StepForwardOutlined } from "@ant-design/icons";
 import { Icon } from "@iconify/react";
+import Button from "../Button/Button";
 function Audio(props: any) {
     const { srcMusic, timeFormat } = props;
     const audioRef: any = useRef();
@@ -30,6 +31,8 @@ function Audio(props: any) {
         }
     };
 
+    const handleVolume = () => {
+    };
     return (
         <div className="App">
             <div className="Control-Button-Group mb-[10px]">
@@ -46,7 +49,10 @@ function Audio(props: any) {
                             icon="zondicons:pause-outline"
                         />
                     ) : (
-                        <Icon className="text-[1.7rem]" icon="octicon:play-16" />
+                        <Icon
+                            className="text-[1.7rem]"
+                            icon="octicon:play-16"
+                        />
                     )}
                 </div>
 
@@ -84,11 +90,16 @@ function Audio(props: any) {
                     }}
                 />
                 <div className="time_current">{timeFormat}</div>
+                <div className="text-white flex">
+                    <Button onClick={handleVolume}>0.2</Button>
+                    <Button>1</Button>
+                </div>
             </div>
             <audio
                 autoPlay
                 ref={audioRef}
                 src={srcMusic}
+                id="audio_play"
                 onLoadedData={handleLoadedData}
                 onTimeUpdate={() =>
                     setCurrentTime(audioRef.current.currentTime)

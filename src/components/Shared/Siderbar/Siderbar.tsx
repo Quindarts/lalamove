@@ -19,12 +19,13 @@ function Siderbar() {
             <div className="conainer-siderbar">
                 <div className="flex justify-center align-middle">
                     <div
-                        className=" flex justify-center content-center"
+                        className=" flex justify-center content-center ml-2 w-[100%]"
                         style={{
                             color: "#09c478",
                             fontSize: "18px",
                             fontWeight: "bold",
                             alignItems: "center",
+
                         }}
                     >
                         {!collapsed ? "LALAMOV" : ""}
@@ -71,7 +72,7 @@ function Siderbar() {
                         {
                             key: "4",
                             icon:<YoutubeOutlined />,
-                            label: <Link to="/upload-music">Watch MV </Link>,
+                            label: <Link to="/watch-mv">Watch MV </Link>,
                         },
                     ]}
                 />

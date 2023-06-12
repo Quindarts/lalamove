@@ -13,6 +13,7 @@ import Button from "../components/UI/Button/Button";
 import ImageZoom from "../components/UI/ZoomImage/ZoomImage";
 import { listCategoryImage, listSlide } from "../types/constants";
 import { AxiosResponse } from "axios";
+import Chart from "../components/UI/Chart/Chart";
 function HomePage() {
     const [typeTopView, setTypeTopView] = useState<String>("million");
     const { musics, fetchAllTopViewType } = useMusic();
@@ -112,6 +113,40 @@ function HomePage() {
                 )}
             </div>
 
+            <div className="chart_music flex flex-wrap gap-[5rem] my-[5rem] py-5  px-[5rem] ">
+                <div className="text-black flex-1 mt-3">
+                    <Chart />
+                </div>
+                <div className="flex-[0.8]">
+                    <h1 className=" flex text-[#fff] text-[1.5rem] font-bold mb-4 ml-5">
+                        <Icon
+                            icon="fa6-solid:ranking-star"
+                            className="mx-1 text-[1.8rem] text-[#dc5ee7]"
+                        />{" "}
+                        TOP BÀI HÁT THÁNG NÀY
+                    </h1>
+                    {musics.listTopView.map(
+                        (music: MusicItemType, index: number) =>
+                            index < 4 ? (
+                                <div
+                                    className="flex gap-5 pl-5 my-5"
+                                    style={{ alignItems: "center" }}
+                                >
+                                    <h1 className="text-[#a841ec] font-bold text-[3rem]">
+                                        #{index + 1}
+                                    </h1>
+                                    <MusicGridItem
+                                        className="flex-1"
+                                        key={index}
+                                        music={music}
+                                    />
+                                </div>
+                            ) : (
+                                <></>
+                            ),
+                    )}
+                </div>
+            </div>
             <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
                 MỚI RA MẮT{" "}
             </h1>

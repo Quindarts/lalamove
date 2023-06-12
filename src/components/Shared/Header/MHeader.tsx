@@ -45,9 +45,7 @@ function MHeader() {
     return (
         <Header
             style={{
-                background: "#171719",
-                padding: "1rem",
-                margin: " 0 0 2rem 24px",
+                background: "#151818",
             }}
         >
             <div
@@ -59,38 +57,51 @@ function MHeader() {
                 }}
             >
                 <Search
-                    className="input_search text-white"
+                    className="input_search"
                     placeholder="Tìm kiếm bài hát, ca sĩ ..."
                     onSearch={setSearch}
                     size="large"
                     enterButton
-                    style={{ width: 400, background: "gray!important" }}
+                    style={{ width: 400 }}
                 />
-                {isLoginAccount ? (
-                    <div className="flex">
-                        <span className="mx-5 mb-2 text-emerald-600">
-                            Xin Chào,{" "}{user?.userLogin?.data?.user_name}
-                        </span>
-                        <Button
-                            className=""
-                            color="yellow"
-                            variant="container"
-                            onClick={handleLogoutAccount}
+                <div className="header-icon_control">
+                    {isLoginAccount ? (
+                        <div
+                            className="flex justify-center"
+                            style={{ alignItems: "center" }}
                         >
-                            Đăng xuất
-                        </Button>
-                    </div>
-                ) : (
-                    <Button
-                        color="green-outline"
-                        variant="container"
-                        onClick={() => handleOpenModal("login")}
-                        style={{ borderRadius: "50%",padding:'0.6rem' }}
-                        size="lg"
-                    >
-                        <Icon icon="ri:user-fill" className="text-[1rem]" />
-                    </Button>
-                )}
+                            <span className="mx-5 text-emerald-600">
+                                {user?.userLogin?.data?.user_name}
+                            </span>
+                            <div className="">
+                                <Button
+                                    className=""
+                                    color="yellow"
+                                    variant="container"
+                                    onClick={handleLogoutAccount}
+                                >
+                                    Đăng xuất
+                                </Button>
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <button onClick={() => handleOpenModal("login")}>
+                                <Icon
+                                    icon="carbon:user-filled"
+                                    className="text-[2.3rem] text-[#92a89b] mr-3"
+                                />
+                            </button>
+                            <button>
+                                {" "}
+                                <Icon
+                                    icon="uiw:setting"
+                                    className="text-[2.3rem] text-[#92a89b]"
+                                />
+                            </button>
+                        </>
+                    )}
+                </div>
             </div>
             <Modal
                 type="top"
