@@ -55,13 +55,15 @@
     border-radius: 0.3rem;
     font-size: 1.2rem;
     z-index: 999;
+    width: auto;
 }
 
 .modal-top {
     top: 50px;
-    left: calc(50vw - 200px);
+    /* left: calc(50vw - 200px); */
     height: auto;
-    min-height: 30rem;
+    min-height: 25rem;
+    padding: 1rem;
     animation: open-top 0.5s;
     transition: 0.5s ease-in;
 }

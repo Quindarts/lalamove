@@ -1,16 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import TimeSlider from "react-input-slider";
 import "../../../styles/components/UI/Music/audio.css";
 import { StepBackwardOutlined, StepForwardOutlined } from "@ant-design/icons";
 import { Icon } from "@iconify/react";
 import Button from "../Button/Button";
 function Audio(props: any) {
-    const { srcMusic, timeFormat } = props;
+    const { srcMusic, timeFormat, isPlay, setPlay } = props;
     const audioRef: any = useRef();
     const [audioIndex, setAudioIndex] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [isPlay, setPlay] = useState(true);
 
     const handleLoadedData = () => {
         setDuration(audioRef.current.duration);
@@ -21,7 +20,9 @@ function Audio(props: any) {
         isPlay ? audioRef.current.pause() : audioRef.current.play();
         setPlay(!isPlay);
     };
-
+    useEffect(() => {
+        isPlay === false ? audioRef.current.pause() : audioRef.current.play();
+    }, [isPlay]);
     const handleTimeSliderChange = ({ x }: any) => {
         audioRef.current.currentTime = x;
         setCurrentTime(x);
@@ -31,8 +32,10 @@ function Audio(props: any) {
         }
     };
 
-    const handleVolume = () => {
-    };
+    console.log("abc:", srcMusic);
+
+    // const handleVolume = () => {
+    // };
     return (
         <div className="App">
             <div className="Control-Button-Group mb-[10px]">
@@ -43,7 +46,7 @@ function Audio(props: any) {
                     className="Pause-Play-Button"
                     onClick={handlePausePlayClick}
                 >
-                    {isPlay ? (
+                    {isPlay === true ? (
                         <Icon
                             className="text-[1.7rem]"
                             icon="zondicons:pause-outline"

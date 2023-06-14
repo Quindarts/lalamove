@@ -17,18 +17,33 @@ import { fetchAllCommentByMusicID } from "../../../services/commentApi";
 import useComment from "../../../hooks/useComment";
 import ModalDetailComment from "./ModalDetailFooter/ModalDetailComment";
 import ModalFooterDetailPlaylist from "./ModalDetailFooter/ModalFooterDetailPlaylist";
+import Video from "../../UI/video/Video";
 function MFooter() {
     const { musics } = useMusic();
-    const [isOpen, setIsOpen] = useState({ open: false, id: "" });
-    const [isOpenComment, setIsOpenComment] = useState({ open: false, id: "" });
     const [refreshLoadingComment, setRefreshLoadingComment] =
         useState<boolean>(false);
+    const [isOpenPlaylist, setIsOpenPlaylist] = useState({
+        open: false,
+        id: "",
+    });
+    const [isOpenComment, setIsOpenComment] = useState({ open: false, id: "" });
+    const [isOpenMV, setIsOpenMV] = useState({ open: false, id: "" });
+    const [isPlay, setPlay] = useState(true);
+
+    const handleOpenModalMV = (id: string) => {
+        setPlay(false);
+        setIsOpenMV({ open: true, id: id });
+    };
+    const handleCloseModalMV = () => {
+        setPlay(!isPlay);
+        setIsOpenMV({ ...isOpenMV, open: false });
+    };
     const handleResfreshLoadingComment = () => {
         setRefreshLoadingComment(!refreshLoadingComment);
     };
     const { comment, getAllCommentByMusicID } = useComment();
     const handleOpenPlaylist = (id: string) => {
-        setIsOpen({ open: true, id: id });
+        setIsOpenPlaylist({ open: true, id: id });
     };
     const handleOpenComment = (id: string) => {
         setIsOpenComment({ open: true, id: id });
@@ -37,7 +52,7 @@ function MFooter() {
         setIsOpenComment({ ...isOpenComment, open: false });
     };
     const handleCloseModalPlayList = () => {
-        setIsOpen({ ...isOpen, open: false });
+        setIsOpenPlaylist({ ...isOpenPlaylist, open: false });
     };
     useEffect(() => {
         fetchAllCommentByMusicID(musics.mplay._id).then((res) => {
@@ -113,6 +128,8 @@ function MFooter() {
                         <Audio
                             srcMusic={musics.mplay.src_music}
                             timeFormat={musics.mplay.time_format}
+                            isPlay={isPlay}
+                            setPlay={setPlay}
                         />
                     </div>
                     <div className="icon_control flex-1 flex justify-end">
@@ -122,7 +139,11 @@ function MFooter() {
                         <button onClick={() => handleOpenComment("comment")}>
                             <CommentOutlined />
                         </button>
-                        <button>
+                        <button
+                            onClick={() => {
+                                handleOpenModalMV("mv");
+                            }}
+                        >
                             <YoutubeOutlined />
                         </button>
                     </div>
@@ -133,8 +154,8 @@ function MFooter() {
             <Modal
                 color="#141414"
                 type="right"
-                id={isOpen.id}
-                open={isOpen.open}
+                id={isOpenPlaylist.id}
+                open={isOpenPlaylist.open}
                 className="w-[30rem]"
                 onClose={handleCloseModalPlayList}
             >
@@ -153,6 +174,16 @@ function MFooter() {
                     listComment={comment.listComment}
                     handleResfreshLoadingComment={handleResfreshLoadingComment}
                 />
+            </Modal>
+
+            <Modal
+                color="#000000"
+                type="top"
+                id={isOpenMV.id}
+                open={isOpenMV.open}
+                onClose={handleCloseModalMV}
+            >
+                <Video srcMV={musics.mplay.link_mv} isOpenMV={isOpenMV} />
             </Modal>
         </div>
     );
