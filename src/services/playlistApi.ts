@@ -13,7 +13,7 @@ export const removePlaylistAccount = async (_id: String) => {
     return await axiosConfig.delete(`/list-music/delete-list-music?_id=${_id}`);
 };
 
-export const fetchAllPlaylistDetailAccount = async (_id: string) => {
+export const fetchAllPlaylistDetailAccount = async (_id: any) => {
     return await axiosConfig.get(`/list-music/get-by-id?_id=${_id}`);
 };
 

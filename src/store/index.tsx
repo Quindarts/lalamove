@@ -4,6 +4,7 @@ import useMusicReducer from "./useMusic.slice";
 import usePlaylistReducer from "./usePlaylist.slice";
 import useFavoriteReducer from "./useFavorite.slice";
 import useUserReducer from "./useUser.slice";
+import useCommentReducer from "./useComment.slice";
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         playlist: usePlaylistReducer,
         favorite: useFavoriteReducer,
         user: useUserReducer,
+        comment: useCommentReducer,
     },
 });
 export type RootState = ReturnType<typeof store.getState>;

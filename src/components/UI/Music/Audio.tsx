@@ -90,10 +90,10 @@ function Audio(props: any) {
                     }}
                 />
                 <div className="time_current">{timeFormat}</div>
-                <div className="text-white flex">
+                {/* <div className="text-white flex">
                     <Button onClick={handleVolume}>0.2</Button>
                     <Button>1</Button>
-                </div>
+                </div> */}
             </div>
             <audio
                 autoPlay

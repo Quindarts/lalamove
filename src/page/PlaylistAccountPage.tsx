@@ -14,20 +14,24 @@ function PlaylistAccountPage() {
     };
     useEffect(() => {
         fethAllPlaylistAccount().then((res: any) => {
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 204) {
                 setIsLoading(false);
                 getAllPlaylistAccount(res.data.data);
+                console.log(res.data.data);
+                console.log(playlist);
+                
             }
         });
-    }, [remove]);
+    }, []);
+
     return (
         <>
-            {playlist.playlist ? (
+            {playlist?.playlist ? (
                 <div className="playlist_accountPage ">
                     <h1 className="my-5 font-bold text-[25px] text-white ">
                         Danh sách của bạn
                     </h1>
-                    {playlist.playlist?.map(
+                    {playlist?.playlist?.map(
                         (item: PlaylistAccountType, index: number) => (
                             <Playlist
                                 key={index}

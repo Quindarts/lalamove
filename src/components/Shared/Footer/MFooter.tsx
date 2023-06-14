@@ -11,23 +11,49 @@ import { Image } from "antd";
 import Audio from "../../UI/Music/Audio";
 import { useEffect, useState } from "react";
 import Modal from "../../UI/Modal/Modal";
-import ModalDetailFooter from "./ModalDetailFooter/ModalDetailFooter";
 import { createHistoryApi } from "../../../services/historyApi";
 import PlayMusicAnimation from "../../UI/PlayMusicAnimation/PlayMusicAnimation";
+import { fetchAllCommentByMusicID } from "../../../services/commentApi";
+import useComment from "../../../hooks/useComment";
+import ModalDetailComment from "./ModalDetailFooter/ModalDetailComment";
+import ModalFooterDetailPlaylist from "./ModalDetailFooter/ModalFooterDetailPlaylist";
 function MFooter() {
     const { musics } = useMusic();
     const [isOpen, setIsOpen] = useState({ open: false, id: "" });
-
-    const handleOpen = (id: string) => {
+    const [isOpenComment, setIsOpenComment] = useState({ open: false, id: "" });
+    const [refreshLoadingComment, setRefreshLoadingComment] =
+        useState<boolean>(false);
+    const handleResfreshLoadingComment = () => {
+        setRefreshLoadingComment(!refreshLoadingComment);
+    };
+    const { comment, getAllCommentByMusicID } = useComment();
+    const handleOpenPlaylist = (id: string) => {
         setIsOpen({ open: true, id: id });
     };
-    const handleClose = () => {
+    const handleOpenComment = (id: string) => {
+        setIsOpenComment({ open: true, id: id });
+    };
+    const handleCloseModalComment = () => {
+        setIsOpenComment({ ...isOpenComment, open: false });
+    };
+    const handleCloseModalPlayList = () => {
         setIsOpen({ ...isOpen, open: false });
     };
     useEffect(() => {
+        fetchAllCommentByMusicID(musics.mplay._id).then((res) => {
+            if (res.status === 200 || res.status === 204) {
+                getAllCommentByMusicID(res.data.data);
+            }
+        });
+    }, [refreshLoadingComment]);
+    useEffect(() => {
         createHistoryApi(musics.mplay._id);
+        fetchAllCommentByMusicID(musics.mplay._id).then((res) => {
+            if (res.status === 200 || res.status === 204) {
+                getAllCommentByMusicID(res.data.data);
+            }
+        });
     }, [musics.mplay]);
-    console.log("mplay:", musics.mplay);
 
     return (
         <div>
@@ -90,13 +116,10 @@ function MFooter() {
                         />
                     </div>
                     <div className="icon_control flex-1 flex justify-end">
-                        <button
-                            onClick={() => handleOpen("playlist")}
-                            className=""
-                        >
+                        <button onClick={() => handleOpenPlaylist("playlist")}>
                             <UnorderedListOutlined />
                         </button>
-                        <button>
+                        <button onClick={() => handleOpenComment("comment")}>
                             <CommentOutlined />
                         </button>
                         <button>
@@ -108,12 +131,28 @@ function MFooter() {
                 <footer className="flex justify-between"></footer>
             )}
             <Modal
+                color="#141414"
                 type="right"
                 id={isOpen.id}
                 open={isOpen.open}
-                onClose={handleClose}
+                className="w-[30rem]"
+                onClose={handleCloseModalPlayList}
             >
-                <ModalDetailFooter />
+                <ModalFooterDetailPlaylist />
+            </Modal>
+            <Modal
+                color="#141414"
+                type="right"
+                id={isOpenComment.id}
+                open={isOpenComment.open}
+                onClose={handleCloseModalComment}
+                className="w-[30rem]"
+            >
+                <ModalDetailComment
+                    idMusic={musics.mplay._id}
+                    listComment={comment.listComment}
+                    handleResfreshLoadingComment={handleResfreshLoadingComment}
+                />
             </Modal>
         </div>
     );

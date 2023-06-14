@@ -4,10 +4,11 @@ import type { TabsProps } from "antd";
 import { MehFilled } from "@ant-design/icons";
 import TagListHistoryMusic from "./TagListHistoryMusic";
 import TagMPlaylistAccount from "./TagMPlaylistAccount";
+import "../../../../styles/components/Shared/Footer/ModalDetailFooter/modalFooterDetailPlaylist.css";
 const items: TabsProps["items"] = [
     {
         key: "1",
-        label: `Playlist của bạn`,
+        label: `Danh sách của bạn`,
         children: <TagMPlaylistAccount />,
     },
     {
@@ -21,7 +22,7 @@ const Btnlogin: TabsProps["items"] = [
         key: "1",
         label: ``,
         children: (
-            <div className="flex justif-center align-middle w-[100%] h-[80vh]">
+            <div className=" flex justif-center align-middle h-[80vh]">
                 <div className="h-[50px] text-center">
                     <h1 className="text-[16px]">
                         Bạn phải đăng nhập để sử dụng chức năng này!!
@@ -32,12 +33,11 @@ const Btnlogin: TabsProps["items"] = [
         ),
     },
 ];
-function ModalDetailFooter() {
+function ModalFooterDetailPlaylist() {
     const [access_token, setAccess_token] = useState<string | null>();
     useEffect(() => {
         setAccess_token(localStorage.getItem("access_token"));
     }, [localStorage.getItem("access_token")]);
-    console.log(access_token);
 
     return (
         <>
@@ -50,4 +50,4 @@ function ModalDetailFooter() {
     );
 }
 
-export default ModalDetailFooter;
+export default ModalFooterDetailPlaylist;

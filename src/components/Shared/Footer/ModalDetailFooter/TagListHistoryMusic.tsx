@@ -14,7 +14,7 @@ function TagListHistoryMusic() {
     }, [musics.mplay]);
     return (
         <>
-            <div className="list-history">
+            <div className="w-[25rem] list-history">
                 {musics?.history?.data?.map((item: any, index: number) =>
                     index < 21 ? (
                         <MusicGridItem music={item.music} key={index} />

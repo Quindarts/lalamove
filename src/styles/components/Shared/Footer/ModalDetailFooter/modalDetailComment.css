@@ -1,0 +1,35 @@
+.reply {
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+}
+.btn-reply {
+    background-color: #4e4d4d;
+    border-radius: 50%;
+    color: white;
+}
+.btn-reply:hover {
+    background-color: #777777;
+    transition: 0.3s ease-in;
+}
+.main_comment {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 120px);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.main_comment::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main_comment::-webkit-scrollbar-track {
+    background: rgb(49, 49, 48);
+}
+
+.main_comment::-webkit-scrollbar-thumb {
+    background-color: rgb(105, 105, 107);
+    border-radius: 20px;
+}

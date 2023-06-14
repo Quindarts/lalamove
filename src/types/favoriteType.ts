@@ -49,3 +49,4 @@ export interface ListMusicFavoriteAccountType {
     panigation: ParamsType;
     data: MusicFavoriteAccountType[];
 }
+

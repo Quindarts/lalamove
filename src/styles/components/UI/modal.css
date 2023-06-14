@@ -64,11 +64,9 @@
     min-height: 30rem;
     animation: open-top 0.5s;
     transition: 0.5s ease-in;
-    /* justify-content: center;
-    align-items: center; */
 }
 .modal-right {
-    width: 20rem;
+    width: auto;
     height: 100%;
     position: fixed;
     right: 0;

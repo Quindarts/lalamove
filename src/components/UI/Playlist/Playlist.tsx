@@ -7,9 +7,9 @@ import {
 import Button from "../Button/Button";
 import { CaretRightOutlined, DeleteOutlined } from "@ant-design/icons";
 import "../../../styles/components/UI/Playlist/playlistaccount.css";
-import ModalDetailFooter from "../../Shared/Footer/ModalDetailFooter/ModalDetailFooter";
 import Modal from "../Modal/Modal";
 import usePlaylist from "../../../hooks/usePlaylist";
+import ModalFooterDetailPlaylist from "../../Shared/Footer/ModalDetailFooter/ModalFooterDetailPlaylist";
 
 function Playlist(props: any) {
     const [messageApi, contextHolder] = message.useMessage();
@@ -97,7 +97,7 @@ function Playlist(props: any) {
                 open={isOpen}
                 onClose={handleClose}
             >
-                <ModalDetailFooter />
+                <ModalFooterDetailPlaylist />
             </Modal>
         </>
     );
