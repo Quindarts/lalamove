@@ -8,11 +8,12 @@ function Video(props: any) {
         height: "98%",
         width: "98%",
         playerVars: {
-            autoplay: 1,
+            autoplay: 0,
         },
     };
     const _onReady = (event: YouTubePlayer) => {
         videoElement = event;
+        videoElement.target.pauseVideo()
     };
     useEffect(() => {
         if (videoElement) {
@@ -30,7 +31,7 @@ function Video(props: any) {
         <div className="w-[90vw] h-[80vh] d-flex justify-center ">
             <YouTube
                 className="h-[98%]"
-                videoId={srcMV}
+                videoId={srcMV ? srcMV :'12312'}
                 opts={opts}
                 onReady={_onReady}
             />

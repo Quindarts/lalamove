@@ -31,11 +31,11 @@ function Audio(props: any) {
             audioRef.current.play();
         }
     };
-
+    useEffect(() => {
+        setPlay(true);
+    }, [srcMusic]);
     console.log("abc:", srcMusic);
 
-    // const handleVolume = () => {
-    // };
     return (
         <div className="App">
             <div className="Control-Button-Group mb-[10px]">
