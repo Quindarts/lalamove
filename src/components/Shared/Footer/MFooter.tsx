@@ -35,7 +35,6 @@ function MFooter() {
         setIsOpenMV({ open: true, id: id });
     };
     const handleCloseModalMV = () => {
-        setPlay(false);
         setIsOpenMV({ ...isOpenMV, open: false });
     };
     const handleResfreshLoadingComment = () => {

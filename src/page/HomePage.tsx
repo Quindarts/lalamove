@@ -18,18 +18,29 @@ function HomePage() {
     const [typeTopView, setTypeTopView] = useState<String>("million");
     const { musics, fetchAllTopViewType } = useMusic();
     const [renderInfinitySlide, setRenderInfinitySlide] = useState<number>(3);
+    const [renderSlideBG, setRenderSlideBG] = useState<number>(3);
     const [widthApp, setWidthApp] = useState<number>(0);
     useEffect(() => {
         window.addEventListener("resize", () => {
             setWidthApp(window.innerWidth);
         });
 
-        if (window.innerWidth > 1200) setRenderInfinitySlide(6);
-        if (window.innerWidth > 1000 && window.innerWidth <= 1200)
+        if (window.innerWidth > 1200) {
+            setRenderInfinitySlide(6);
+            setRenderSlideBG(3);
+        }
+        if (window.innerWidth > 1000 && window.innerWidth <= 1200) {
             setRenderInfinitySlide(4);
-        if (window.innerWidth > 600 && window.innerWidth <= 1000)
+            setRenderSlideBG(2);
+        }
+        if (window.innerWidth > 600 && window.innerWidth <= 1000) {
             setRenderInfinitySlide(2);
-        if (window.innerWidth <= 600) setRenderInfinitySlide(1);
+            setRenderSlideBG(1);
+        }
+        if (window.innerWidth <= 600) {
+            setRenderInfinitySlide(1);
+            setRenderSlideBG(1);
+        }
     }, [widthApp]);
 
     const handleSetTopView = (typeTopView: String) => {
@@ -48,23 +59,24 @@ function HomePage() {
     return (
         <div className="homePage">
             <Swiper
-                slidesPerView={3}
+                slidesPerView={renderSlideBG}
+                spaceBetween={20}
                 navigation={true}
                 modules={[Navigation, Autoplay]}
                 autoplay={{
-                    delay: 1000,
+                    delay: 5000,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true,
                     stopOnLastSlide: false,
                     reverseDirection: false,
                 }}
-                className="homeSlide-top my-3"
+                className="homeSlide-top"
             >
                 {listSlide.map((slide, index) => (
                     <SwiperSlide key={index} virtualIndex={index}>
                         <Image
-                            width={500}
-                            height={300}
+                            width="100%"
+                            height="100%"
                             src={`${slide}`}
                             className="rounded-lg"
                         />
@@ -163,7 +175,7 @@ function HomePage() {
                 navigation={true}
                 modules={[Navigation, Autoplay]}
                 autoplay={{
-                    delay: 1000,
+                    delay: 4000,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true,
                     stopOnLastSlide: false,

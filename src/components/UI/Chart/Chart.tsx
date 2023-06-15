@@ -4,16 +4,16 @@ import "../../../styles/components/UI/Chart/chart.css";
 function Chart() {
     const options: ApexOptions = {
         chart: {
-            height: 350,
-            type: "line",
+            height: 200,
+            type: "heatmap",
             zoom: {
                 enabled: false,
             },
         },
 
         stroke: {
-            width: [4, 7, 5,2],
-            curve: "smooth",
+            width: 2,
+            curve: "straight",
             dashArray: [0, 10, 6],
         },
         // title: {
@@ -42,26 +42,26 @@ function Chart() {
                 sizeOffset: 6,
             },
         },
-        xaxis: {
-            categories: [
-                "01 Jan",
-                "02 Jan",
-                "03 Jan",
-                "04 Jan",
-                "05 Jan",
-                "06 Jan",
-                "07 Jan",
-                "08 Jan",
-                "09 Jan",
-                "10 Jan",
-                "11 Jan",
-                "12 Jan",
-            ],
+        // xaxis: {
+        //     categories: [
+        //         "01 Jan",
+        //         "02 Jan",
+        //         "03 Jan",
+        //         "04 Jan",
+        //         "05 Jan",
+        //         "06 Jan",
+        //         "07 Jan",
+        //         "08 Jan",
+        //         "09 Jan",
+        //         "10 Jan",
+        //         "11 Jan",
+        //         "12 Jan",
+        //     ],
 
-            labels: {
-                style: { colors: "#cedd76" },
-            },
-        },
+        //     labels: {
+        //         style: { colors: "#cedd76" },
+        //     },
+        // },
         tooltip: {
             y: [
                 {
@@ -107,14 +107,7 @@ function Chart() {
         },
     ];
 
-    return (
-        <ReactApexChart
-            type="line"
-            options={options}
-            series={series}
-            height={500}
-        />
-    );
+    return <ReactApexChart type="line" options={options} series={series} />;
 }
 
 export default Chart;

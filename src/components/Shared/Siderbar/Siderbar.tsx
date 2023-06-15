@@ -11,6 +11,7 @@ import { Menu } from "antd";
 import Button from "../../UI/Button/Button";
 import "../../../styles/components/Shared/siderbar.css";
 import { Link } from "react-router-dom";
+import { color } from "../../../theme/variable";
 
 function Siderbar() {
     const [collapsed, setCollapsed] = useState(false);
@@ -21,7 +22,7 @@ function Siderbar() {
                     <div
                         className=" flex justify-center content-center ml-2 w-[100%]"
                         style={{
-                            color: "#09c478",
+                            color: color.cancel_btn_cl,
                             fontSize: "18px",
                             fontWeight: "bold",
                             alignItems: "center",
@@ -54,7 +55,7 @@ function Siderbar() {
                     items={[
                         {
                             key: "1",
-                            icon: <AppstoreOutlined />,
+                            icon: <AppstoreOutlined  />,
                             label: <Link to="/">Khám Phá </Link>,
                         },
                         {

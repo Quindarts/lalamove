@@ -29,12 +29,14 @@ function Video(props: any) {
     }, [isOpenMV]);
     return (
         <div className="w-[90vw] h-[80vh] d-flex justify-center ">
-            <YouTube
-                className="h-[98%]"
-                videoId={srcMV ? srcMV :'12312'}
-                opts={opts}
-                onReady={_onReady}
-            />
+            {
+                <YouTube
+                    className="h-[98%]"
+                    videoId={srcMV}
+                    opts={opts}
+                    onReady={_onReady}
+                />
+            }
         </div>
     );
 }

@@ -7,7 +7,28 @@ body {
         "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
+:root {
+    --main_cl: #15181b;
+    --bg_temp_cl: linear-gradient(
+        247.87deg,
+        #ec38bc 31.02%,
+        #7303c0 69.78%,
+        #03001e 91.18%
+    );
+    --bg_galaxy_1: linear-gradient(
+        91.21deg,
+        #fa2870 1.47%,
+        #7a0dea 101.74%
+    );
+    --sidebar_cl: #0f1215;
+    --cancel_btn_cl: #fa2870;
+    --grey_btn_cl: #1b1e21;
+    --footer_cl: #1e2833;
+    --icon_cl: #0b1c2e;
+    --white_cl: #ffffff;
+    --text_grey_cl: #a9abad;
+    --green_cl: #10c381;
+}
 html {
     box-sizing: border-box;
 }
@@ -33,7 +54,3 @@ html::-webkit-scrollbar {
 .swiper-button-prev {
     color: #09c478 !important;
 }
-/* .ant-notification-notice-with-icon {
-    background-color: black;
-    color: rgb(187, 184, 184);
-} */

@@ -10,6 +10,7 @@ import usePlaylist from "../../hooks/usePlaylist";
 import useMusic from "../../hooks/useMusic";
 import { getAllNewsMusicByParams } from "../../services/newMusicApi";
 import { AxiosResponse } from "axios";
+import { color } from "../../theme/variable";
 
 function Mainlayout() {
     const { getAllPlaylistAccount } = usePlaylist();
@@ -41,7 +42,7 @@ function Mainlayout() {
         <>
             <Layout>
                 <Siderbar />
-                <Layout style={{ background: "#151818" }}>
+                <Layout style={{ background: color.main_cl }}>
                     <MHeader />
                     <Outlet />
                     <div className="outlet-footer h-[70px]"></div>
