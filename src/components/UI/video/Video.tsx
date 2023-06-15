@@ -13,7 +13,7 @@ function Video(props: any) {
     };
     const _onReady = (event: YouTubePlayer) => {
         videoElement = event;
-        videoElement.target.pauseVideo()
+        videoElement.target.pauseVideo();
     };
     useEffect(() => {
         if (videoElement) {
