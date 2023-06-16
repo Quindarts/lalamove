@@ -17,21 +17,21 @@
 .btn:hover {
     color: black;
 }
-.btn--green:hover {
+.btn--pink:hover {
     box-shadow: 1px 2px 1px 2px #343434;
 }
-.btn--green {
-    background-color: #09c478;
-    border: 2px solid #09c478;
+.btn--pink {
+    background-color: var(--cancel_btn_cl);
+    border: 2px solid var(--cancel_btn_cl);
 }
-.btn--green-outline {
+.btn--pink-outline {
     background-color: white;
-    border: 2px solid #09c478;
+    border: 2px solid var(--cancel_btn_cl);
     box-sizing: border-box;
-    color: #09c478;
+    color: var(--cancel_btn_cl);
 }
-.btn--green-outline:hover {
-    background-color: #09c478;
+.btn--pink-outline:hover {
+    background-color: var(--cancel_btn_cl);
     color: #ffffff;
     box-shadow: 1px 2px 1px 2px #626262;
 }

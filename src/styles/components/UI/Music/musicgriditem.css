@@ -29,13 +29,12 @@
         display: flex;
     }
 }
-button svg {
+.music_Grid_Item button svg {
     font-size: 1.5rem;
 }
-button svg:hover {
+.music_Grid_Item button svg:hover {
     color: var(--cancel_btn_cl);
     font-size: 2rem;
-
     transition: 0.2s ease-in;
 }
 .mplaylist {

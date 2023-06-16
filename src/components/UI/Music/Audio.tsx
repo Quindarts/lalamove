@@ -4,6 +4,7 @@ import "../../../styles/components/UI/Music/audio.css";
 import { StepBackwardOutlined, StepForwardOutlined } from "@ant-design/icons";
 import { Icon } from "@iconify/react";
 import Button from "../Button/Button";
+import { color } from "../../../theme/variable";
 function Audio(props: any) {
     const { srcMusic, timeFormat, isPlay, setPlay } = props;
     const audioRef: any = useRef();
@@ -80,23 +81,19 @@ function Audio(props: any) {
                             width: "30rem",
                         },
                         active: {
-                            backgroundColor: "#09c478",
+                            backgroundColor: color.cancel_btn_cl,
                             height: "0.2rem",
                         },
                         thumb: {
                             marginTop: "-3px",
                             width: "0.6rem",
                             height: "0.6rem",
-                            backgroundColor: "#3EE9A5",
+                            backgroundColor: color.cancel_btn_cl,
                             borderRadius: "50%",
                         },
                     }}
                 />
                 <div className="time_current">{timeFormat}</div>
-                {/* <div className="text-white flex">
-                    <Button onClick={handleVolume}>0.2</Button>
-                    <Button>1</Button>
-                </div> */}
             </div>
             <audio
                 autoPlay

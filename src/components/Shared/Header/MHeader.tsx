@@ -1,4 +1,4 @@
-import { Input, theme } from "antd";
+import { Dropdown, Input, MenuProps, theme } from "antd";
 import { Header } from "antd/es/layout/layout";
 import React, { useEffect, useState } from "react";
 import Login from "../../../page/auth/Login";
@@ -20,6 +20,7 @@ function MHeader() {
     const [isOpenLoginModal, setIsOpenLoginModal] = useState<boolean>(true);
     const [isLoginAccount, setIsLoginAccount] = useState(false);
     const { user } = useUSer();
+
     const handleOpenModal = (id: string) => {
         setIsOpen({ open: true, id: id });
         setIsOpenLoginModal(true);
@@ -41,7 +42,24 @@ function MHeader() {
             });
         }
     }, [search]);
-
+    const items: MenuProps["items"] = [
+        {
+            key: "1",
+            label: (
+                <button
+                    onClick={() => {
+                        navigate("/account");
+                    }}
+                >
+                    Tài khoản của tôi
+                </button>
+            ),
+        },
+        {
+            key: "2",
+            label: <button onClick={handleLogoutAccount}>Đăng xuất</button>,
+        },
+    ];
     return (
         <Header
             style={{
@@ -76,16 +94,14 @@ function MHeader() {
                                     <div className="status-circle"></div>
                                 </div>
                             </div>
-                            <span className="profile_username"> 
+                            <span className="profile_username">
                                 {user?.userLogin?.data?.user_name}
                             </span>
-
-                            <button
-                                className="text-[1rem]"
-                                onClick={handleLogoutAccount}
-                            >
-                                <Icon icon="material-symbols:logout" />
-                            </button>
+                            <Dropdown menu={{ items }} placement="bottomLeft">
+                                <Button>
+                                    <Icon className="text-[1.3rem]" icon="fe:drop-down" />
+                                </Button>
+                            </Dropdown>
                         </div>
                     ) : (
                         <div className="header-icon_control">
@@ -111,7 +127,6 @@ function MHeader() {
                 id={isOpen.id}
                 open={isOpen.open}
                 onClose={handleCloseModal}
-                color={"#12192c"}
             >
                 <Login
                     onClose={handleCloseModal}

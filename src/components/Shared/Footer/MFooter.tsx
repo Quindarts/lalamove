@@ -18,6 +18,7 @@ import useComment from "../../../hooks/useComment";
 import ModalDetailComment from "./ModalDetailFooter/ModalDetailComment";
 import ModalFooterDetailPlaylist from "./ModalDetailFooter/ModalFooterDetailPlaylist";
 import Video from "../../UI/video/Video";
+import { color } from "../../../theme/variable";
 function MFooter() {
     const { musics } = useMusic();
     const [refreshLoadingComment, setRefreshLoadingComment] =
@@ -95,7 +96,7 @@ function MFooter() {
                                 <div>
                                     <h6
                                         className="font-bold text-[1rem]"
-                                        style={{ color: "#EB663A" }}
+                                        style={{ color: color.cancel_btn_cl }}
                                     >
                                         {musics.mplay.name_music}
                                     </h6>

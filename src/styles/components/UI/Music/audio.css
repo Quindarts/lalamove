@@ -31,6 +31,6 @@
 }
 .App svg:hover {
     transition: 0.3s ease-in;
-    color: #09c478;
+    color: var(--cancel_btn_cl);
     font-size: 2.4rem;
 }

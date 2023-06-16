@@ -2,6 +2,7 @@ input{
     color:black;    
     font-size: 1rem;
 }
+
 .ant-form-item .ant-row {
     flex-direction: column;
 }
@@ -37,7 +38,4 @@ input{
 }
 .ant-form-item-control-input-content span{ 
     color: white;
-}
-.ant-form{
-    padding: 0 3rem 0 3rem;
 }

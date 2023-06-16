@@ -39,25 +39,33 @@ function FavoritePage() {
             }
         });
     }, []);
+    console.log("fav", favorite?.favorite);
+
     return (
         <div className="favoritePage">
             <>
                 <h1 className=" font-bold text-[25px] my-5">YÊU THÍCH</h1>
-                <div className="flex flex-wrap gap-2 my-5">
-                    {favorite?.favorite.map(
-                        (item: MusicFavoriteAccountType, index: number) => (
-                            <MusicGridItem music={item.music} key={index} />
-                        ),
-                    )}
-                </div>
-                <h1 className=" font-bold text-[25px] my-5 ">Gợi ý cho bạn</h1>
-
+                {favorite?.favorite.length !== 0 ? (
+                    <div className="flex flex-wrap gap-2 my-5">
+                        {favorite?.favorite.map(
+                            (item: MusicFavoriteAccountType, index: number) => (
+                                <MusicGridItem music={item.music} key={index} />
+                            ),
+                        )}
+                    </div>
+                ) : (
+                    <h1 className="my-5 font-bold text-[25px] text-white text-center">
+                        Danh sách yêu thích của bạn trống 
+                    </h1>
+                )}
+                <h1 className=" font-bold text-[25px] my-5  ">Gợi ý cho bạn</h1>
                 <Swiper
                     slidesPerView={renderInfinitySlide}
+                    spaceBetween={15}
                     navigation={true}
                     modules={[Navigation, Autoplay]}
                     autoplay={{
-                        delay: 1000,
+                        delay: 4000,
                         disableOnInteraction: false,
                         pauseOnMouseEnter: true,
                         stopOnLastSlide: false,
@@ -65,11 +73,14 @@ function FavoritePage() {
                     }}
                 >
                     {musics.listFavorite.map(
-                        (music: MusicFavoriteItemType, index: number) => (
-                            <SwiperSlide key={index} virtualIndex={index}>
-                                <MusicItem mMusic={music} />
-                            </SwiperSlide>
-                        ),
+                        (music: MusicFavoriteItemType, index: number) =>
+                            index > 12 ? (
+                                <SwiperSlide key={index} virtualIndex={index}>
+                                    <MusicItem mMusic={music} />
+                                </SwiperSlide>
+                            ) : (
+                                <></>
+                            ),
                     )}
                 </Swiper>
             </>

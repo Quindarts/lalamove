@@ -25,7 +25,7 @@ function Mainlayout() {
             });
         }
 
-        getAllFavoriteMusicbyParams(20, 3).then((res: AxiosResponse) => {
+        getAllFavoriteMusicbyParams(24, 3).then((res: AxiosResponse) => {
             if (res.status === 200 || res.status === 204) {
                 fetchListFavorite(res.data.data);
                 console.log(res.data);

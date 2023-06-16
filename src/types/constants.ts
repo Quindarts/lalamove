@@ -36,6 +36,8 @@ export const APP_ROUTES = {
     MY_PLAYLIST: "/playlist-account",
     WATCH_MV: "/watch-mv",
     SEARCH_PAGE: "/search",
+    ACCOUNT: "/account",
+    PAGE404: "/page404",
 };
 export const listBackground = [bg1, bg2, bg3, bg4, bg5, bg6, bg7];
 export const listSlide = [sl1, sl2, sl3, sl4, sl5, sl6, sl7];

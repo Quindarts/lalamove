@@ -69,3 +69,20 @@ html::-webkit-scrollbar {
     background: var(--bg_galaxy_1);
     transition: 0.3s ease-in;
 }
+.ant-dropdown .ant-dropdown-menu {
+    background: rgba(67, 73, 71, 0.8);
+}
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+    padding: 0;
+}
+.ant-dropdown .ant-dropdown-menu button {
+    font-weight: 500;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    width: 100%;
+    color: var(--white_cl);
+}
+.ant-dropdown .ant-dropdown-menu button:hover {
+    color: var(--white_cl);
+    background: var(--cancel_btn_cl);
+    transition: 0.3s ease-in;
+}

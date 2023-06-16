@@ -2,8 +2,8 @@
     padding: 0 1rem 0 1rem;
 }
 .ant-tabs .ant-tabs-ink-bar {
-    background-color: rgb(20, 179, 126);
+    background-color: var(--cancel_btn_cl);
 }
 .ant-tabs-tab-active > .ant-tabs-tab-btn , .ant-tabs-tab-btn:hover{
-    color: rgb(20, 179, 126) !important;
+    color:  var(--cancel_btn_cl)!important;
 }

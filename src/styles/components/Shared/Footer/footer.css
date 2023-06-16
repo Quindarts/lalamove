@@ -17,6 +17,6 @@ footer .icon_control svg {
     transition: 0.2s;
 }
 footer .icon_control svg:hover {
-    color: rgb(22, 217, 90);
+    color: var(--cancel_btn_cl);
     font-size: 29px;
 }

@@ -76,7 +76,7 @@ function Playlist(props: any) {
                 <div className="flex control_playlist">
                     <Button
                         onClick={handelStartPlaylist}
-                        color="green"
+                        color="pink"
                         className="mx-2"
                     >
                         <CaretRightOutlined /> Phát danh sach

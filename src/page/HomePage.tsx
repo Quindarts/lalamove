@@ -237,11 +237,14 @@ function HomePage() {
                     }}
                 >
                     {musics.listFavorite.map(
-                        (music: MusicItemType, index: number) => (
-                            <SwiperSlide key={index} virtualIndex={index}>
-                                <MusicItem mMusic={music} />
-                            </SwiperSlide>
-                        ),
+                        (music: MusicItemType, index: number) =>
+                            index < 11 ? (
+                                <SwiperSlide key={index} virtualIndex={index}>
+                                    <MusicItem mMusic={music} />
+                                </SwiperSlide>
+                            ) : (
+                                <></>
+                            ),
                     )}
                 </Swiper>
             </div>

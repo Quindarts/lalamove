@@ -19,7 +19,6 @@ function PlaylistAccountPage() {
                 getAllPlaylistAccount(res.data.data);
                 console.log(res.data.data);
                 console.log(playlist);
-                
             }
         });
     }, []);
@@ -44,7 +43,7 @@ function PlaylistAccountPage() {
                 </div>
             ) : (
                 <h1 className="my-5 font-bold text-[25px] text-white text-center">
-                    Danh sách của bạn trống
+                    Danh sách phát của bạn trống
                 </h1>
             )}
         </>

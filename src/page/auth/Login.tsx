@@ -144,9 +144,9 @@ function Login(prop: LoginPropsType) {
                             <Button
                                 className="w-[300px]"
                                 type="submit"
-                                color="green"
+                                color="pink"
                             >
-                                Đăng nhập
+                                Đăng Nhập
                             </Button>
                             <Button
                                 className="w-[300px] mt-2"
@@ -164,7 +164,7 @@ function Login(prop: LoginPropsType) {
             ) : (
                 <>
                     <div className="title text-center font-bold text-[2rem]">
-                        Đăng ký
+                        Đăng Kí
                     </div>
                     <Form
                         name="register"
