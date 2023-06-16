@@ -64,42 +64,45 @@ function MHeader() {
                     enterButton
                     style={{ width: 400 }}
                 />
-                <div className="header-icon_control">
+                <div>
                     {isLoginAccount ? (
                         <div
-                            className="flex justify-center"
+                            className="flex gap-[1rem] justify-center profile px-3 py-1"
                             style={{ alignItems: "center" }}
                         >
-                            <span className="mx-5 text-emerald-600">
+                            <div className="avt">
+                                <img src={user?.userLogin?.data.image} alt="" />
+                                <div className="status">
+                                    <div className="status-circle"></div>
+                                </div>
+                            </div>
+                            <span className="profile_username"> 
                                 {user?.userLogin?.data?.user_name}
                             </span>
-                            <div className="">
-                                <Button
-                                    className=""
-                                    color="yellow"
-                                    variant="container"
-                                    onClick={handleLogoutAccount}
-                                >
-                                    Đăng xuất
-                                </Button>
-                            </div>
+
+                            <button
+                                className="text-[1rem]"
+                                onClick={handleLogoutAccount}
+                            >
+                                <Icon icon="material-symbols:logout" />
+                            </button>
                         </div>
                     ) : (
-                        <>
+                        <div className="header-icon_control">
                             <button onClick={() => handleOpenModal("login")}>
                                 <Icon
                                     icon="carbon:user-filled"
-                                    className="text-[2.3rem] text-[#92a89b] mr-3"
+                                    className="text-[2.3rem] mr-3"
                                 />
                             </button>
                             <button>
                                 {" "}
                                 <Icon
                                     icon="uiw:setting"
-                                    className="text-[2.3rem] text-[#92a89b]"
+                                    className="text-[2.3rem]"
                                 />
                             </button>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>

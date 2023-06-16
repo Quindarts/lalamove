@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import YouTube, { YouTubePlayer, YouTubeProps } from "react-youtube";
 let videoElement: YouTubePlayer = null;
-function Video(props: any) {
+type VideoPropsType = {
+    srcMV: string;
+    isOpenMV: { open: boolean; id: string };
+};
+function Video(props: VideoPropsType) {
     const { srcMV, isOpenMV } = props;
     const [isPaused, setIsPaused] = useState(false);
+    console.log("src:", srcMV);
+
     const opts: YouTubeProps["opts"] = {
         height: "98%",
         width: "98%",
@@ -21,7 +27,7 @@ function Video(props: any) {
                 ? videoElement.target.pauseVideo()
                 : videoElement.target.playVideo();
         }
-    }, [isPaused, videoElement]);
+    }, [isPaused]);
     useEffect(() => {
         if (videoElement) {
             videoElement.target.pauseVideo();

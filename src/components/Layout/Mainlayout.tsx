@@ -25,14 +25,14 @@ function Mainlayout() {
             });
         }
 
-        getAllFavoriteMusicbyParams(20, 2).then((res: AxiosResponse) => {
+        getAllFavoriteMusicbyParams(20, 3).then((res: AxiosResponse) => {
             if (res.status === 200 || res.status === 204) {
                 fetchListFavorite(res.data.data);
                 console.log(res.data);
                 
             }
         });
-        getAllNewsMusicByParams(24, 2).then((res: AxiosResponse) => {
+        getAllNewsMusicByParams(12, 2).then((res: AxiosResponse) => {
             if (res.status === 200 || res.status === 204) {
                 fetchListNewsMusic(res.data.data);
             }

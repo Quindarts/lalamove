@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import "../../../styles/components/UI/modal.css";
 import { CloseOutlined } from "@ant-design/icons";
 import { Content } from "antd/es/layout/layout";

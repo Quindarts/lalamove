@@ -15,11 +15,7 @@ body {
         #7303c0 69.78%,
         #03001e 91.18%
     );
-    --bg_galaxy_1: linear-gradient(
-        91.21deg,
-        #fa2870 1.47%,
-        #7a0dea 101.74%
-    );
+    --bg_galaxy_1: linear-gradient(91.21deg, #fa2870 1.47%, #7a0dea 101.74%);
     --sidebar_cl: #0f1215;
     --cancel_btn_cl: #fa2870;
     --grey_btn_cl: #1b1e21;
@@ -35,6 +31,9 @@ html {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
+}
+.ant-image-mask {
+    display: none;
 }
 .ant-spin .ant-spin-dot-item {
     background-color: grey;
@@ -52,5 +51,21 @@ html::-webkit-scrollbar {
 }
 .swiper-button-next,
 .swiper-button-prev {
-    color: #09c478 !important;
+    width: 3rem !important;
+    height: 3rem !important;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: var(--cancel_btn_cl);
+}
+.swiper-button-next::after,
+.swiper-button-prev:after {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    color: var(--white_cl);
+    border-radius: 50%;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: var(--bg_galaxy_1);
+    transition: 0.3s ease-in;
 }

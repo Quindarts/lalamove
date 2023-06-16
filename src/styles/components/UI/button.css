@@ -44,14 +44,14 @@
     background-color: #fcbe00;
 }
 .btn--purpleClicked {
-    background-color: #9b4de0;
-    border-radius: 1rem;
+    background-color: var(--cancel_btn_cl);
+    border-radius: 6px;
 }
 .btn--purple {
     background-color: #170f23;
-    border-radius: 1rem;
+    border-radius: 6px;
 }
 .btn--purple:hover {
-    background-color: #9b4de0;
+    background-color: var(--cancel_btn_cl);
     color: white;
 }

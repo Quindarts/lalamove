@@ -20,12 +20,13 @@ import ModalPlaylistDetail from "./ModalPlaylistDetail";
 import { notification } from "antd";
 import { MusicItemType } from "../../../types/musicType";
 import { Icon } from "@iconify/react";
+import { color } from "../../../theme/variable";
 type NotificationType = "success" | "info" | "warning" | "error";
 function MusicGridItem(props: any) {
     const { music } = props;
     const { playlist, getAllPlaylistAccount } = usePlaylist();
     const { playMusic } = useMusic();
-    const [isOpen, setIsOpen] = useState({ open: false, id: "" });
+    const [isOpen, setIsOpen] = useState({ open: false, id: "modalGridItem" });
     const [messageApi, contextHolder] = notification.useNotification();
 
     const handleOpenPlaylist = (id: string) => {
@@ -95,75 +96,74 @@ function MusicGridItem(props: any) {
     return (
         <>
             {contextHolder}
-            <div className="music_Grid_Item flex">
-                <div className="overlay">
-                    <button onClick={() => handleOpenPlaylist("listPlaylist")}>
-                        <Icon icon="subway:add-playlist" />
-                    </button>
-                    <button onClick={() => handlePlayMusic(music)}>
-                        <Icon icon="fluent:music-note-2-play-20-filled" />  
-                    </button>
-                    <button onClick={() => handleAddMusicToFavorite(music._id)}>
-                        <Icon icon="solar:heart-bold" />
-                    </button>   
-                </div>
-                <div className="music_Grid_Item-img mr-3">
-                    <Image
-                        width={70}
-                        height={70}
-                        src={`${music.image_music}`}
-                        alt=""
-                    />
-                </div>
-                <div className="music_Grid_Item-content">
-                    <div className="flex justify-between align-middle w-[300px]">
+            <div className="music_Grid_Item flex gap-[1rem]  my-1">
+                <div className="flex-1">
+                    <div className="flex">
+                        <div className="music_Grid_Item-img mr-3">
+                            <Image
+                                width="100%"
+                                height="100%"
+                                src={`${music.image_music}`}
+                                alt=""
+                            />
+                        </div>
                         <div className="">
                             <h6
-                                className="font-bold"
-                                style={{ color: "#09c478" }}
+                                className="font-bold text-[18px]"
+                                style={{ color: color.cancel_btn_cl }}
                             >
                                 {music.name_music}
                             </h6>
                             <p
                                 className="font-[600]"
-                                style={{ color: "#908d8d" }}
+                                style={{ color: color.text_grey_cl }}
                             >
                                 {music.name_singer}
                             </p>
                         </div>
-                        <div className="text-[#a7a4a4] text-[1rem] ">
-                            {music.time_format}
-                        </div>
-                    </div>
-                    <div className="flex">
-                        <div className="flex mr-2   ">
-                            <EyeOutlined className=" py-1 pr-1" />
-                            <p>{Math.round(music.view / 10000)}K view</p>
-                        </div>
-                        <div className="flex">
-                            <HeartOutlined className="py-1 pr-1 " />
-                            <p>
-                                {Math.round(music.favorite / 10000)}M favorite
-                            </p>
-                        </div>
                     </div>
                 </div>
-                <Modal
-                    type="top"
-                    id={isOpen.id}
-                    open={isOpen.open}
-                    onClose={handleClose}
-                >
-                    <ModalPlaylistDetail
-                        playlist={playlist}
-                        messageApi={messageApi}
-                        music={music}
-                        handleAddNewMusicToPlaylist={
-                            handleAddNewMusicToPlaylist
-                        }
-                    />
-                </Modal>
+                <div className="flex-1 music_Grid_Item-content gap-[3rem]">
+                    <div className="text-[1rem]">{music.time_format}</div>
+
+                    <div className="flex mr-2   ">
+                        <p>{Math.round(music.view / 10000)}K</p>
+                        <EyeOutlined className=" pt-[6px] ml-1" />
+                    </div>
+                    <div className="flex">
+                        <p>{Math.round(music.favorite / 10000)}M </p>
+                        <HeartOutlined
+                            className="pt-[6px] ml-1 "
+                            style={{ color: color.cancel_btn_cl }}
+                        />
+                    </div>
+                </div>
+                <div className="flex-1 flex justify-around">
+                    <button onClick={() => handleOpenPlaylist("listPlaylist")}>
+                        <Icon icon="subway:add-playlist" />
+                    </button>
+                    <button onClick={() => handlePlayMusic(music)}>
+                        <Icon icon="fluent:music-note-2-play-20-filled" />
+                    </button>
+                    <button onClick={() => handleAddMusicToFavorite(music._id)}>
+                        <Icon icon="solar:heart-bold" />
+                    </button>
+                </div>
+                {/* </div> */}
             </div>
+            <Modal
+                type="top"
+                id={isOpen.id}
+                open={isOpen.open}
+                onClose={handleClose}
+            >
+                <ModalPlaylistDetail
+                    playlist={playlist}
+                    messageApi={messageApi}
+                    music={music}
+                    handleAddNewMusicToPlaylist={handleAddNewMusicToPlaylist}
+                />
+            </Modal>
         </>
     );
 }

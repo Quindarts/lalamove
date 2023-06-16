@@ -14,6 +14,7 @@ import ImageZoom from "../components/UI/ZoomImage/ZoomImage";
 import { listCategoryImage, listSlide } from "../types/constants";
 import { AxiosResponse } from "axios";
 import Chart from "../components/UI/Chart/Chart";
+import { color } from "../theme/variable";
 function HomePage() {
     const [typeTopView, setTypeTopView] = useState<String>("million");
     const { musics, fetchAllTopViewType } = useMusic();
@@ -47,7 +48,7 @@ function HomePage() {
         setTypeTopView(typeTopView);
     };
     useEffect(() => {
-        getAllTopViewbyParams(12, 1, `${typeTopView}`).then(
+        getAllTopViewbyParams(4, 1, `${typeTopView}`).then(
             (res: AxiosResponse) => {
                 if (res.status === 200 || res.status === 204) {
                     fetchAllTopViewType(res.data.data);
@@ -85,14 +86,14 @@ function HomePage() {
             </Swiper>
 
             <h1 className="my-5 mt-[5rem] font-bold text-[1.6rem]">
-                TOP VIEW{" "}
+                TOP VIEWS{" "}
                 <Icon
                     icon="solar:star-bold"
                     className="text-yellow-400"
                     style={{ display: "inline-block" }}
                 />
             </h1>
-            <div className="text-white m-5  flex gap-2">
+            <div className="text-white my-5  flex gap-2">
                 <Button
                     onClick={() => handleSetTopView("million")}
                     color={
@@ -100,7 +101,7 @@ function HomePage() {
                     }
                 >
                     {" "}
-                    Top triệu view
+                    Top triệu views
                 </Button>
                 <Button
                     onClick={() => handleSetTopView("billion")}
@@ -108,50 +109,94 @@ function HomePage() {
                         typeTopView === "billion" ? "purpleClicked" : "purple"
                     }
                 >
-                    Top tỉ view
+                    Top tỉ views
                 </Button>
             </div>
-            <div className="top_views_slide flex flex-wrap gap-2 justify-center align-middle">
+            <div
+                className=" top_views_slide flex flex-wrap gap-2 mt-5 p-[1rem] rounded-[6px]"
+                style={{ background: color.grey_btn_cl }}
+            >
                 {musics.listTopView.map(
                     (music: MusicItemType, index: number) => (
                         <MusicGridItem key={index} music={music} />
                     ),
                 )}
             </div>
-            <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]"> </h1>
-            <div className="flex flex-wrap gap-[2rem] justify-center">
-                {listCategoryImage.map((img, index) =>
-                    index < 7 ? <ImageZoom srcImage={img} /> : <></>,
-                )}
+            <div
+                className="flex justify-between"
+                style={{ alignItems: "center" }}
+            >
+                <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                    Thể loại{" "}
+                </h1>
+                <h1
+                    className="title_views mb-5 mt-[5rem] font-[500] text-gray-600 text-[1rem] flex gap-1"
+                    style={{ cursor: "pointer" }}
+                >
+                    Xem tất cả
+                    <Icon icon="grommet-icons:next" className="mt-[2.2px]" />
+                </h1>
             </div>
 
-            <div className="chart_music flex flex-wrap gap-[5rem] my-[5rem] py-5  px-[5rem] ">
-                <div className="text-black flex-1 mt-3">
+            <div className="flex flex-wrap gap-[1rem] my-5">
+                <Swiper
+                    slidesPerView={renderInfinitySlide}
+                    navigation={true}
+                    spaceBetween={15}
+                    modules={[Navigation, Autoplay]}
+                    autoplay={{
+                        delay: 4000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                        stopOnLastSlide: false,
+                        reverseDirection: false,
+                    }}
+                >
+                    {listCategoryImage.map((img, index) => (
+                        <SwiperSlide key={index} virtualIndex={index}>
+                            <ImageZoom srcImage={img} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+
+            <div>
+                {/* <div className="text-black flex-1 mt-3">
                     <Chart />
-                </div>
-                <div className="flex-[0.8]">
-                    <h1 className=" flex text-[#fff] text-[1.5rem] font-bold mb-4 ml-5">
-                        <Icon
-                            icon="fa6-solid:ranking-star"
-                            className="mx-1 text-[1.8rem] text-[#dc5ee7]"
-                        />{" "}
-                        TOP BÀI HÁT THÁNG NÀY
+                </div> */}
+                <div
+                    className="flex justify-between"
+                    style={{ alignItems: "center" }}
+                >
+                    <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                        Top bài hát tháng này{" "}
                     </h1>
+                    <h1
+                        className="title_views mb-5 mt-[5rem] font-[500] text-gray-600 text-[1rem] flex gap-1"
+                        style={{ cursor: "pointer" }}
+                    >
+                        Xem tất cả
+                        <Icon
+                            icon="grommet-icons:next"
+                            className="mt-[2.2px]"
+                        />
+                    </h1>
+                </div>
+                <div
+                    className=" p-[1rem] rounded-[6px]"
+                    style={{ background: color.grey_btn_cl }}
+                >
                     {musics.listTopView.map(
                         (music: MusicItemType, index: number) =>
                             index < 4 ? (
                                 <div
-                                    className="flex gap-5 pl-5 my-5"
+                                    className="flex "
                                     style={{ alignItems: "center" }}
                                 >
-                                    <h1 className="text-[#a841ec] font-bold text-[3rem]">
+                                    <h1 className="text-[#fac228] text-[2.5rem] mr-[1rem] font-bold">
                                         #{index + 1}
                                     </h1>
-                                    <MusicGridItem
-                                        className="flex-1"
-                                        key={index}
-                                        music={music}
-                                    />
+                                    <MusicGridItem key={index} music={music} />
                                 </div>
                             ) : (
                                 <></>
@@ -159,37 +204,68 @@ function HomePage() {
                     )}
                 </div>
             </div>
-            <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
-                MỚI RA MẮT{" "}
-            </h1>
-            <div className="news_music_slide flex flex-wrap gap-1 justify-center">
+            <div className="">
+                <div
+                    className="flex justify-between"
+                    style={{ alignItems: "center" }}
+                >
+                    <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                        Yêu thích
+                    </h1>
+                    <h1
+                        className="title_views mb-5 mt-[5rem] font-[500] text-gray-600 text-[1rem] flex gap-1"
+                        style={{ cursor: "pointer" }}
+                    >
+                        Xem tất cả
+                        <Icon
+                            icon="grommet-icons:next"
+                            className="mt-[2.2px]"
+                        />
+                    </h1>
+                </div>
+                <Swiper
+                    slidesPerView={renderInfinitySlide}
+                    navigation={true}
+                    spaceBetween={15}
+                    modules={[Navigation, Autoplay]}
+                    autoplay={{
+                        delay: 4000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                        stopOnLastSlide: false,
+                        reverseDirection: false,
+                    }}
+                >
+                    {musics.listFavorite.map(
+                        (music: MusicItemType, index: number) => (
+                            <SwiperSlide key={index} virtualIndex={index}>
+                                <MusicItem mMusic={music} />
+                            </SwiperSlide>
+                        ),
+                    )}
+                </Swiper>
+            </div>
+
+            <div
+                className="flex justify-between"
+                style={{ alignItems: "center" }}
+            >
+                <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                    Mới ra mắt{" "}
+                </h1>
+                <h1
+                    className="title_views mb-5 mt-[5rem] font-[500] text-gray-600 text-[1rem] flex gap-1"
+                    style={{ cursor: "pointer" }}
+                >
+                    Xem tất cả
+                    <Icon icon="grommet-icons:next" className="mt-[2.2px]" />
+                </h1>
+            </div>
+            <div className="news_music_slide  flex flex-wrap gap-1">
                 {musics.listNews.map((music: MusicItemType, index: number) => (
                     <MusicGridItem key={index} music={music} />
                 ))}
             </div>
-            <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
-                YÊU THÍCH
-            </h1>
-            <Swiper
-                slidesPerView={renderInfinitySlide}
-                navigation={true}
-                modules={[Navigation, Autoplay]}
-                autoplay={{
-                    delay: 4000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                    stopOnLastSlide: false,
-                    reverseDirection: false,
-                }}
-            >
-                {musics.listFavorite.map(
-                    (music: MusicItemType, index: number) => (
-                        <SwiperSlide key={index} virtualIndex={index}>
-                            <MusicItem mMusic={music} />
-                        </SwiperSlide>
-                    ),
-                )}
-            </Swiper>
         </div>
     );
 }

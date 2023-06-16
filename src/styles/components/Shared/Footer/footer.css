@@ -1,7 +1,10 @@
 footer {
     position: fixed;
     bottom: 0;
+    right: 0;
+    left: 0;
     width: 100vw;
+    max-width: 100vw;
     height: 6rem;
     padding: 1.2rem;
     background-color: rgba(31, 31, 32, 0.5);

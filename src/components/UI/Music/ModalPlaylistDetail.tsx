@@ -41,7 +41,7 @@ function ModalPlaylistDetail(props: any) {
     };
 
     return (
-        <div className="px-5">
+        <>
             <h1 className="my-5 font-bold text-[25px] text-white text-center">
                 Danh sách phát của bạn
             </h1>
@@ -111,7 +111,7 @@ function ModalPlaylistDetail(props: any) {
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 }
 

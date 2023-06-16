@@ -1,7 +1,8 @@
 .homePage {
     padding: 1rem;
-    margin: 0 0 0 24px;
     color: white;
+    max-width: calc(100vw - 80px);
+    min-width: calc(100vw - 200px);
 }
 .chart_music {
     border-radius: 0.5rem;

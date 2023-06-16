@@ -1,34 +1,95 @@
-
-.ant-layout-header{
+.ant-layout-header {
     line-height: normal;
+    padding: 1rem;
+    height: 7rem;
 }
 .ant-input-search
     > .ant-input-group
     > .ant-input-group-addon:last-child
     .ant-input-search-button {
-    /* background-color: rgb(20, 179, 115); */
-    background-color: rgb(83, 82, 82);
-
+    background-color: var(--cancel_btn_cl);
 }
 .ant-input-search
     > .ant-input-group
     > .ant-input-group-addon:last-child
-    .ant-input-search-button:hover{
-        background-color: rgb(27, 95, 61);
-
-    }
-.ant-input-group >.ant-input:first-child{
-    background-color: rgb(91, 88, 88);
-    border:1px solid rgb(91, 88, 88);
-    color: white;
-}  
-.header-icon_control svg{
-    background-color: rgb(83, 82, 82);
+    .ant-input-search-button:hover {
+    background-color: var(--white_cl);
+    border: 1px solid var(--cancel_btn_cl);
+}
+.ant-input-group > .ant-input:first-child {
+    border: 1px solid var(--cancel_btn_cl);
+}
+.header-icon_control svg {
+    background-color: var(--cancel_btn_cl);
     padding: 0.5rem;
     border-radius: 50%;
+    color: white;
 }
-.header-icon_control svg:hover{
-    background-color: rgb(24, 142, 81);
+.header-icon_control svg:hover {
+    background: var(--bg_temp_cl);
     color: white;
     transition: 0.2s ease-in;
+}
+.profile {
+    background-color: rgb(85, 83, 85);
+    border-radius: 2rem;
+    cursor: pointer;
+    color: var(--white_cl);
+    font-weight: 500;
+}
+.profile:hover {
+    background-color: rgb(58, 56, 58);
+    color: rgb(144, 144, 144);
+    transition: 0.2s ease-in;
+}
+.avt {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+}
+.avt img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+}
+.status::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: 0.1rem;
+    width: 1rem;
+    height: 1rem;
+    animation: border-animation 1s infinite;
+    background: #fafafc;
+    border-radius: 50%;
+}
+.status-circle {
+    background-color: #07ff7b;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    border-radius: 50%;
+    transition: 0.4s ease-in-out;
+}
+@keyframes border-animation {
+    0% {
+        background: #fcfafc;
+    }
+    25% {
+        background: #d5d3d5;
+    }
+    50% {
+        background: #a19fa1;
+    }
+    75% {
+        background: #bab9ba;
+    }
+    100% {
+        background: #525152;
+    }
 }

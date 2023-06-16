@@ -1,8 +1,11 @@
 .modal {
     display: none;
     z-index: 999;
+
 }
 .modal-open {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,11 +20,11 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-
+    justify-content: center;
     padding: 1rem 2.4rem;
     border-radius: 0.3rem;
     transition: 0.1s ease-in;
-    z-index: 999;
+    z-index: 9999;
 }
 @keyframes open-top {
     0% {
@@ -54,13 +57,12 @@
     box-shadow: 4px 20px 20px 20px #131212;
     border-radius: 0.3rem;
     font-size: 1.2rem;
-    z-index: 999;
+    z-index: 9999;
     width: auto;
 }
 
 .modal-top {
     top: 50px;
-    /* left: calc(50vw - 200px); */
     height: auto;
     min-height: 25rem;
     padding: 1rem;

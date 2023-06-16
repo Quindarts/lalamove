@@ -1,59 +1,41 @@
 .music_Grid_Item {
     position: relative;
-    flex: 1;
-    min-width: 350px;
-    max-width: 400px;
-    height: 100px;
-    padding: 12px;
+    width: 100vw;
     cursor: pointer;
     line-height: 1.8rem;
     border-radius: 1rem;
     transition: 1s ease-in;
-}
-.music_Grid_Item:hover .overlay {
-    display: flex;
-    justify-content: center;
+    margin: 1rem 0 1rem 0;
+    color: var(--text_grey_cl);
     align-items: center;
-    border-radius: 1rem;
-    transition: 1s ease-in;
+    border-bottom: 2px solid var(--main_cl);
 }
+
 .music_Grid_Item-img img {
     border-radius: 0.5rem;
 }
 .music_Grid_Item-img {
-    width: 70px;
-    height: 70px;
+    width: 3.2rem;
+    height: 3.2rem;
     background-clip: cover;
     background-position: 0 0, center;
     background-image: cover;
 }
 .music_Grid_Item-content {
-    color: gray;
-    font-weight: 500;
-    text-align: start;
-}
-.overlay {
     display: none;
-    background-color: rgba(61, 59, 59, 0.7);
-    transition: 0.2s ease-in;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    font-size: 20px;
-    font-weight: bold;
-    transition: 1s ease-in;
 }
-.overlay button {
-    margin-right: 1rem;
+@media (min-width: 768px) {
+    .music_Grid_Item-content {
+        display: flex;
+    }
 }
-.overlay button svg {
+button svg {
+    font-size: 1.5rem;
+}
+button svg:hover {
+    color: var(--cancel_btn_cl);
     font-size: 2rem;
-}
-.overlay button svg:hover {
-    color: #9b4de0;
-    font-size: 2.6rem;
+
     transition: 0.2s ease-in;
 }
 .mplaylist {
