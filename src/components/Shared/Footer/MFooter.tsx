@@ -76,22 +76,19 @@ function MFooter() {
                 {Object.values(musics.mplay).length !== 0 ? (
                     <footer className="flex justify-between">
                         <div className="flex  flex-1">
-                            {musics.mplay.image_music ? (
-                                <div style={{ position: "relative" }}>
-                                    <PlayMusicAnimation />
-                                    <Image
-                                        style={{
-                                            borderRadius: "50%",
-                                            marginLeft: "1rem",
-                                        }}
-                                        src={`${musics.mplay.image_music}`}
-                                        width={70}
-                                        height={70}
-                                    />
-                                </div>
-                            ) : (
-                                <></>
-                            )}
+                            <div style={{ position: "relative" }}>
+                                <PlayMusicAnimation />
+                                <Image
+                                    style={{
+                                        borderRadius: "50%",
+                                        marginLeft: "1rem",
+                                    }}
+                                    src={`${musics.mplay.image_music}`}
+                                    width={70}
+                                    height={70}
+                                />
+                            </div>
+
                             <div className="mx-[3rem] ">
                                 <div>
                                     <h6
@@ -179,9 +176,7 @@ function MFooter() {
                     <ModalDetailComment
                         idMusic={musics.mplay._id}
                         listComment={comment.listComment}
-                        handleResfreshLoadingComment={
-                            handleResfreshLoadingComment
-                        }
+                        handleResfreshLoadingComment={handleResfreshLoadingComment}
                     />
                 </Modal>
 

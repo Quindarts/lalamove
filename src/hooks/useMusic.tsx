@@ -20,7 +20,7 @@ export default function useMusic() {
     const updateMusic = (data: MusicItemType[]) => {
         dispatch(setMusic(data));
     };
-    const playMusic = (data: MusicItemType) => {
+    const playMusic = (data: MusicItemType ) => {
         dispatch(setPlayMusic(data));
     };
     const searchMusicByQuery = (data: MusicItemType[]) => {
@@ -29,13 +29,13 @@ export default function useMusic() {
     const updateMusicHistory = (data: any) => {
         dispatch(updateHistory(data));
     };
-    const fetchAllTopViewType = (data: TopViewMusicType) => {
+    const fetchAllTopViewType = (data: MusicItemType[]) => {
         dispatch(setListTopView(data));
     };
     const fetchListNewsMusic = (data: any) => {
         dispatch(setListNews(data));
     };
-    const fetchListFavorite = (data: MusicFavoriteItemType[]) => {
+    const fetchListFavorite = (data: MusicItemType[]) => {
         dispatch(setListFavorite(data));
     };
     return {

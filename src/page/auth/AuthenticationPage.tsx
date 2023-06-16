@@ -18,7 +18,7 @@ type LoginPropsType = {
     isOpenLoginModal: SetStateAction<boolean>;
     setIsOpenLoginModal: Dispatch<SetStateAction<boolean>>;
 };
-function Login(prop: LoginPropsType) {
+function AuthenticationPage(prop: LoginPropsType) {
     const {
         onClose,
         setIsLoginAccount,
@@ -250,4 +250,4 @@ function Login(prop: LoginPropsType) {
     );
 }
 
-export default Login;
+export default AuthenticationPage;

@@ -1,6 +1,8 @@
 import "../../../styles/components/UI/zoomImage.css";
-
-const ImageZoom = (props: any) => {
+type ImageZoomPropType = {
+    srcImage: string;
+};
+const ImageZoom = (props: ImageZoomPropType) => {
     const { srcImage } = props;
 
     return (

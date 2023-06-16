@@ -5,13 +5,15 @@ import { TopViewMusicType } from "../types/topViewsType";
 
 export type StateInitialStateMusicType = {
     musics: MusicItemType[];
-    search: [];
-    history: [];
-    listNews: [];
-    listTopView: TopViewMusicType;
+    mplay: any;
+    search: any;
+    history: any;
+    listNews: MusicItemType[];
+    listTopView: MusicItemType[];
+    listFavorite: MusicItemType[];
 };
 
-const initialState: any = {
+const initialState: StateInitialStateMusicType = {
     musics: [],
     mplay: {},
     search: [],
@@ -37,19 +39,25 @@ export const useMusic = createSlice({
         ) => {
             state.mplay = payload;
         },
-        searchByQuery: (state: any, { payload }: PayloadAction<any>) => {
+        searchByQuery: (
+            state: StateInitialStateMusicType,
+            { payload }: PayloadAction<MusicItemType[]>,
+        ) => {
             state.search = payload;
         },
-        updateHistory: (state: any, { payload }: PayloadAction<any>) => {
+        updateHistory: (
+            state: StateInitialStateMusicType,
+            { payload }: PayloadAction<MusicItemType[]>,
+        ) => {
             state.history = payload;
         },
-        setListNews: (state: any, { payload }: PayloadAction<any>) => {
+        setListNews: (state: StateInitialStateMusicType, { payload }: PayloadAction<MusicItemType[]>) => {
             state.listNews = payload;
         },
-        setListTopView: (state: any, { payload }: PayloadAction<any>) => {
+        setListTopView: (state: StateInitialStateMusicType, { payload }: PayloadAction<MusicItemType[]>) => {
             state.listTopView = payload;
         },
-        setListFavorite: (state: any, { payload }: PayloadAction<any>) => {
+        setListFavorite: (state: StateInitialStateMusicType, { payload }: PayloadAction<MusicItemType[]>) => {
             state.listFavorite = payload;
         },
     },

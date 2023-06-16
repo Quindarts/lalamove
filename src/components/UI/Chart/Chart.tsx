@@ -16,11 +16,11 @@ function Chart() {
             curve: "straight",
             dashArray: [0, 10, 6],
         },
-        // title: {
-        //     text: "Chart",
-        //     align: "left",
-        //     style: { color: "#fff" },
-        // },
+        title: {
+            text: "Chart",
+            align: "left",
+            style: { color: "#fff" },
+        },
         legend: {
             tooltipHoverFormatter: function (val: any, opts: any) {
                 return (
@@ -42,26 +42,26 @@ function Chart() {
                 sizeOffset: 6,
             },
         },
-        // xaxis: {
-        //     categories: [
-        //         "01 Jan",
-        //         "02 Jan",
-        //         "03 Jan",
-        //         "04 Jan",
-        //         "05 Jan",
-        //         "06 Jan",
-        //         "07 Jan",
-        //         "08 Jan",
-        //         "09 Jan",
-        //         "10 Jan",
-        //         "11 Jan",
-        //         "12 Jan",
-        //     ],
+        xaxis: {
+            categories: [
+                "01 Jan",
+                "02 Jan",
+                "03 Jan",
+                "04 Jan",
+                "05 Jan",
+                "06 Jan",
+                "07 Jan",
+                "08 Jan",
+                "09 Jan",
+                "10 Jan",
+                "11 Jan",
+                "12 Jan",
+            ],
 
-        //     labels: {
-        //         style: { colors: "#cedd76" },
-        //     },
-        // },
+            labels: {
+                style: { colors: "#cedd76" },
+            },
+        },
         tooltip: {
             y: [
                 {

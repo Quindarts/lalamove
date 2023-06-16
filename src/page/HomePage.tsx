@@ -13,7 +13,6 @@ import Button from "../components/UI/Button/Button";
 import ImageZoom from "../components/UI/ZoomImage/ZoomImage";
 import { listCategoryImage, listSlide } from "../types/constants";
 import { AxiosResponse } from "axios";
-import Chart from "../components/UI/Chart/Chart";
 import { color } from "../theme/variable";
 function HomePage() {
     const [typeTopView, setTypeTopView] = useState<String>("million");
@@ -161,9 +160,6 @@ function HomePage() {
             </div>
 
             <div>
-                {/* <div className="text-black flex-1 mt-3">
-                    <Chart />
-                </div> */}
                 <div
                     className="flex justify-between"
                     style={{ alignItems: "center" }}
@@ -204,7 +200,7 @@ function HomePage() {
                     )}
                 </div>
             </div>
-            <div className="">
+            <div>
                 <div
                     className="flex justify-between"
                     style={{ alignItems: "center" }}

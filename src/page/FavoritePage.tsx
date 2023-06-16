@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MusicItem from "../components/UI/Music/MusicItem";
 import { getAllFavoriteMusicAccount } from "../services/favoriteApi";
 import "../styles/pages/favoritepage.css";
@@ -10,12 +10,9 @@ import "swiper/css/navigation";
 import useMusic from "../hooks/useMusic";
 import useFavorite from "../hooks/useFavoriteAccount";
 import MusicGridItem from "../components/UI/Music/MusicGridItem";
-import { Spin } from "antd";
 import { AxiosResponse } from "axios";
-import {
-    MusicFavoriteAccountType,
-    MusicFavoriteItemType,
-} from "../types/favoriteType";
+import { MusicFavoriteAccountType } from "../types/favoriteType";
+import { MusicItemType } from "../types/musicType";
 function FavoritePage() {
     const { favorite, getAllListFavoriteAccount } = useFavorite();
     const { musics } = useMusic();
@@ -39,7 +36,6 @@ function FavoritePage() {
             }
         });
     }, []);
-    console.log("fav", favorite?.favorite);
 
     return (
         <div className="favoritePage">
@@ -55,7 +51,7 @@ function FavoritePage() {
                     </div>
                 ) : (
                     <h1 className="my-5 font-bold text-[25px] text-white text-center">
-                        Danh sách yêu thích của bạn trống 
+                        Danh sách yêu thích của bạn trống
                     </h1>
                 )}
                 <h1 className=" font-bold text-[25px] my-5  ">Gợi ý cho bạn</h1>
@@ -73,7 +69,7 @@ function FavoritePage() {
                     }}
                 >
                     {musics.listFavorite.map(
-                        (music: MusicFavoriteItemType, index: number) =>
+                        (music: MusicItemType, index: number) =>
                             index > 12 ? (
                                 <SwiperSlide key={index} virtualIndex={index}>
                                     <MusicItem mMusic={music} />

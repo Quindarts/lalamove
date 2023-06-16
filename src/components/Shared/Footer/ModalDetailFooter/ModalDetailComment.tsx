@@ -4,13 +4,19 @@ import { CommentDataType } from "../../../../types/commentType";
 import Comment from "../../../UI/Comment/Comment";
 import "../../../../styles/components/Shared/Footer/ModalDetailFooter/modalDetailComment.css";
 import useUSer from "../../../../hooks/useUser";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createCommentAccount } from "../../../../services/commentApi";
-type NotificationType = "success" | "info" | "warning" | "error";
+import { isCheckedAccessToken } from "../../../../utils/helpers";
 
-function ModalDetailComment(props: any) {
-    const [apiMessage, contextHolder] = notification.useNotification();
+type ModalDetailCommentPropsType = {
+    listComment: CommentDataType[];
+    idMusic: string;
+    handleResfreshLoadingComment: () => void;
+};
+function ModalDetailComment(props: ModalDetailCommentPropsType) {
     const { listComment, idMusic, handleResfreshLoadingComment } = props;
+    const { user } = useUSer();
+    const [apiMessage, contextHolder] = notification.useNotification();
     const [contentComment, setContentComment] = useState<string>("");
     const handleCreateComment = () => {
         if (contentComment !== "") {
@@ -25,9 +31,6 @@ function ModalDetailComment(props: any) {
             });
         }
     };
-
-    const { user } = useUSer();
-    console.log("user:", user);
     return (
         <>
             {contextHolder}
@@ -38,6 +41,7 @@ function ModalDetailComment(props: any) {
                         listComment.map(
                             (cmt: CommentDataType, index: number) => (
                                 <Comment
+                                    key={index}
                                     size="md"
                                     content={cmt.content}
                                     account={cmt.account}
@@ -49,13 +53,13 @@ function ModalDetailComment(props: any) {
                         <h1>Chưa có bình luận nào</h1>
                     )}
                 </div>
-                {localStorage.getItem("access_token") ? (
+                {isCheckedAccessToken() && (
                     <div className="reply flex p-4 gap-4">
                         <Image
                             width={60}
                             src={`${user?.userLogin?.data?.image}`}
                         />
-                        
+
                         <Input
                             placeholder="Nhập bình luận"
                             onChange={(e) => {
@@ -69,8 +73,6 @@ function ModalDetailComment(props: any) {
                             <Icon icon="mingcute:send-fill" />
                         </button>
                     </div>
-                ) : (
-                    <></>
                 )}
             </div>
         </>

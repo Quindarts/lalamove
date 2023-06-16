@@ -22,7 +22,10 @@ import { MusicItemType } from "../../../types/musicType";
 import { Icon } from "@iconify/react";
 import { color } from "../../../theme/variable";
 type NotificationType = "success" | "info" | "warning" | "error";
-function MusicGridItem(props: any) {
+type MusicGridItemPropsType = {
+    music: MusicItemType;
+};
+function MusicGridItem(props: MusicGridItemPropsType) {
     const { music } = props;
     const { playlist, getAllPlaylistAccount } = usePlaylist();
     const { playMusic } = useMusic();

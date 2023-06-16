@@ -2,7 +2,7 @@ import axiosConfig from "./axiosconfig";
 type MusicInFavoriteType = {
     idMusic: String;
 };
-export const getAllFavoriteMusicbyParams = async (
+export const fetchAllFavoriteMusicbyParams = async (
     limit: number,
     page: number,
 ) => {

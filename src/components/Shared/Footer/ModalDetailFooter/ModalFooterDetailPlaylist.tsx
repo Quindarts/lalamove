@@ -5,6 +5,7 @@ import { MehFilled } from "@ant-design/icons";
 import TagListHistoryMusic from "./TagListHistoryMusic";
 import TagMPlaylistAccount from "./TagMPlaylistAccount";
 import "../../../../styles/components/Shared/Footer/ModalDetailFooter/modalFooterDetailPlaylist.css";
+import { isCheckedAccessToken } from "../../../../utils/helpers";
 const items: TabsProps["items"] = [
     {
         key: "1",
@@ -19,7 +20,7 @@ const items: TabsProps["items"] = [
 ];
 const Btnlogin: TabsProps["items"] = [
     {
-        key: "1",
+        key: "3",
         label: ``,
         children: (
             <div className=" flex justif-center align-middle h-[80vh]">
@@ -34,17 +35,12 @@ const Btnlogin: TabsProps["items"] = [
     },
 ];
 function ModalFooterDetailPlaylist() {
-    const [access_token, setAccess_token] = useState<string | null>();
-    useEffect(() => {
-        setAccess_token(localStorage.getItem("access_token"));
-    }, [localStorage.getItem("access_token")]);
-
     return (
         <>
             <Tabs
                 className="text-[gray]"
                 defaultActiveKey="1"
-                items={access_token !== null ? items : Btnlogin}
+                items={isCheckedAccessToken() ? items : Btnlogin}
             />
         </>
     );

@@ -10,8 +10,13 @@ import "../../../styles/components/UI/Playlist/playlistaccount.css";
 import Modal from "../Modal/Modal";
 import usePlaylist from "../../../hooks/usePlaylist";
 import ModalFooterDetailPlaylist from "../../Shared/Footer/ModalDetailFooter/ModalFooterDetailPlaylist";
-
-function Playlist(props: any) {
+import { PlaylistAccountType } from "../../../types/playlistType";
+type PlaylistPropsType = {
+    playlist: PlaylistAccountType;
+    handleRemove:any;
+    _id: string;
+};
+function Playlist(props: PlaylistPropsType) {
     const [messageApi, contextHolder] = message.useMessage();
     const { playlist, handleRemove, _id } = props;
     const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +30,7 @@ function Playlist(props: any) {
         setIsOpen(!isOpen);
     };
     const handelRemovePlaylist = () => {
-        removePlaylistAccount(playlist._id).then((res) => {
+        removePlaylistAccount(playlist._id).then(() => {
             handleRemove(true);
             messageApi.open({
                 type: "success",
@@ -36,7 +41,6 @@ function Playlist(props: any) {
     const handelStartPlaylist = () => {
         setLoading(true);
         fetchAllPlaylistDetailAccount(_id).then((res) => {
-            console.log(res.data.data);
             getPlaylistDetailAccount(res.data.data);
             handleOpen();
         });

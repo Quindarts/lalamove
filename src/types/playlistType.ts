@@ -1,15 +1,15 @@
 import { MusicItemType } from './musicType';
 
 export interface ParamsType {
-    pagination: { _limit: String; _page: String; _total: String };
+    pagination: { _limit: string; _page: string; _total: string };
 }
 export interface PlaylistAccountType {
-    image_list: String;
-    createdAt: String;
-    updatedAt: String;
-    _id: String;
-    id_account: String;
-    name_list: String;
+    image_list: string;
+    createdAt: string;
+    updatedAt: string;
+    _id: string;
+    id_account: string;
+    name_list: string;
     __v: number;
 }
 export interface ListPlaylistAccountType {
@@ -17,38 +17,38 @@ export interface ListPlaylistAccountType {
     data: PlaylistAccountType[];
 }
 export interface MusicPlaylistAccountType {
-    createdAt: String;
-    updatedAt: String;
-    _id: String;
-    id_account: String;
-    id_music: String;
+    createdAt: string;
+    updatedAt: string;
+    _id: string;
+    id_account: string;
+    id_music: string;
     music: MusicItemType;
-    id_list: String;
+    id_list: string;
     __v: 0;
 }
 export interface ListDetailPlaylistAccountType {
     pagination: ParamsType;
     data: {
-        image_list: String;
+        image_list: string;
         array_music: MusicPlaylistAccountType[];
-        createdAt: String;
-        updatedAt: String;
-        _id: String;
-        id_account: String;
-        name_list: String;
+        createdAt: string;
+        updatedAt: string;
+        _id: string;
+        id_account: string;
+        name_list: string;
         __v: number;
     };
 }
 export interface CreatePlaylistAccountType {
-    idMusic: String;
-    nameList: String;
+    idMusic: string;
+    nameList: string;
 }
 export interface UpdatePlaylistAccountType {
-    nameList: String;
-    _id: String;
+    nameList: string;
+    _id: string;
 }
 export interface AddPlaylistAccountType{
-    _id: String,
-    _id_music: String,
-    nameList: String
+    _id: string,
+    _id_music: string,
+    nameList: string
 }

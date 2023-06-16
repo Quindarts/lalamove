@@ -5,34 +5,31 @@ import { Outlet } from "react-router";
 import MFooter from "../Shared/Footer/MFooter";
 import { useEffect } from "react";
 import { fethAllPlaylistAccount } from "../../services/playlistApi";
-import { getAllFavoriteMusicbyParams } from "../../services/favoriteApi";
+import { fetchAllFavoriteMusicbyParams } from "../../services/favoriteApi";
 import usePlaylist from "../../hooks/usePlaylist";
 import useMusic from "../../hooks/useMusic";
-import { getAllNewsMusicByParams } from "../../services/newMusicApi";
+import { fetchAllNewsMusicByParams } from "../../services/newMusicApi";
 import { AxiosResponse } from "axios";
 import { color } from "../../theme/variable";
+import { isCheckedAccessToken, removeAccessToken } from "../../utils/helpers";
 
 function Mainlayout() {
     const { getAllPlaylistAccount } = usePlaylist();
     const { fetchListFavorite, fetchListNewsMusic } = useMusic();
-    window.addEventListener("load", function () {
-        localStorage.removeItem("access_token");
-    });
     useEffect(() => {
-        if (localStorage.getItem("access_token") !== null) {
+        window.addEventListener("load", function () {
+            removeAccessToken();
+        });
+        isCheckedAccessToken() &&
             fethAllPlaylistAccount().then((res: AxiosResponse) => {
                 getAllPlaylistAccount(res.data.data);
             });
-        }
-
-        getAllFavoriteMusicbyParams(24, 3).then((res: AxiosResponse) => {
+        fetchAllFavoriteMusicbyParams(24, 3).then((res: AxiosResponse) => {
             if (res.status === 200 || res.status === 204) {
                 fetchListFavorite(res.data.data);
-                console.log(res.data);
-                
             }
         });
-        getAllNewsMusicByParams(12, 2).then((res: AxiosResponse) => {
+        fetchAllNewsMusicByParams(12, 2).then((res: AxiosResponse) => {
             if (res.status === 200 || res.status === 204) {
                 fetchListNewsMusic(res.data.data);
             }

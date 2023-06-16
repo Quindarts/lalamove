@@ -1,7 +1,7 @@
 import { Dropdown, Input, MenuProps, theme } from "antd";
 import { Header } from "antd/es/layout/layout";
 import React, { useEffect, useState } from "react";
-import Login from "../../../page/auth/Login";
+import AuthenticationPage from "../../../page/auth/AuthenticationPage";
 import Button from "../../UI/Button/Button";
 import Modal from "../../UI/Modal/Modal";
 import useMusic from "../../../hooks/useMusic";
@@ -10,6 +10,7 @@ import { apiSearchMusicByQuery } from "../../../services/appApi";
 import useUSer from "../../../hooks/useUser";
 import { useNavigate } from "react-router";
 import { Icon } from "@iconify/react";
+import { removeAccessToken } from "../../../utils/helpers";
 
 function MHeader() {
     const { Search } = Input;
@@ -30,7 +31,7 @@ function MHeader() {
     };
     const handleLogoutAccount = () => {
         setIsLoginAccount(false);
-        localStorage.removeItem("access_token");
+        removeAccessToken();
     };
     useEffect(() => {
         if (search !== "") {
@@ -128,7 +129,7 @@ function MHeader() {
                 open={isOpen.open}
                 onClose={handleCloseModal}
             >
-                <Login
+                <AuthenticationPage
                     onClose={handleCloseModal}
                     setIsLoginAccount={setIsLoginAccount}
                     isOpenLoginModal={isOpenLoginModal}

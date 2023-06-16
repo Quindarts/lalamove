@@ -8,9 +8,20 @@ import {
 import Button from "../Button/Button";
 import { MehFilled } from "@ant-design/icons";
 import usePlaylist from "../../../hooks/usePlaylist";
+import { MusicItemType } from "../../../types/musicType";
 type NotificationType = "success" | "info" | "warning" | "error";
 
-function ModalPlaylistDetail(props: any) {
+type ModalPlaylistDetailPropsType = {
+    messageApi: any;
+    handleAddNewMusicToPlaylist: (
+        nameList: string,
+        _id_music: string,
+        _id: string,
+    ) => void;
+    music: MusicItemType;
+    playlist: any;
+};
+function ModalPlaylistDetail(props: ModalPlaylistDetailPropsType) {
     const { getAllPlaylistAccount } = usePlaylist();
     const { messageApi, handleAddNewMusicToPlaylist, music, playlist } = props;
     const [namePlaylist, setNamePlaylist] = useState("");
@@ -27,11 +38,11 @@ function ModalPlaylistDetail(props: any) {
     const handleMusicToPlayList = (nameList: string, _id: string) => {
         const musicToPlaylist = { idMusic: _id, nameList: nameList };
         createNewPlayListAccount(musicToPlaylist).then((res) => {
-            if (res.status === 200) {
+            if (res.status === 200 || res.status == 204) {
                 openNotificationWithIcon(
-                    "warning",
-                    "Đăng nhập",
-                    "Tạo Playlist  thành công mới",
+                    "success",
+                    "Danh sách phát",
+                    "Tạo Danh sách thành công",
                 );
                 fethAllPlaylistAccount().then((res: any) => {
                     getAllPlaylistAccount(res.data.data);

@@ -17,9 +17,7 @@
 .btn:hover {
     color: black;
 }
-.btn--pink:hover {
-    box-shadow: 1px 2px 1px 2px #343434;
-}
+
 .btn--pink {
     background-color: var(--cancel_btn_cl);
     border: 2px solid var(--cancel_btn_cl);

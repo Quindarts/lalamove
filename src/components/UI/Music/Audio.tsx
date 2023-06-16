@@ -1,11 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import TimeSlider from "react-input-slider";
 import "../../../styles/components/UI/Music/audio.css";
 import { StepBackwardOutlined, StepForwardOutlined } from "@ant-design/icons";
 import { Icon } from "@iconify/react";
-import Button from "../Button/Button";
 import { color } from "../../../theme/variable";
-function Audio(props: any) {
+type AudioPropsType = {
+    srcMusic: string;
+    timeFormat: string;
+    isPlay: SetStateAction<boolean>;
+    setPlay: Dispatch<SetStateAction<boolean>>;
+};
+function Audio(props: AudioPropsType) {
     const { srcMusic, timeFormat, isPlay, setPlay } = props;
     const audioRef: any = useRef();
     const [audioIndex, setAudioIndex] = useState(0);

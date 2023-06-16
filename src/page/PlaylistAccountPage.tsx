@@ -1,4 +1,3 @@
-import { Spin } from "antd";
 import { useEffect, useState } from "react";
 import Playlist from "../components/UI/Playlist/Playlist";
 import usePlaylist from "../hooks/usePlaylist";
@@ -8,17 +7,13 @@ import { PlaylistAccountType } from "../types/playlistType";
 function PlaylistAccountPage() {
     const { playlist, getAllPlaylistAccount } = usePlaylist();
     const [remove, setRemove] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
     const handleRemove = () => {
         setRemove(!remove);
     };
     useEffect(() => {
         fethAllPlaylistAccount().then((res: any) => {
             if (res.status === 200 || res.status === 204) {
-                setIsLoading(false);
                 getAllPlaylistAccount(res.data.data);
-                console.log(res.data.data);
-                console.log(playlist);
             }
         });
     }, []);
