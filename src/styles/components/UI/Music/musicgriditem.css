@@ -24,6 +24,7 @@
 .music_Grid_Item-content {
     display: none;
 }
+
 @media (min-width: 768px) {
     .music_Grid_Item-content {
         display: flex;
@@ -46,4 +47,11 @@
 }
 .mplaylist:hover {
     background-color: rgba(134, 132, 132, 0.5);
+}
+@media (max-width: 600px) {
+    .music_Grid_Item,
+    h6 {
+        font-size: 80%;
+        line-height: 1rem;
+    }
 }

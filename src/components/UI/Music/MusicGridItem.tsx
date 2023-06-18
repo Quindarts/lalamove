@@ -104,15 +104,15 @@ function MusicGridItem(props: MusicGridItemPropsType) {
                     <div className="flex">
                         <div className="music_Grid_Item-img mr-3">
                             <Image
-                                width="100%"
-                                height="100%"
+                                width={51}
+                                height={51}
                                 src={`${music.image_music}`}
                                 alt=""
                             />
                         </div>
                         <div className="">
                             <h6
-                                className="font-bold text-[18px]"
+                                className="font-bold"
                                 style={{ color: color.cancel_btn_cl }}
                             >
                                 {music.name_music}
@@ -152,10 +152,9 @@ function MusicGridItem(props: MusicGridItemPropsType) {
                         <Icon icon="solar:heart-bold" />
                     </button>
                 </div>
-                {/* </div> */}
             </div>
             <Modal
-                type="top"
+                type="playlist-top"
                 id={isOpen.id}
                 open={isOpen.open}
                 onClose={handleClose}

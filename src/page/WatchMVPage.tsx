@@ -1,7 +1,7 @@
 import React from "react";
-
+import "../styles/pages/watchMV.css";
 function WatchMVPage() {
-    return <div className="flex justify-center align-middle"></div>;
+    return <div className="watch_MV"></div>;
 }
 
 export default WatchMVPage;

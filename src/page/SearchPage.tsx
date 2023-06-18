@@ -5,7 +5,7 @@ import { MusicItemType } from "../types/musicType";
 
 function SearchPage() {
     const { musics } = useMusic();
-    const { data } = musics.search?.data || {};
+    const { data } = musics.search || {};
     return (
         <>
             <h1 className="my-1 font-bold text-[25px] text-white mx-5 px-5">

@@ -1,5 +1,9 @@
 .favoritePage {
     padding: 1rem;
-    margin: 0 0 0 24px;
     color: white;
+}
+@media (max-width: 1079px) {
+    .favoritePage  {
+        min-height: calc(100vh - 45px);
+    }
 }

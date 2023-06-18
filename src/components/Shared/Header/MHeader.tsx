@@ -1,11 +1,18 @@
-import { Dropdown, Input, MenuProps, theme } from "antd";
+import {
+    AutoComplete,
+    Dropdown,
+    Input,
+    MenuProps,
+    SelectProps,
+    theme,
+} from "antd";
 import { Header } from "antd/es/layout/layout";
 import React, { useEffect, useState } from "react";
 import AuthenticationPage from "../../../page/auth/AuthenticationPage";
 import Button from "../../UI/Button/Button";
 import Modal from "../../UI/Modal/Modal";
 import useMusic from "../../../hooks/useMusic";
-import "../../../styles/components/Shared/header.css";
+import "../../../styles/components/Shared/Header/header.css";
 import { apiSearchMusicByQuery } from "../../../services/appApi";
 import useUSer from "../../../hooks/useUser";
 import { useNavigate } from "react-router";
@@ -17,7 +24,7 @@ function MHeader() {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState({ open: false, id: "" });
     const [search, setSearch] = useState<string>("");
-    const { searchMusicByQuery } = useMusic();
+    const { searchMusicByQuery, musics } = useMusic();
     const [isOpenLoginModal, setIsOpenLoginModal] = useState<boolean>(true);
     const [isLoginAccount, setIsLoginAccount] = useState(false);
     const { user } = useUSer();
@@ -37,7 +44,9 @@ function MHeader() {
         if (search !== "") {
             apiSearchMusicByQuery(search).then((res: any) => {
                 if (res.status === 200) {
-                    searchMusicByQuery(res);
+                    searchMusicByQuery(res.data);
+                    console.log(musics.search);
+
                     navigate("/search");
                 }
             });
@@ -83,7 +92,8 @@ function MHeader() {
                     enterButton
                     style={{ width: 400 }}
                 />
-                <div>
+
+                <div className="header_user">
                     {isLoginAccount ? (
                         <div
                             className="flex gap-[1rem] justify-center profile px-3 py-1"
@@ -100,7 +110,10 @@ function MHeader() {
                             </span>
                             <Dropdown menu={{ items }} placement="bottomLeft">
                                 <Button>
-                                    <Icon className="text-[1.3rem]" icon="fe:drop-down" />
+                                    <Icon
+                                        className="text-[1.3rem]"
+                                        icon="fe:drop-down"
+                                    />
                                 </Button>
                             </Dropdown>
                         </div>

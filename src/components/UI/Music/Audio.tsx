@@ -43,7 +43,7 @@ function Audio(props: AudioPropsType) {
     console.log("abc:", srcMusic);
 
     return (
-        <div className="App">
+        <div className="App w-[100%]">
             <div className="Control-Button-Group mb-[10px]">
                 <div className="Prev-Button" onClick={() => setAudioIndex(1)}>
                     <StepBackwardOutlined className="text-[1.7rem]" />
@@ -69,7 +69,10 @@ function Audio(props: AudioPropsType) {
                     <StepForwardOutlined className="text-[1.7rem]" />
                 </div>
             </div>
-            <div className="flex justify-center align-middle gap-3">
+            <div
+                className="flex justify-center gap-3"
+                style={{ alignItems: "center" }}
+            >
                 <div className="time_current">
                     0{Math.floor(currentTime / 60)} :{" "}
                     {Math.floor(currentTime % 60)}
@@ -83,7 +86,7 @@ function Audio(props: AudioPropsType) {
                         track: {
                             backgroundColor: "#787777",
                             height: "0.2rem",
-                            width: "30rem",
+                            width: "100%",
                         },
                         active: {
                             backgroundColor: color.cancel_btn_cl,

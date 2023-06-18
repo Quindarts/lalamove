@@ -10,8 +10,7 @@ import {
     updateHistory,
 } from "../store/useMusic.slice";
 import { MusicItemType } from "../types/musicType";
-import { TopViewMusicType } from "../types/topViewsType";
-import { MusicFavoriteItemType } from "../types/favoriteType";
+
 
 export default function useMusic() {
     const musics = useSelector((state: RootState) => state.musics);

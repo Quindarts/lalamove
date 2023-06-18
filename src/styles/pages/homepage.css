@@ -1,8 +1,6 @@
 .homePage {
     padding: 1rem;
     color: white;
-    max-width: calc(100vw - 80px);
-    min-width: calc(100vw - 200px);
 }
 .chart_music {
     border-radius: 0.5rem;
@@ -10,11 +8,42 @@
     background-size: cover;
     animation: background-animation 0.2s infinite linear;
 }
+.title_ranking_number {
+    font-size: 1.2nprem;
+}
 @keyframes background-animation {
     0% {
         background-position: 0% 50%;
     }
     100% {
         background-position: 100% 50%;
+    }
+}
+@media (min-width: 1079px) {
+    .homePage {
+        padding: 1rem;
+        color: white;
+        max-width: calc(100vw - 80px);
+        min-width: calc(100vw - 200px);
+    }
+}
+@media (min-width: 600px) {
+    .title_ranking_number {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1rem !important;
+    }
+    h6,
+    p {
+        font-size: 0.7rem !important;
+    }
+    .top_views_slide, .top_month_block{
+        padding: 0;
+    }
+    .title_ranking_number{
+        display: none;
     }
 }

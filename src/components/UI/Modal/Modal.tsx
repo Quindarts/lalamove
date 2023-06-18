@@ -1,9 +1,9 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import "../../../styles/components/UI/modal.css";
 import { CloseOutlined } from "@ant-design/icons";
 import { Content } from "antd/es/layout/layout";
 interface ModalPropsType {
-    type?: "top" | "right" | string;
+    type?: "top" | "right" | "playlist-top" | "left" | "control-music";
     children?: React.ReactNode;
     open?: boolean;
     id?: string;

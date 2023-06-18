@@ -1,15 +1,11 @@
 .modal {
     display: none;
-    z-index: 999;
-
 }
 .modal-open {
-    width: 100vw;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 1000000000;
 }
 .modal-overlay {
     width: 100%;
@@ -20,7 +16,6 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
     padding: 1rem 2.4rem;
     border-radius: 0.3rem;
     transition: 0.1s ease-in;
@@ -48,13 +43,23 @@
         opacity: 1;
     }
 }
+@keyframes open-left {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
 .modal_body {
     position: fixed;
     top: 0;
     transform: translateY(0px);
-    background-color: rgba(40, 36, 42, 0.9);
+    background-color: var(--sidebar_cl);
     color: white;
-    box-shadow: 4px 20px 20px 20px #131212;
+    box-shadow: 4px 5px 5px 5px #131212;
     border-radius: 0.3rem;
     font-size: 1.2rem;
     z-index: 9999;
@@ -69,12 +74,38 @@
     animation: open-top 0.5s;
     transition: 0.5s ease-in;
 }
+
+.modal-control-music {
+    width: auto;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    animation: open-left 0.5s;
+    color: var(--cancel_btn_cl);
+}
+.modal-playlist-top {
+    top: 50px;
+    height: auto;
+    left: calc(50vw - 200px);
+    min-height: 25rem;
+    padding: 1rem;
+    animation: open-top 0.5s;
+    transition: 0.5s ease-in;
+}
 .modal-right {
     width: auto;
     height: 100%;
     position: fixed;
     right: 0;
     animation: open-right 0.5s;
+}
+.modal-left {
+    width: auto;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    animation: open-left 0.5s;
 }
 .modal-bottom {
     background-color: rgb(237, 171, 26);

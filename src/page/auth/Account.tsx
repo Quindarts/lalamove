@@ -1,5 +1,5 @@
 function Account() {
-    return <div>Account</div>;
+    return <div className="account_page">Account</div>;
 }
 
 export default Account;

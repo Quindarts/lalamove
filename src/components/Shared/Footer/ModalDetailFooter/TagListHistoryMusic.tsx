@@ -3,6 +3,7 @@ import useMusic from "../../../../hooks/useMusic";
 import { getAllHistoryApi } from "../../../../services/historyApi";
 import MusicGridItem from "../../../UI/Music/MusicGridItem";
 import "../.../../../../../styles/components/Shared/Footer/ModalDetailFooter/taglisthistorymusic.css";
+import MusicItemBasic from "../../../UI/Music/MusicItemBasic";
 function TagListHistoryMusic() {
     const { musics, updateMusicHistory } = useMusic();
     useEffect(() => {
@@ -14,10 +15,10 @@ function TagListHistoryMusic() {
     }, [musics.mplay]);
     return (
         <>
-            <div className="w-[25rem] list-history">
+            <div className="w-[25rem] px-[1rem] list-history flex flex-wrap gap-[1rem] justify-between">
                 {musics?.history?.data?.map((item: any, index: number) =>
                     index < 15 ? (
-                        <MusicGridItem music={item.music} key={index} />
+                        <MusicItemBasic music={item.music} key={index} />
                     ) : (
                         <></>
                     ),

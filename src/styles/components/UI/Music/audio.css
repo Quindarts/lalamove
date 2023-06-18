@@ -24,7 +24,7 @@
 }
 .time_current {
     color: #828080;
-    width: 3rem;
+    min-width: 3rem;
 }
 .css-13ukp1p-Slider {
     margin-top: 10px;

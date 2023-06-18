@@ -14,10 +14,13 @@ import ImageZoom from "../components/UI/ZoomImage/ZoomImage";
 import { listCategoryImage, listSlide } from "../types/constants";
 import { AxiosResponse } from "axios";
 import { color } from "../theme/variable";
+import MusicItemBasic from "../components/UI/Music/MusicItemBasic";
 function HomePage() {
     const [typeTopView, setTypeTopView] = useState<String>("million");
     const { musics, fetchAllTopViewType } = useMusic();
     const [renderInfinitySlide, setRenderInfinitySlide] = useState<number>(3);
+    const [renderlistNewSwiper, setRenderlistNewSwiper] = useState<number>(9);
+
     const [renderSlideBG, setRenderSlideBG] = useState<number>(3);
     const [widthApp, setWidthApp] = useState<number>(0);
     useEffect(() => {
@@ -28,18 +31,28 @@ function HomePage() {
         if (window.innerWidth > 1200) {
             setRenderInfinitySlide(6);
             setRenderSlideBG(3);
+            setRenderlistNewSwiper(9);
         }
         if (window.innerWidth > 1000 && window.innerWidth <= 1200) {
             setRenderInfinitySlide(4);
             setRenderSlideBG(2);
+            setRenderlistNewSwiper(6);
         }
         if (window.innerWidth > 600 && window.innerWidth <= 1000) {
             setRenderInfinitySlide(2);
             setRenderSlideBG(1);
+            setRenderlistNewSwiper(4);
+        }
+        if (window.innerWidth > 460 && window.innerWidth <= 690) {
+            setRenderlistNewSwiper(3);
         }
         if (window.innerWidth <= 600) {
             setRenderInfinitySlide(1);
             setRenderSlideBG(1);
+            // setRenderlistNewSwiper(2);
+        }
+        if (window.innerWidth <= 460) {
+            setRenderlistNewSwiper(2);
         }
     }, [widthApp]);
 
@@ -83,9 +96,47 @@ function HomePage() {
                     </SwiperSlide>
                 ))}
             </Swiper>
-
+            <div
+                className="flex justify-between"
+                style={{ alignItems: "center" }}
+            >
+                <h1 className=" mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                    Phát hành gần đây{" "}
+                </h1>
+                <h1
+                    className="title_views mb-5 mt-[5rem] font-[500] text-gray-600 text-[1rem] flex gap-1"
+                    style={{ cursor: "pointer" }}
+                >
+                    Xem tất cả
+                    <Icon icon="grommet-icons:next" className="mt-[2.2px]" />
+                </h1>
+            </div>
+            <div className="demo flex flex-wrap justify-between">
+                <Swiper
+                    slidesPerView={renderlistNewSwiper}
+                    spaceBetween={15}
+                    modules={[Autoplay]}
+                    autoplay={{
+                        delay: 4000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                        stopOnLastSlide: false,
+                        reverseDirection: false,
+                    }}
+                >
+                    {musics.listNews.map((music, index) =>
+                        index > 5 ? (
+                            <SwiperSlide key={index} virtualIndex={index}>
+                                <MusicItemBasic key={index} music={music} />
+                            </SwiperSlide>
+                        ) : (
+                            <></>
+                        ),
+                    )}
+                </Swiper>
+            </div>
             <h1 className="my-5 mt-[5rem] font-bold text-[1.6rem]">
-                TOP VIEWS{" "}
+                Top lượt xem{" "}
                 <Icon
                     icon="solar:star-bold"
                     className="text-yellow-400"
@@ -125,7 +176,7 @@ function HomePage() {
                 className="flex justify-between"
                 style={{ alignItems: "center" }}
             >
-                <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                <h1 className=" mb-5 mt-[5rem] font-bold text-[1.6rem]">
                     Thể loại{" "}
                 </h1>
                 <h1
@@ -159,12 +210,11 @@ function HomePage() {
                 </Swiper>
             </div>
 
-            <div>
                 <div
-                    className="flex justify-between"
+                    className=" flex justify-between"
                     style={{ alignItems: "center" }}
                 >
-                    <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                    <h1 className=" mb-5 mt-[5rem] font-bold text-[1.6rem]">
                         Top bài hát tháng này{" "}
                     </h1>
                     <h1
@@ -179,7 +229,7 @@ function HomePage() {
                     </h1>
                 </div>
                 <div
-                    className=" p-[1rem] rounded-[6px]"
+                    className="top_month_block p-[1rem] rounded-[6px]"
                     style={{ background: color.grey_btn_cl }}
                 >
                     {musics.listTopView.map(
@@ -189,7 +239,7 @@ function HomePage() {
                                     className="flex "
                                     style={{ alignItems: "center" }}
                                 >
-                                    <h1 className="text-[#fac228] text-[2.5rem] mr-[1rem] font-bold">
+                                    <h1 className="title_ranking_number text-[#fac228] text-[2.5rem] mr-[1rem] font-bold">
                                         #{index + 1}
                                     </h1>
                                     <MusicGridItem key={index} music={music} />
@@ -199,13 +249,12 @@ function HomePage() {
                             ),
                     )}
                 </div>
-            </div>
             <div>
                 <div
                     className="flex justify-between"
                     style={{ alignItems: "center" }}
                 >
-                    <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                    <h1 className=" mb-5 mt-[5rem] font-bold text-[1.6rem]">
                         Yêu thích
                     </h1>
                     <h1
@@ -249,7 +298,7 @@ function HomePage() {
                 className="flex justify-between"
                 style={{ alignItems: "center" }}
             >
-                <h1 className="mb-5 mt-[5rem] font-bold text-[1.6rem]">
+                <h1 className=" mb-5 mt-[5rem] font-bold text-[1.6rem]">
                     Mới ra mắt{" "}
                 </h1>
                 <h1
@@ -261,9 +310,13 @@ function HomePage() {
                 </h1>
             </div>
             <div className="news_music_slide  flex flex-wrap gap-1">
-                {musics.listNews.map((music: MusicItemType, index: number) => (
-                    <MusicGridItem key={index} music={music} />
-                ))}
+                {musics.listNews.map((music: MusicItemType, index: number) =>
+                    index < 5 ? (
+                        <MusicGridItem key={index} music={music} />
+                    ) : (
+                        <></>
+                    ),
+                )}
             </div>
         </div>
     );
