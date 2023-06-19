@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { CommentDataType } from "../types/commentType";
+import { CommentDataType } from "types/commentType";
 type InitialStateType = {
     listComment: CommentDataType[];
 };

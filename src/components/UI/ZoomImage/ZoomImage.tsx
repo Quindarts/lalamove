@@ -1,4 +1,4 @@
-import "../../../styles/components/UI/zoomImage.css";
+import "styles/components/UI/zoomImage.css";
 type ImageZoomPropType = {
     srcImage: string;
 };

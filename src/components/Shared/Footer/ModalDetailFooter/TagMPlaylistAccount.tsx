@@ -1,5 +1,5 @@
-import usePlaylist from "../../../../hooks/usePlaylist";
-import MusicGridItem from "../../../UI/Music/MusicGridItem";
+import usePlaylist from "hooks/usePlaylist";
+import MusicGridItem from "components/UI/Music/MusicGridItem";
 
 function TagMPlaylistAccount() {
     const { playlist } = usePlaylist();

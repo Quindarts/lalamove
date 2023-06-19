@@ -1,7 +1,6 @@
-import React from "react";
 import { Navigate } from "react-router";
-import Account from "../page/auth/Account";
-import { APP_ROUTES } from "../types/constants";
+import { APP_ROUTES } from "types/constants";
+import Account from "page/auth/Account";
 
 function PrivateRouter() {
     const token = localStorage.getItem("access_token");

@@ -1,4 +1,4 @@
-import { RootState } from "../store/index";
+import { RootState } from "store/index";
 import { useSelector, useDispatch } from "react-redux";
 import {
     searchByQuery,
@@ -8,8 +8,8 @@ import {
     setMusic,
     setPlayMusic,
     updateHistory,
-} from "../store/useMusic.slice";
-import { MusicItemType } from "../types/musicType";
+} from "store/useMusic.slice";
+import { MusicItemType } from "types/musicType";
 
 
 export default function useMusic() {

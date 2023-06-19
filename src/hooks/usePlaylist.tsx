@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
-import { setAllPlaylistAccount, setPlaylistDetailAcccount } from "../store/usePlaylist.slice";
+import { RootState } from "store";
+import { setAllPlaylistAccount, setPlaylistDetailAcccount } from "store/usePlaylist.slice";
 
 export default function usePlaylist() {
     const playlist = useSelector((state: RootState) => state.playlist);

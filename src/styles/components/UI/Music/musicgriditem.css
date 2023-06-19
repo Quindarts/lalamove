@@ -5,7 +5,6 @@
     line-height: 1.8rem;
     border-radius: 1rem;
     transition: 1s ease-in;
-    margin: 1rem 0 1rem 0;
     color: var(--text_grey_cl);
     align-items: center;
     border-bottom: 2px solid var(--main_cl);

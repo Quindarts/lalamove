@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { MusicItemType } from "../types/musicType";
-import { TopViewMusicType } from "../types/topViewsType";
+import { MusicItemType } from "types/musicType";
 
 export type StateInitialStateMusicType = {
     musics: MusicItemType[];

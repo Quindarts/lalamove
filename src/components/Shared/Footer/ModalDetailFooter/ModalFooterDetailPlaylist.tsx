@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
 import { MehFilled } from "@ant-design/icons";
 import TagListHistoryMusic from "./TagListHistoryMusic";
 import TagMPlaylistAccount from "./TagMPlaylistAccount";
-import "../../../../styles/components/Shared/Footer/ModalDetailFooter/modalFooterDetailPlaylist.css";
-import { isCheckedAccessToken } from "../../../../utils/helpers";
+import "styles/components/Shared/Footer/ModalDetailFooter/modalFooterDetailPlaylist.css";
+import { isCheckedAccessToken } from "utils/helpers";
 const items: TabsProps["items"] = [
     {
         key: "1",

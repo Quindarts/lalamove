@@ -1,19 +1,19 @@
 import { Layout } from "antd";
-import Siderbar from "../Shared/Siderbar/Siderbar";
-import MHeader from "../Shared/Header/MHeader";
+import Siderbar from "components/Shared/Siderbar/Siderbar";
+import MHeader from "components/Shared/Header/MHeader";
 import { Outlet } from "react-router";
-import MFooter from "../Shared/Footer/MFooter";
+import MFooter from "components/Shared/Footer/MFooter";
 import { useEffect, useState } from "react";
-import { fethAllPlaylistAccount } from "../../services/playlistApi";
-import { fetchAllFavoriteMusicbyParams } from "../../services/favoriteApi";
-import usePlaylist from "../../hooks/usePlaylist";
-import useMusic from "../../hooks/useMusic";
-import { fetchAllNewsMusicByParams } from "../../services/newMusicApi";
+import { fethAllPlaylistAccount } from "services/playlistApi";
+import { fetchAllFavoriteMusicbyParams } from "services/favoriteApi";
+import usePlaylist from "hooks/usePlaylist";
+import useMusic from "hooks/useMusic";
+import { fetchAllNewsMusicByParams } from "services/newMusicApi";
 import { AxiosResponse } from "axios";
-import { color } from "../../theme/variable";
-import { isCheckedAccessToken, removeAccessToken } from "../../utils/helpers";
-import FooterMobile from "../Shared/Footer/FooterMobile";
-import HeaderMobile from "../Shared/Header/HeaderMobile";
+import { color } from "theme/variable";
+import { isCheckedAccessToken, removeAccessToken } from "utils/helpers";
+import FooterMobile from "components/Shared/Footer/FooterMobile";
+import HeaderMobile from "components/Shared/Header/HeaderMobile";
 
 function Mainlayout() {
     const { getAllPlaylistAccount } = usePlaylist();
@@ -32,7 +32,7 @@ function Mainlayout() {
                 fetchListFavorite(res.data.data);
             }
         });
-        fetchAllNewsMusicByParams(20, 2).then((res: AxiosResponse) => {
+        fetchAllNewsMusicByParams(27, 2).then((res: AxiosResponse) => {
             if (res.status === 200 || res.status === 204) {
                 fetchListNewsMusic(res.data.data);
             }

@@ -1,8 +1,12 @@
-input{
-    color:black;    
-    font-size: 1rem;
-}
 
+.form-btn_login {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.ant-form-item-control-input-content span {
+    color: white;
+}
 .ant-form-item .ant-row {
     flex-direction: column;
 }
@@ -22,20 +26,16 @@ input{
 .ant-form-item-explain-error {
     margin-top: 2px;
 }
-.ant-col-8{
+.ant-col-8 {
     max-width: 100%;
 }
 .ant-col-offset-8 {
     margin-inline-start: 0%;
 }
-.ant-checkbox{
+.ant-checkbox {
     color: white;
 }
-.form-btn_login{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.ant-form-item-control-input-content span{ 
-    color: white;
+input {
+    color: black;
+    font-size: 1rem;
 }

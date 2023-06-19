@@ -1,33 +1,19 @@
 import { Icon } from "@iconify/react";
-import { Image, notification } from "antd";
-import React, { useEffect, useState } from "react";
-import useMusic from "../../../hooks/useMusic";
-import usePlaylist from "../../../hooks/usePlaylist";
-import { createMuisicToFavoriteList } from "../../../services/favoriteApi";
-import {
-    addNewMusicToPlayListAccount,
-    fethAllPlaylistAccount,
-    NewMusicPlaylistAccountType,
-} from "../../../services/playlistApi";
-import { color } from "../../../theme/variable";
-import { MusicItemType } from "../../../types/musicType";
-import Modal from "../Modal/Modal";
-import ModalPlaylistDetail from "./ModalPlaylistDetail";
-import "../../../styles/components/UI/Music/musicItemBasic.css";
+import { notification } from "antd";
+import useMusic from "hooks/useMusic";
+import { createMuisicToFavoriteList } from "services/favoriteApi";
+import { MusicItemType } from "types/musicType";
+import { color } from "theme/variable";
+import "styles/components/UI/Music/musicItemBasic.css";
 type NotificationType = "success" | "info" | "warning" | "error";
 type MusicItemBasicPropsType = {
     music: MusicItemType;
 };
 function MusicItemBasic(props: MusicItemBasicPropsType) {
     const { music } = props;
-    const { getAllPlaylistAccount } = usePlaylist();
     const { playMusic } = useMusic();
-    const [isOpen, setIsOpen] = useState({ open: false, id: "modalGridItem" });
     const [messageApi, contextHolder] = notification.useNotification();
 
-    const handleClose = () => {
-        setIsOpen({ ...isOpen, open: false });
-    };
     const handlePlayMusic = (music: MusicItemType) => {
         playMusic(music);
     };

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Playlist from "../components/UI/Playlist/Playlist";
-import usePlaylist from "../hooks/usePlaylist";
-import { fethAllPlaylistAccount } from "../services/playlistApi";
-import "../styles/pages/playlistaccountpage.css";
-import { PlaylistAccountType } from "../types/playlistType";
+import usePlaylist from "hooks/usePlaylist";
+import { fethAllPlaylistAccount } from "services/playlistApi";
+import { PlaylistAccountType } from "types/playlistType";
+import Playlist from "components/UI/Playlist/Playlist";
+import "styles/pages/playlistaccountpage.css";
 function PlaylistAccountPage() {
     const { playlist, getAllPlaylistAccount } = usePlaylist();
     const [remove, setRemove] = useState(false);

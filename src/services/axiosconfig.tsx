@@ -1,5 +1,5 @@
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
-import { APP_API } from "../types/constants";
+import axios, { AxiosError } from "axios";
+import { APP_API } from "types/constants";
 
 const axiosConfig = axios.create({
     baseURL: APP_API,

@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router";
-import Mainlayout from "../components/Layout/Mainlayout";
-import FavoritePage from "../page/FavoritePage";
-import HomePage from "../page/HomePage";
-import Page404 from "../page/Page404";
-import PlaylistAccountPage from "../page/PlaylistAccountPage";
-import SearchPage from "../page/SearchPage";
-import WatchMVPage from "../page/WatchMVPage";
-import { APP_ROUTES } from "../types/constants";
+import { APP_ROUTES } from "types/constants";
+import Mainlayout from "components/Layout/Mainlayout";
+import FavoritePage from "page/FavoritePage";
+import HomePage from "page/HomePage";
+import Page404 from "page/Page404";
+import PlaylistAccountPage from "page/PlaylistAccountPage";
+import SearchPage from "page/SearchPage";
+import WatchMVPage from "page/WatchMVPage";
 import PrivateRouter from "./PrivateRouter";
 const Routing: React.FC = () => {
     return (

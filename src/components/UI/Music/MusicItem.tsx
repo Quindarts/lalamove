@@ -1,9 +1,10 @@
-import "../../../styles/components/UI/Music/musicItem.css";
-import useMusic from "../../../hooks/useMusic";
-import { MusicItemType } from "../../../types/musicType";
 import { Icon } from "@iconify/react";
 import { notification } from "antd";
-import { createMuisicToFavoriteList } from "../../../services/favoriteApi";
+import useMusic from "hooks/useMusic";
+import { createMuisicToFavoriteList } from "services/favoriteApi";
+import { MusicItemType } from "types/musicType";
+import "styles/components/UI/Music/musicItem.css";
+
 type MusicItemPropType = {
     mMusic: MusicItemType;
 };
@@ -26,7 +27,7 @@ function MusicItem(props: MusicItemPropType) {
         });
     };
     const handleAddMusicToFavorite = (idMusic: string) => {
-        createMuisicToFavoriteList({ idMusic: idMusic }).then((res) => {
+        createMuisicToFavoriteList({ idMusic: idMusic }).then((res: any) => {
             if (res.status === 200) {
                 openNotificationWithIcon(
                     "success",

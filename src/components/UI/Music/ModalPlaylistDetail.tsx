@@ -1,14 +1,15 @@
-import { Image } from "antd";
-import Input from "antd/es/input/Input";
 import { useState } from "react";
+import { Image } from "antd";
+import { MehFilled } from "@ant-design/icons";
+import usePlaylist from "hooks/usePlaylist";
 import {
     createNewPlayListAccount,
     fethAllPlaylistAccount,
-} from "../../../services/playlistApi";
+} from "services/playlistApi";
+import { MusicItemType } from "types/musicType";
+import Input from "antd/es/input/Input";
 import Button from "../Button/Button";
-import { MehFilled } from "@ant-design/icons";
-import usePlaylist from "../../../hooks/usePlaylist";
-import { MusicItemType } from "../../../types/musicType";
+
 type NotificationType = "success" | "info" | "warning" | "error";
 
 type ModalPlaylistDetailPropsType = {

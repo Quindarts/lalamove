@@ -1,7 +1,7 @@
 import {
     UserLoginFormDataType,
     UserRegisterFormDataType,
-} from "./../types/userType";
+} from "types/userType";
 import axiosConfig from "./axiosconfig";
 
 export const login = async (data: UserLoginFormDataType) => {

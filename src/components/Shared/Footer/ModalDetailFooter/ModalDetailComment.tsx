@@ -1,12 +1,12 @@
 import { Icon } from "@iconify/react";
 import { Image, Input, notification } from "antd";
-import { CommentDataType } from "../../../../types/commentType";
-import Comment from "../../../UI/Comment/Comment";
-import "../../../../styles/components/Shared/Footer/ModalDetailFooter/modalDetailComment.css";
-import useUSer from "../../../../hooks/useUser";
+import { CommentDataType } from "types/commentType";
+import Comment from "components/UI/Comment/Comment";
+import "styles/components/Shared/Footer/ModalDetailFooter/modalDetailComment.css";
+import useUSer from "hooks/useUser";
 import { useState } from "react";
-import { createCommentAccount } from "../../../../services/commentApi";
-import { isCheckedAccessToken } from "../../../../utils/helpers";
+import { createCommentAccount } from "services/commentApi";
+import { isCheckedAccessToken } from "utils/helpers";
 
 type ModalDetailCommentPropsType = {
     listComment: CommentDataType[];

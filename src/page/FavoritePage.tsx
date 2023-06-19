@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import MusicItem from "../components/UI/Music/MusicItem";
-import { getAllFavoriteMusicAccount } from "../services/favoriteApi";
-import "../styles/pages/favoritepage.css";
 import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { MusicFavoriteAccountType } from "types/favoriteType";
+import { MusicItemType } from "types/musicType";
+import { getAllFavoriteMusicAccount } from "services/favoriteApi";
+import useMusic from "hooks/useMusic";
+import useFavorite from "hooks/useFavoriteAccount";
+import MusicItem from "components/UI/Music/MusicItem";
+import MusicGridItem from "components/UI/Music/MusicGridItem";
+import { AxiosResponse } from "axios";
+import "styles/pages/favoritepage.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import useMusic from "../hooks/useMusic";
-import useFavorite from "../hooks/useFavoriteAccount";
-import MusicGridItem from "../components/UI/Music/MusicGridItem";
-import { AxiosResponse } from "axios";
-import { MusicFavoriteAccountType } from "../types/favoriteType";
-import { MusicItemType } from "../types/musicType";
+
 function FavoritePage() {
     const { favorite, getAllListFavoriteAccount } = useFavorite();
     const { musics } = useMusic();
@@ -40,7 +41,7 @@ function FavoritePage() {
     return (
         <div className="favoritePage">
             <>
-                <h1 className=" font-bold text-[25px] my-5">YÊU THÍCH</h1>
+                <h1 className="text-[25px] font-bold my-5">YÊU THÍCH</h1>
                 {favorite?.favorite.length !== 0 ? (
                     <div className="flex flex-wrap gap-2 my-5">
                         {favorite?.favorite.map(
@@ -50,11 +51,11 @@ function FavoritePage() {
                         )}
                     </div>
                 ) : (
-                    <h1 className="my-5 font-bold text-[25px] text-white text-center">
+                    <h1 className="text-[25px] text-white text-center font-bold my-5 ">
                         Danh sách yêu thích của bạn trống
                     </h1>
                 )}
-                <h1 className=" font-bold text-[25px] my-5  ">Gợi ý cho bạn</h1>
+                <h1 className="text-[25px] font-bold my-5">Gợi ý cho bạn</h1>
                 <Swiper
                     slidesPerView={renderInfinitySlide}
                     spaceBetween={15}
@@ -68,14 +69,12 @@ function FavoritePage() {
                         reverseDirection: false,
                     }}
                 >
-                    {musics.listFavorite.map(
+                    {musics?.listFavorite.map(
                         (music: MusicItemType, index: number) =>
-                            index > 12 ? (
+                            index > 12 && (
                                 <SwiperSlide key={index} virtualIndex={index}>
                                     <MusicItem mMusic={music} />
                                 </SwiperSlide>
-                            ) : (
-                                <></>
                             ),
                     )}
                 </Swiper>

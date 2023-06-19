@@ -1,23 +1,18 @@
-import {
-    AutoComplete,
-    Dropdown,
-    Input,
-    MenuProps,
-    SelectProps,
-    theme,
-} from "antd";
+import { useEffect, useState } from "react";
+import { Dropdown, Input, MenuProps } from "antd";
+import useUSer from "hooks/useUser";
+import useMusic from "hooks/useMusic";
 import { Header } from "antd/es/layout/layout";
-import React, { useEffect, useState } from "react";
-import AuthenticationPage from "../../../page/auth/AuthenticationPage";
-import Button from "../../UI/Button/Button";
-import Modal from "../../UI/Modal/Modal";
-import useMusic from "../../../hooks/useMusic";
-import "../../../styles/components/Shared/Header/header.css";
-import { apiSearchMusicByQuery } from "../../../services/appApi";
-import useUSer from "../../../hooks/useUser";
+import AuthenticationPage from "page/auth/AuthenticationPage";
+import Button from "components/UI/Button/Button";
+import Modal from "components/UI/Modal/Modal";
+
+
+import { apiSearchMusicByQuery } from "services/appApi";
 import { useNavigate } from "react-router";
 import { Icon } from "@iconify/react";
-import { removeAccessToken } from "../../../utils/helpers";
+import { removeAccessToken } from "utils/helpers";
+import "styles/components/Shared/Header/header.css";
 
 function MHeader() {
     const { Search } = Input;

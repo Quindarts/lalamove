@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
-import { setAllFavoriteAccount } from "../store/useFavorite.slice";
+import { RootState } from "store";
+import { setAllFavoriteAccount } from "store/useFavorite.slice";
 
 export default function useFavorite() {
     const favorite = useSelector((state: RootState) => state.favorite);

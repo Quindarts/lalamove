@@ -1,9 +1,10 @@
+import { Icon } from "@iconify/react";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import TimeSlider from "react-input-slider";
-import "../../../styles/components/UI/Music/audio.css";
 import { StepBackwardOutlined, StepForwardOutlined } from "@ant-design/icons";
-import { Icon } from "@iconify/react";
-import { color } from "../../../theme/variable";
+import { color } from "theme/variable";
+import "styles/components/UI/Music/audio.css";
+
 type AudioPropsType = {
     srcMusic: string;
     timeFormat: string;

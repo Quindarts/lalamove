@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
-import { setLogin, setRegister } from "../store/useUser.slice";
+import { RootState } from "store";
+import { setLogin, setRegister } from "store/useUser.slice";
 
 export default function useUSer() {
     const user = useSelector((state: RootState) => state.user);

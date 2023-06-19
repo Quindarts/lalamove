@@ -1,23 +1,22 @@
+import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
-import { Dropdown, Input, Menu, MenuProps } from "antd";
-import React, { useEffect, useState } from "react";
-import { color } from "../../../theme/variable";
+import { Link, useNavigate } from "react-router-dom";
+import { Input, Menu, MenuProps } from "antd";
 import {
     AppstoreOutlined,
     BarsOutlined,
     HeartOutlined,
-    MenuOutlined,
     YoutubeOutlined,
 } from "@ant-design/icons";
-import "../../../styles/components/Shared/Header/headerMobile.css";
-import Modal from "../../UI/Modal/Modal";
-import { Link, useNavigate } from "react-router-dom";
-import useUSer from "../../../hooks/useUser";
-import { removeAccessToken } from "../../../utils/helpers";
-import useMusic from "../../../hooks/useMusic";
-import { apiSearchMusicByQuery } from "../../../services/appApi";
-import AuthenticationPage from "../../../page/auth/AuthenticationPage";
-import Button from "../../UI/Button/Button";
+import useUSer from "hooks/useUser";
+import useMusic from "hooks/useMusic";
+import { apiSearchMusicByQuery } from "services/appApi";
+import { removeAccessToken } from "utils/helpers";
+import AuthenticationPage from "page/auth/AuthenticationPage";
+import Modal from "components/UI/Modal/Modal";
+import { color } from "theme/variable";
+import "styles/components/Shared/Header/headerMobile.css";
+
 function HeaderMobile() {
     const { Search } = Input;
     const navigate = useNavigate();

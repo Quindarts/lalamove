@@ -21,3 +21,5 @@ export function setAccessToken(newToken: string) {
 export function removeAccessToken() {
     localStorage.removeItem("access_token");
 }
+export function resizeApp(){
+}

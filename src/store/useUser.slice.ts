@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// type initialStateType = {
-//     userDetail :UserDetailType
-//     userLogin: 
-//     userRegister :
-// }
+
 const initialState: any = {
     userDetail: {},
     userLogin: {},

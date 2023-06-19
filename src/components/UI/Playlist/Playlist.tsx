@@ -1,19 +1,20 @@
-import { Image, message, Spin } from "antd";
 import { useState } from "react";
+import { Image, message, Spin } from "antd";
+import { CaretRightOutlined, DeleteOutlined } from "@ant-design/icons";
+import usePlaylist from "hooks/usePlaylist";
 import {
     fetchAllPlaylistDetailAccount,
     removePlaylistAccount,
-} from "../../../services/playlistApi";
+} from "services/playlistApi";
+import { PlaylistAccountType } from "types/playlistType";
 import Button from "../Button/Button";
-import { CaretRightOutlined, DeleteOutlined } from "@ant-design/icons";
-import "../../../styles/components/UI/Playlist/playlistaccount.css";
 import Modal from "../Modal/Modal";
-import usePlaylist from "../../../hooks/usePlaylist";
-import ModalFooterDetailPlaylist from "../../Shared/Footer/ModalDetailFooter/ModalFooterDetailPlaylist";
-import { PlaylistAccountType } from "../../../types/playlistType";
+import ModalFooterDetailPlaylist from "components/Shared/Footer/ModalDetailFooter/ModalFooterDetailPlaylist";
+import "styles/components/UI/Playlist/playlistaccount.css";
+
 type PlaylistPropsType = {
     playlist: PlaylistAccountType;
-    handleRemove:any;
+    handleRemove: any;
     _id: string;
 };
 function Playlist(props: PlaylistPropsType) {

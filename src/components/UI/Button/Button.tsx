@@ -1,6 +1,6 @@
 import { type } from "os";
 import React, { ButtonHTMLAttributes } from "react";
-import "../../../styles/components/UI/button.css"
+import "styles/components/UI/button.css"
 interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
     variant?: "container" | "outline";

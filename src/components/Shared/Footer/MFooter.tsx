@@ -1,4 +1,4 @@
-import "../../../styles/components/Shared/Footer/footer.css";
+import { useEffect, useState } from "react";
 import {
     EyeOutlined,
     HeartFilled,
@@ -6,19 +6,19 @@ import {
     CommentOutlined,
     YoutubeOutlined,
 } from "@ant-design/icons";
-import useMusic from "../../../hooks/useMusic";
+import useMusic from "hooks/useMusic";
+import useComment from "hooks/useComment";
+import { createHistoryApi } from "services/historyApi";
+import { fetchAllCommentByMusicID } from "services/commentApi";
 import { Image } from "antd";
-import Audio from "../../UI/Music/Audio";
-import { useEffect, useState } from "react";
-import Modal from "../../UI/Modal/Modal";
-import { createHistoryApi } from "../../../services/historyApi";
-import PlayMusicAnimation from "../../UI/PlayMusicAnimation/PlayMusicAnimation";
-import { fetchAllCommentByMusicID } from "../../../services/commentApi";
-import useComment from "../../../hooks/useComment";
+import PlayMusicAnimation from "components/UI/PlayMusicAnimation/PlayMusicAnimation";
+import Audio from "components/UI/Music/Audio";
+import Modal from "components/UI/Modal/Modal";
 import ModalDetailComment from "./ModalDetailFooter/ModalDetailComment";
 import ModalFooterDetailPlaylist from "./ModalDetailFooter/ModalFooterDetailPlaylist";
-import Video from "../../UI/video/Video";
-import { color } from "../../../theme/variable";
+import Video from "components/UI/video/Video";
+import { color } from "theme/variable";
+import "styles/components/Shared/Footer/footer.css";
 function MFooter() {
     const { musics } = useMusic();
     const [refreshLoadingComment, setRefreshLoadingComment] =

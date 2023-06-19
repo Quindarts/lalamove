@@ -1,5 +1,4 @@
-import React from "react";
-import "../styles/pages/watchMV.css";
+import "styles/pages/watchMV.css";
 function WatchMVPage() {
     return <div className="watch_MV"></div>;
 }

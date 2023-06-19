@@ -1,15 +1,15 @@
-import { Checkbox, Form, Input } from "antd";
-import Button from "../../components/UI/Button/Button";
-import useUSer from "../../hooks/useUser";
-import { login, register } from "../../services/userApi";
-import "../../styles/pages/auth/login.css";
-import { notification } from "antd";
 import { Dispatch, SetStateAction } from "react";
-import { AxiosResponse } from "axios";
+import { Checkbox, Form, Input } from "antd";
+import { notification } from "antd";
+import useUSer from "hooks/useUser";
+import { login, register } from "services/userApi";
 import {
     UserLoginFormDataType,
     UserRegisterFormDataType,
-} from "../../types/userType";
+} from "types/userType";
+import { AxiosResponse } from "axios";
+import Button from "components/UI/Button/Button";
+import "styles/pages/auth/login.css";
 
 type NotificationType = "success" | "info" | "warning" | "error";
 type LoginPropsType = {
@@ -18,13 +18,13 @@ type LoginPropsType = {
     isOpenLoginModal: SetStateAction<boolean>;
     setIsOpenLoginModal: Dispatch<SetStateAction<boolean>>;
 };
-function AuthenticationPage(prop: LoginPropsType) {
+function AuthenticationPage(props: LoginPropsType) {
     const {
         onClose,
         setIsLoginAccount,
         isOpenLoginModal,
         setIsOpenLoginModal,
-    } = prop;
+    } = props;
     const { getLoginAccount } = useUSer();
     const [messageApi, contextHolder] = notification.useNotification();
 
@@ -90,7 +90,7 @@ function AuthenticationPage(prop: LoginPropsType) {
 
             {isOpenLoginModal ? (
                 <>
-                    <div className="title text-center font-bold text-[2rem]">
+                    <div className="title text-center text-[2rem] font-bold">
                         Đăng nhập
                     </div>
                     <Form
@@ -139,7 +139,7 @@ function AuthenticationPage(prop: LoginPropsType) {
 
                         <Form.Item
                             wrapperCol={{ offset: 8, span: 16 }}
-                            className="  form-btn_login"
+                            className="form-btn_login"
                         >
                             <Button
                                 className="w-[300px]"
@@ -163,7 +163,7 @@ function AuthenticationPage(prop: LoginPropsType) {
                 </>
             ) : (
                 <>
-                    <div className="title text-center font-bold text-[2rem]">
+                    <div className="title text-center text-[2rem] font-bold">
                         Đăng Kí
                     </div>
                     <Form

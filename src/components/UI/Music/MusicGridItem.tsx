@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from "react";
-import "../../../styles/components/UI/Music/musicgriditem.css";
+import  { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
+import { notification } from "antd";
+import { Image } from "antd";
 import {
     EyeOutlined,
     HeartOutlined,
-    PlusOutlined,
-    CaretRightOutlined,
 } from "@ant-design/icons";
+import useMusic from "hooks/useMusic";
+import usePlaylist from "hooks/usePlaylist";
+import { createMuisicToFavoriteList } from "services/favoriteApi";
 import {
     addNewMusicToPlayListAccount,
     fethAllPlaylistAccount,
     NewMusicPlaylistAccountType,
-} from "../../../services/playlistApi";
-import useMusic from "../../../hooks/useMusic";
+} from "services/playlistApi";
 import Modal from "../Modal/Modal";
-import usePlaylist from "../../../hooks/usePlaylist";
-import { Image } from "antd";
-import { createMuisicToFavoriteList } from "../../../services/favoriteApi";
 import ModalPlaylistDetail from "./ModalPlaylistDetail";
-import { notification } from "antd";
-import { MusicItemType } from "../../../types/musicType";
-import { Icon } from "@iconify/react";
-import { color } from "../../../theme/variable";
+import { MusicItemType } from "types/musicType";
+import { color } from "theme/variable";
+import "styles/components/UI/Music/musicgriditem.css";
+
 type NotificationType = "success" | "info" | "warning" | "error";
 type MusicGridItemPropsType = {
     music: MusicItemType;
@@ -99,7 +98,7 @@ function MusicGridItem(props: MusicGridItemPropsType) {
     return (
         <>
             {contextHolder}
-            <div className="music_Grid_Item flex gap-[1rem]  my-1">
+            <div className="music_Grid_Item flex gap-[1rem]">
                 <div className="flex-1">
                     <div className="flex">
                         <div className="music_Grid_Item-img mr-3">
@@ -130,11 +129,11 @@ function MusicGridItem(props: MusicGridItemPropsType) {
                     <div className="text-[1rem]">{music.time_format}</div>
 
                     <div className="flex mr-2   ">
-                        <p>{Math.round(music.view / 10000)}K</p>
+                        <p>{Math.round(music.view / 1000)}K</p>
                         <EyeOutlined className=" pt-[6px] ml-1" />
                     </div>
                     <div className="flex">
-                        <p>{Math.round(music.favorite / 10000)}M </p>
+                        <p>{Math.round(music.favorite / 1000)}M </p>
                         <HeartOutlined
                             className="pt-[6px] ml-1 "
                             style={{ color: color.cancel_btn_cl }}

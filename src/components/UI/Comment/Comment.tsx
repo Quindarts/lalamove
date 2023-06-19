@@ -1,8 +1,8 @@
 import { Image } from "antd";
 import React from "react";
-import { CommentAccountDataType } from "../../../types/commentType";
-import { convertJsonDateToDate } from "../../../utils/helpers";
-import '../../../styles/components/UI/Comment/comment.css'
+import { CommentAccountDataType } from "types/commentType";
+import { convertJsonDateToDate } from "utils/helpers";
+import 'styles/components/UI/Comment/comment.css'
 type CommentDetailPropsType = {
     size?: "md" | "lg" | "sm";
     content?: String;

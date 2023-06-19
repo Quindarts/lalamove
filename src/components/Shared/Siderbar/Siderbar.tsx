@@ -1,5 +1,5 @@
-import Sider from "antd/es/layout/Sider";
-import React, { useState } from "react";
+import  { useState } from "react";
+import { Link } from "react-router-dom";
 import {
     AppstoreOutlined,
     BarsOutlined,
@@ -8,10 +8,10 @@ import {
     YoutubeOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
-import Button from "../../UI/Button/Button";
-import "../../../styles/components/Shared/siderbar.css";
-import { Link } from "react-router-dom";
-import { color } from "../../../theme/variable";
+import Sider from "antd/es/layout/Sider";
+import Button from "components/UI/Button/Button";
+import { color } from "theme/variable";
+import "styles/components/Shared/siderbar.css";
 
 function Siderbar() {
     const [collapsed, setCollapsed] = useState(false);
