@@ -22,7 +22,7 @@ function MHeader() {
     const { searchMusicByQuery, musics } = useMusic();
     const [isOpenLoginModal, setIsOpenLoginModal] = useState<boolean>(true);
     const [isLoginAccount, setIsLoginAccount] = useState(false);
-    const { user } = useUSer();
+    const { user,getLogoutAccount } = useUSer();
 
     const handleOpenModal = (id: string) => {
         setIsOpen({ open: true, id: id });
@@ -33,7 +33,8 @@ function MHeader() {
     };
     const handleLogoutAccount = () => {
         setIsLoginAccount(false);
-        removeAccessToken();
+        getLogoutAccount();
+        // removeAccessToken();
     };
     useEffect(() => {
         if (search !== "") {

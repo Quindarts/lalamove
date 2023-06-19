@@ -53,7 +53,6 @@ function AuthenticationPage(props: LoginPropsType) {
                     "Đăng nhập",
                     "Đăng nhập thành công",
                 );
-
                 localStorage.setItem("access_token", res.data.accessToken);
                 getLoginAccount(res.data);
                 setIsLoginAccount(true);

@@ -8,21 +8,27 @@ import { fethAllPlaylistAccount } from "services/playlistApi";
 import { fetchAllFavoriteMusicbyParams } from "services/favoriteApi";
 import usePlaylist from "hooks/usePlaylist";
 import useMusic from "hooks/useMusic";
+import {
+    setAllPlaylistAccount,
+    setPlaylistDetailAcccount,
+} from "store/usePlaylist.slice";
 import { fetchAllNewsMusicByParams } from "services/newMusicApi";
 import { AxiosResponse } from "axios";
 import { color } from "theme/variable";
 import { isCheckedAccessToken, removeAccessToken } from "utils/helpers";
+
 import FooterMobile from "components/Shared/Footer/FooterMobile";
 import HeaderMobile from "components/Shared/Header/HeaderMobile";
+import { setAllFavoriteAccount } from "store/useFavorite.slice";
+import useUSer from "hooks/useUser";
 
 function Mainlayout() {
     const { getAllPlaylistAccount } = usePlaylist();
     const { fetchListFavorite, fetchListNewsMusic } = useMusic();
     const [widthApp, setWidthApp] = useState<number>(window.innerWidth);
+    const { getLogoutAccount } = useUSer();
     useEffect(() => {
-        window.addEventListener("load", function () {
-            removeAccessToken();
-        });
+        getLogoutAccount();
         isCheckedAccessToken() &&
             fethAllPlaylistAccount().then((res: AxiosResponse) => {
                 getAllPlaylistAccount(res.data.data);
