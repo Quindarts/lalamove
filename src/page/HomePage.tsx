@@ -30,16 +30,20 @@ function HomePage() {
         window.addEventListener("resize", () => {
             setWidthApp(window.innerWidth);
         });
-
-        if (window.innerWidth > 1200) {
-            setRenderInfinitySlide(6);
+        if (window.innerWidth >= 1500) {
+            setRenderInfinitySlide(4);
+            setRenderSlideBG(5);
+            setRenderlistNewSwiper(6);
+        }
+        if (window.innerWidth > 1200 && window.innerWidth < 1500) {
+            setRenderInfinitySlide(3);
             setRenderSlideBG(3);
-            setRenderlistNewSwiper(9);
+            setRenderlistNewSwiper(5);
         }
         if (window.innerWidth > 1000 && window.innerWidth <= 1200) {
             setRenderInfinitySlide(4);
             setRenderSlideBG(2);
-            setRenderlistNewSwiper(6);
+            setRenderlistNewSwiper(5);
         }
         if (window.innerWidth > 600 && window.innerWidth <= 1000) {
             setRenderInfinitySlide(2);
@@ -53,8 +57,12 @@ function HomePage() {
             setRenderInfinitySlide(1);
             setRenderSlideBG(1);
         }
-        if (window.innerWidth <= 460) {
+        if (window.innerWidth <= 550) {
             setRenderlistNewSwiper(2);
+        }
+        if (window.innerWidth <= 360) {
+            setRenderlistNewSwiper(1);
+
         }
     }, [widthApp]);
 

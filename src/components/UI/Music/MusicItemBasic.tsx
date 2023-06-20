@@ -47,7 +47,7 @@ function MusicItemBasic(props: MusicItemBasicPropsType) {
     return (
         <>
             {contextHolder}
-            <div className="music_basic_item flex-col my-1">
+            <div className="music_basic_item flex-1 flex-col my-1">
                 <div className="flex-1 w-full">
                     <div className="music_basic_item_img mr-3">
                         <img

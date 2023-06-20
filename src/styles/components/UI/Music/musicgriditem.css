@@ -29,6 +29,9 @@
         display: flex;
     }
 }
+.music_Grid_Item .music_Grid_Item-content div{ 
+    width: 3rem;
+}
 .music_Grid_Item button svg {
     font-size: 1.5rem;
 }

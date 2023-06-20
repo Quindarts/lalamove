@@ -16,7 +16,7 @@ import Modal from "../../UI/Modal/Modal";
 import ModalFooterDetailPlaylist from "./ModalDetailFooter/ModalFooterDetailPlaylist";
 import ModalDetailComment from "./ModalDetailFooter/ModalDetailComment";
 import { color } from "../../../theme/variable";
-import "../../../styles/components/Shared/Footer/footerMobile.css";
+import "styles/components/Shared/Footer/footerMobile.css";
 
 function FooterMobile() {
     const { musics } = useMusic();
@@ -80,7 +80,7 @@ function FooterMobile() {
 
     return (
         <>
-            <div className="footer_mobile text-white">
+            <div className="footer_mobile text-white flex justify-center">
                 <button
                     onClick={() => handleOpenControlMusic("control_modal")}
                     className="ctl_footer_mobile"
@@ -95,26 +95,27 @@ function FooterMobile() {
                 id={isOpenControlMusic.id}
                 open={isOpenControlMusic.open}
                 onClose={handleCloseControlMusic}
+                className="flex justify-center "
             >
                 {Object.values(musics.mplay).length !== 0 ? (
                     <div
                         className="main_footer_mobile flex flex-col gap-[1rem] my-5 w-[100%]"
                         style={{ alignItems: "center" }}
                     >
-                        <div className="flex w-[100%] justify-between bg-red">
+                        <div className="flex w-[100%] justify-between">
                             <div className="p-[1rem] flex flex-col">
                                 <h6
-                                    className="font-bold text-[1rem]"
+                                    className="font-bold text-[1.2rem] "
                                     style={{ color: color.cancel_btn_cl }}
                                 >
                                     {musics.mplay.name_music}
                                 </h6>
-                                <p className="text-white text-[1rem] font-bold">
+                                <p className="text-white  font-bold">
                                     {musics.mplay.name_singer}
                                 </p>
                             </div>
                             <div
-                                className="justify-end  p-[1rem] flex gap-[1rem] text-[2rem]"
+                                className="justify-end  p-[1rem] flex gap-[1rem] text-[1.4rem]"
                                 style={{ alignSelf: "end" }}
                             >
                                 <button
@@ -139,7 +140,7 @@ function FooterMobile() {
                             </div>
                         </div>
 
-                        <div className="px-[1rem] h-96 w-[100%]">
+                        <div className="px-[1rem] h-96 w-[100%] mt-[4rem]">
                             <div
                                 className="flex justify-center my-[1rem]"
                                 style={{ position: "relative" }}
@@ -147,7 +148,6 @@ function FooterMobile() {
                                 <Image
                                     style={{
                                         borderRadius: "50%",
-                                        marginLeft: "1rem",
                                         border: "2px solid var(--cancel_btn_cl)",
                                     }}
                                     src={`${musics.mplay.image_music}`}
@@ -173,7 +173,7 @@ function FooterMobile() {
                 type="left"
                 id={isOpenPlaylist.id}
                 open={isOpenPlaylist.open}
-                className="w-[30rem]"
+                className="w-[300px]"
                 onClose={handleCloseModalPlayList}
             >
                 <ModalFooterDetailPlaylist />
@@ -184,7 +184,7 @@ function FooterMobile() {
                 id={isOpenComment.id}
                 open={isOpenComment.open}
                 onClose={handleCloseModalComment}
-                className="w-[30rem]"
+                className="w-[300px]"
             >
                 <ModalDetailComment
                     idMusic={musics.mplay._id}

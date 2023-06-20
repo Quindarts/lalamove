@@ -8,7 +8,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 3rem;
+}
+@media (min-width: 1079px) {
+    .Control-Button-Group {
+        padding-left: 3rem;
+    }
 }
 .Control-Button-Group svg {
     color: white;
