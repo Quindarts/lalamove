@@ -22,6 +22,7 @@ function HomePage() {
     const [renderInfinitySlide, setRenderInfinitySlide] = useState<number>(3);
     const [renderlistNewSwiper, setRenderlistNewSwiper] = useState<number>(9);
     const [renderSlideBG, setRenderSlideBG] = useState<number>(3);
+    const [renderBG, setRenderBG] = useState<number>(3);
     const [widthApp, setWidthApp] = useState<number>(0);
     const handleSetTopView = (typeTopView: string) => {
         setTypeTopView(typeTopView);
@@ -31,31 +32,38 @@ function HomePage() {
             setWidthApp(window.innerWidth);
         });
         if (window.innerWidth >= 1500) {
-            setRenderInfinitySlide(4);
-            setRenderSlideBG(5);
-            setRenderlistNewSwiper(6);
+            setRenderInfinitySlide(5);
+            setRenderSlideBG(7);
+            setRenderlistNewSwiper(7);
+            setRenderBG(3);
         }
         if (window.innerWidth > 1200 && window.innerWidth < 1500) {
-            setRenderInfinitySlide(3);
+            setRenderInfinitySlide(4);
             setRenderSlideBG(3);
             setRenderlistNewSwiper(5);
         }
         if (window.innerWidth > 1000 && window.innerWidth <= 1200) {
-            setRenderInfinitySlide(4);
-            setRenderSlideBG(2);
+            setRenderInfinitySlide(3);
+            setRenderSlideBG(4);
             setRenderlistNewSwiper(5);
         }
         if (window.innerWidth > 600 && window.innerWidth <= 1000) {
             setRenderInfinitySlide(2);
-            setRenderSlideBG(1);
+            setRenderSlideBG(4);
             setRenderlistNewSwiper(4);
+            setRenderBG(2);
+        }
+        if (window.innerWidth > 768 && window.innerWidth <= 1000) {
+            setRenderInfinitySlide(3);
         }
         if (window.innerWidth > 460 && window.innerWidth <= 690) {
             setRenderlistNewSwiper(3);
+            setRenderInfinitySlide(2);
         }
         if (window.innerWidth <= 600) {
             setRenderInfinitySlide(1);
-            setRenderSlideBG(1);
+            setRenderSlideBG(2);
+            setRenderBG(1);
         }
         if (window.innerWidth <= 550) {
             setRenderlistNewSwiper(2);
@@ -80,7 +88,7 @@ function HomePage() {
         <div className="homePage">
             <div>
                 <Swiper
-                    slidesPerView={renderSlideBG}
+                    slidesPerView={renderBG}
                     spaceBetween={20}
                     navigation={true}
                     modules={[Navigation, Autoplay]}
@@ -215,7 +223,7 @@ function HomePage() {
 
                 <div className="flex flex-wrap gap-[1rem] my-5">
                     <Swiper
-                        slidesPerView={renderInfinitySlide}
+                        slidesPerView={renderSlideBG}
                         navigation={true}
                         spaceBetween={15}
                         modules={[Navigation, Autoplay]}
