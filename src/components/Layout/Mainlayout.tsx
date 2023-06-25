@@ -4,17 +4,9 @@ import MHeader from "components/Shared/Header/MHeader";
 import { Outlet } from "react-router";
 import MFooter from "components/Shared/Footer/MFooter";
 import { useEffect, useState } from "react";
-import { fethAllPlaylistAccount } from "services/playlistApi";
-import {
-    fetchAllFavoriteMusicbyParams,
-    getAllFavoriteMusicAccount,
-} from "services/favoriteApi";
 import usePlaylist from "hooks/usePlaylist";
 import useMusic from "hooks/useMusic";
-import { fetchAllNewsMusicByParams } from "services/newMusicApi";
-import { AxiosResponse } from "axios";
 import { color } from "theme/variable";
-import { isCheckedAccessToken } from "utils/helpers";
 import FooterMobile from "components/Shared/Footer/FooterMobile";
 import HeaderMobile from "components/Shared/Header/HeaderMobile";
 import useUSer from "hooks/useUser";
@@ -22,36 +14,20 @@ import useFavorite from "hooks/useFavoriteAccount";
 
 function Mainlayout() {
     const { getAllPlaylistAccount } = usePlaylist();
-    const { fetchListFavorite, fetchListNewsMusic } = useMusic();
-    const [widthApp, setWidthApp] = useState<number>(window.innerWidth);
+    const { getRankingLoveMusic, getListNewsMusic } = useMusic();
     const { getLogoutAccount } = useUSer();
     const { getAllListFavoriteAccount } = useFavorite();
+    const [widthApp, setWidthApp] = useState<number>(window.innerWidth);
+
     useEffect(() => {
         window.addEventListener("resize", () => {
             setWidthApp(window.innerWidth);
         });
         getLogoutAccount();
-        isCheckedAccessToken() &&
-            fethAllPlaylistAccount().then((res: AxiosResponse) => {
-                getAllPlaylistAccount(res.data.data);
-            });
-
-        isCheckedAccessToken() &&
-            getAllFavoriteMusicAccount().then((res: AxiosResponse) => {
-                if (res.status === 200 || res.status === 204) {
-                    getAllListFavoriteAccount(res.data.data);
-                }
-            });
-        fetchAllFavoriteMusicbyParams(24, 3).then((res: AxiosResponse) => {
-            if (res.status === 200 || res.status === 204) {
-                fetchListFavorite(res.data.data);
-            }
-        });
-        fetchAllNewsMusicByParams(27, 2).then((res: AxiosResponse) => {
-            if (res.status === 200 || res.status === 204) {
-                fetchListNewsMusic(res.data.data);
-            }
-        });
+        getAllPlaylistAccount();
+        getAllListFavoriteAccount();
+        getRankingLoveMusic(24, 3);
+        getListNewsMusic(27, 2);
     }, []);
     return (
         <>

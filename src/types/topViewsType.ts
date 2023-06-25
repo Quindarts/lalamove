@@ -1,4 +1,5 @@
 import { AccountFavoriteType } from './favoriteType';
+
 export interface TopViewMusicType {
     link_mv: String;
     sum_comment: null;

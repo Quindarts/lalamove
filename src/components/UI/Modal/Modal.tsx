@@ -2,6 +2,7 @@ import React from "react";
 import "styles/components/UI/modal.css";
 import { CloseOutlined } from "@ant-design/icons";
 import { Content } from "antd/es/layout/layout";
+
 interface ModalPropsType {
     type?: "top" | "right" | "playlist-top" | "left" | "control-music";
     children?: React.ReactNode;
@@ -11,6 +12,7 @@ interface ModalPropsType {
     color?: string;
     onClose?: () => void;
 }
+
 const Modal: React.FC<ModalPropsType> = (props: ModalPropsType) => {
     const {
         type,
@@ -22,6 +24,7 @@ const Modal: React.FC<ModalPropsType> = (props: ModalPropsType) => {
         onClose,
         ...rest
     } = props;
+    
     return (
         <div
             {...rest}

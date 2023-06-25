@@ -200,7 +200,9 @@ function FooterMobile() {
                 open={isOpenMV.open}
                 onClose={handleCloseModalMV}
             >
-                <Video srcMV={musics.mplay.link_mv} isOpenMV={isOpenMV} />
+                {musics.mplay.link_mv && (
+                    <Video srcMV={musics.mplay.link_mv} isOpenMV={isOpenMV} />
+                )}
             </Modal>
         </>
     );

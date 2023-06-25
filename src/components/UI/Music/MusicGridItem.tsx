@@ -11,7 +11,6 @@ import usePlaylist from "hooks/usePlaylist";
 import { createMuisicToFavoriteList } from "services/favoriteApi";
 import {
     addNewMusicToPlayListAccount,
-    fethAllPlaylistAccount,
     NewMusicPlaylistAccountType,
 } from "services/playlistApi";
 import Modal from "../Modal/Modal";
@@ -50,6 +49,7 @@ function MusicGridItem(props: MusicGridItemPropsType) {
             description: des,
         });
     };
+
     const handleAddMusicToFavorite = (idMusic: string) => {
         createMuisicToFavoriteList({ idMusic: idMusic }).then((res) => {
             if (res.status === 200) {
@@ -91,9 +91,7 @@ function MusicGridItem(props: MusicGridItemPropsType) {
         });
     };
     useEffect(() => {
-        fethAllPlaylistAccount().then((res: any) => {
-            getAllPlaylistAccount(res.data.data);
-        });
+        getAllPlaylistAccount();
     }, [isOpen.open]);
     return (
         <>

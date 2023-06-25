@@ -1,4 +1,4 @@
-export interface FavoriteMusicType {}
+
 export interface MusicItemType {
     link_mv: string;
     sum_comment: null;
@@ -22,6 +22,7 @@ export interface MusicItemType {
     subscribe: string;
     slug_subscribe: string;
 }
+
 export interface UserFavoriteMusicType {
     image: String;
     role: number;

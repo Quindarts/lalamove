@@ -9,6 +9,7 @@ type MusicItemPropType = {
     mMusic: MusicItemType;
 };
 type NotificationType = "success" | "info" | "warning" | "error";
+
 function MusicItem(props: MusicItemPropType) {
     const { playMusic } = useMusic();
     const { mMusic } = props;

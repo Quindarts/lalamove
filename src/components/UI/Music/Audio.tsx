@@ -11,6 +11,7 @@ type AudioPropsType = {
     isPlay: SetStateAction<boolean>;
     setPlay: Dispatch<SetStateAction<boolean>>;
 };
+
 function Audio(props: AudioPropsType) {
     const { srcMusic, timeFormat, isPlay, setPlay } = props;
     const audioRef: any = useRef();
@@ -27,9 +28,7 @@ function Audio(props: AudioPropsType) {
         isPlay ? audioRef.current.pause() : audioRef.current.play();
         setPlay(!isPlay);
     };
-    useEffect(() => {
-        isPlay === false ? audioRef.current.pause() : audioRef.current.play();
-    }, [isPlay]);
+
     const handleTimeSliderChange = ({ x }: any) => {
         audioRef.current.currentTime = x;
         setCurrentTime(x);
@@ -38,10 +37,15 @@ function Audio(props: AudioPropsType) {
             audioRef.current.play();
         }
     };
+
+    useEffect(() => {
+        isPlay === false ? audioRef.current.pause() : audioRef.current.play();
+    }, [isPlay]);
+
+
     useEffect(() => {
         setPlay(true);
     }, [srcMusic]);
-    console.log("abc:", srcMusic);
 
     return (
         <div className="App w-[100%]">

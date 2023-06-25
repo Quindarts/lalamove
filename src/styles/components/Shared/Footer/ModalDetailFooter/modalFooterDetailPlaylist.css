@@ -1,9 +1,11 @@
 .ant-tabs-nav-list {
     padding: 0 1rem 0 1rem;
 }
+
 .ant-tabs .ant-tabs-ink-bar {
     background-color: var(--cancel_btn_cl);
 }
+
 .ant-tabs-tab-active > .ant-tabs-tab-btn , .ant-tabs-tab-btn:hover{
     color:  var(--cancel_btn_cl)!important;
 }

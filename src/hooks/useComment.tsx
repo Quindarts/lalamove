@@ -6,6 +6,7 @@ import { CommentDataType } from "types/commentType";
 export default function useComment() {
     const comment = useSelector((state: RootState) => state.comment);
     const dispatch = useDispatch();
+    
     const getAllCommentByMusicID = (data: CommentDataType[]) => {
         dispatch(setAllCommentByMusic(data));
     };

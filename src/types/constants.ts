@@ -30,6 +30,7 @@ import bg6 from "assets/image/bg/bg1.jpg";
 import bg7 from "assets/image/bg/bg1.jpg";
 
 export const APP_API = "https://api-kaito-music.vercel.app/api";
+
 export const APP_ROUTES = {
     INDEX: "/",
     FAVORITE: "/favorite",
@@ -39,8 +40,11 @@ export const APP_ROUTES = {
     ACCOUNT: "/account",
     PAGE404: "/page404",
 };
+
 export const listBackground = [bg1, bg2, bg3, bg4, bg5, bg6, bg7];
+
 export const listSlide = [sl1, sl2, sl3, sl4, sl5, sl6, sl7];
+
 export const listCategoryImage = [
     ctg1,
     ctg2,
@@ -59,3 +63,47 @@ export const listCategoryImage = [
     ctg15,
     ctg16,
 ];
+
+export const ItemSizeSmallBreakpoints = {
+    360: {
+        slidesPerView: 2,
+    },
+    520: {
+        slidesPerView: 3,
+    },
+    720: {
+        slidesPerView: 4,
+    },
+    1080: {
+        slidesPerView: 5,
+    },
+    1500: {
+        slidesPerView: 6,
+    },
+    1800: {
+        slidesPerView: 8,
+    },
+};
+
+export const MusicItemBreakpoints = {
+    500: {
+        slidesPerView: 2,
+        spaceBetween: 15,
+    },
+    768: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+    },
+    1080: {
+        slidesPerView: 4,
+        spaceBetween: 15,
+    },
+    1500: {
+        slidesPerView: 5,
+        spaceBetween: 15,
+    },
+    1800: {
+        slidesPerView: 6,
+        spaceBetween: 15,
+    },
+};

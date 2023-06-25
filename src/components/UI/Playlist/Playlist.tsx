@@ -17,6 +17,7 @@ type PlaylistPropsType = {
     handleRemove: any;
     _id: string;
 };
+
 function Playlist(props: PlaylistPropsType) {
     const [messageApi, contextHolder] = message.useMessage();
     const { playlist, handleRemove, _id } = props;
@@ -46,10 +47,11 @@ function Playlist(props: PlaylistPropsType) {
             handleOpen();
         });
     };
+
     return (
         <>
             {contextHolder}
-            {loading ? (
+            {loading && (
                 <div
                     style={{
                         position: "fixed",
@@ -63,8 +65,6 @@ function Playlist(props: PlaylistPropsType) {
                 >
                     <Spin className="w-full h-full " size="large" />
                 </div>
-            ) : (
-                <></>
             )}
             <div className="playlistAccount flex my-5 w-full text-[gray] justify-between">
                 <div className="flex">

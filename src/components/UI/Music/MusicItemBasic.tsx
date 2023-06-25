@@ -5,10 +5,12 @@ import { createMuisicToFavoriteList } from "services/favoriteApi";
 import { MusicItemType } from "types/musicType";
 import { color } from "theme/variable";
 import "styles/components/UI/Music/musicItemBasic.css";
+
 type NotificationType = "success" | "info" | "warning" | "error";
 type MusicItemBasicPropsType = {
     music: MusicItemType;
 };
+
 function MusicItemBasic(props: MusicItemBasicPropsType) {
     const { music } = props;
     const { playMusic } = useMusic();
@@ -17,6 +19,7 @@ function MusicItemBasic(props: MusicItemBasicPropsType) {
     const handlePlayMusic = (music: MusicItemType) => {
         playMusic(music);
     };
+
     const openNotificationWithIcon = (
         type: NotificationType,
         message: String,
@@ -27,6 +30,7 @@ function MusicItemBasic(props: MusicItemBasicPropsType) {
             description: des,
         });
     };
+
     const handleAddMusicToFavorite = (idMusic: string) => {
         createMuisicToFavoriteList({ idMusic: idMusic }).then((res) => {
             if (res.status === 200) {
@@ -44,6 +48,7 @@ function MusicItemBasic(props: MusicItemBasicPropsType) {
             }
         });
     };
+    
     return (
         <>
             {contextHolder}

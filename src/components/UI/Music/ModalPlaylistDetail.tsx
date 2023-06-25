@@ -2,10 +2,7 @@ import { useState } from "react";
 import { Image } from "antd";
 import { MehFilled } from "@ant-design/icons";
 import usePlaylist from "hooks/usePlaylist";
-import {
-    createNewPlayListAccount,
-    fethAllPlaylistAccount,
-} from "services/playlistApi";
+import { createNewPlayListAccount } from "services/playlistApi";
 import { MusicItemType } from "types/musicType";
 import Input from "antd/es/input/Input";
 import Button from "../Button/Button";
@@ -22,10 +19,12 @@ type ModalPlaylistDetailPropsType = {
     music: MusicItemType;
     playlist: any;
 };
+
 function ModalPlaylistDetail(props: ModalPlaylistDetailPropsType) {
-    const { getAllPlaylistAccount } = usePlaylist();
     const { messageApi, handleAddNewMusicToPlaylist, music, playlist } = props;
+    const { getAllPlaylistAccount } = usePlaylist();
     const [namePlaylist, setNamePlaylist] = useState("");
+
     const openNotificationWithIcon = (
         type: NotificationType,
         message: String,
@@ -36,8 +35,10 @@ function ModalPlaylistDetail(props: ModalPlaylistDetailPropsType) {
             description: des,
         });
     };
+    
     const handleMusicToPlayList = (nameList: string, _id: string) => {
-        const musicToPlaylist = { idMusic: _id, nameList: nameList };
+        let musicToPlaylist = { idMusic: _id, nameList: nameList };
+
         createNewPlayListAccount(musicToPlaylist).then((res) => {
             if (res.status === 200 || res.status == 204) {
                 openNotificationWithIcon(
@@ -45,9 +46,7 @@ function ModalPlaylistDetail(props: ModalPlaylistDetailPropsType) {
                     "Danh sách phát",
                     "Tạo Danh sách thành công",
                 );
-                fethAllPlaylistAccount().then((res: any) => {
-                    getAllPlaylistAccount(res.data.data);
-                });
+                getAllPlaylistAccount();
             }
         });
     };

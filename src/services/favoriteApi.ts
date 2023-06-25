@@ -1,8 +1,10 @@
 import axiosConfig from "./axiosconfig";
+
 type MusicInFavoriteType = {
     idMusic: String;
 };
-export const fetchAllFavoriteMusicbyParams = async (
+
+export const apiGetRankingLoveMusic = async (
     limit: number,
     page: number,
 ) => {
@@ -10,9 +12,11 @@ export const fetchAllFavoriteMusicbyParams = async (
         `/music/favorite?_limit=${limit}&_page=${page}`,
     );
 };
+
 export const createMuisicToFavoriteList = async (data: MusicInFavoriteType) => {
     return await axiosConfig.post(`/favorite/create`, data);
 };
-export const getAllFavoriteMusicAccount = async () => {
+
+export const apiGetFavouriteMusicAccount = async () => {
     return await axiosConfig.get("/favorite/get-authorization-token?Params");
 };

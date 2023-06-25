@@ -2,6 +2,7 @@
     padding: 1rem;
     color: white;
 }
+
 @media (max-width: 1079px) {
     .favoritePage  {
         min-height: calc(100vh - 45px);

@@ -12,6 +12,7 @@ import Button from "components/UI/Button/Button";
 import "styles/pages/auth/login.css";
 
 type NotificationType = "success" | "info" | "warning" | "error";
+
 type LoginPropsType = {
     onClose: () => void;
     setIsLoginAccount: Dispatch<SetStateAction<boolean>>;

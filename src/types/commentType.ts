@@ -1,5 +1,6 @@
 import { ParamsType } from "./playlistType";
 import { MusicItemType } from "./musicType";
+
 export interface CommentAccountDataType {
     image: string;
     sum_comment: null;
@@ -11,6 +12,7 @@ export interface CommentAccountDataType {
     user_name: string;
     __v: Number;
 }
+
 export interface CommentDataType {
     id_reply: null;
     reply: Array<any>;
@@ -25,6 +27,7 @@ export interface CommentDataType {
     account: CommentAccountDataType;
     __v: Number;
 }
+
 export interface ListCommentByIdMusicDataType {
     pagination: ParamsType;
     data: CommentDataType[];

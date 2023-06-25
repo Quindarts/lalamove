@@ -5,6 +5,7 @@ const initialState: any = {
     userLogin: {},
     userRegister: {},
 };
+
 export const useUser = createSlice({
     name: "userSlice",
     initialState,
@@ -17,5 +18,7 @@ export const useUser = createSlice({
         },
     },
 });
+
 export const { setLogin, setRegister } = useUser.actions;
+
 export default useUser.reducer;

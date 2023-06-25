@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import usePlaylist from "hooks/usePlaylist";
-import { fethAllPlaylistAccount } from "services/playlistApi";
 import { PlaylistAccountType } from "types/playlistType";
 import Playlist from "components/UI/Playlist/Playlist";
 import "styles/pages/playlistaccountpage.css";
@@ -11,12 +10,8 @@ function PlaylistAccountPage() {
         setRemove(!remove);
     };
     useEffect(() => {
-        fethAllPlaylistAccount().then((res: any) => {
-            if (res.status === 200 || res.status === 204) {
-                getAllPlaylistAccount(res.data.data);
-            }
-        });
-    }, []);
+        getAllPlaylistAccount();
+    }, [remove]);
 
     return (
         <>

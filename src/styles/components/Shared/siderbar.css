@@ -6,11 +6,17 @@
     align-items: center;
 }
 
+.conainer-siderbar {
+    position: fixed;
+    left: 0;
+}
+
 .ant-layout-sider-collapsed .ant-layout-sider-children {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .ant-menu,
 .ant-menu-item {
     background: var(--sidebar_cl);
@@ -19,19 +25,19 @@
     left: 0;
 
 }
-.conainer-siderbar {
-    position: fixed;
-    left: 0;
-}
+
 .ant-menu-dark .ant-menu-item-selected {
     background-color: rgba(230, 240, 255, 0.2);
 }
+
 .ant-menu-item-selected {
     background-color: rgba(230, 240, 255, 0.2);
 }
+
 .ant-layout .ant-layout-sider-children .ant-menu.ant-menu-inline-collapsed {
     width: 5rem;
 }
+
 .ant-menu-item .ant-menu-item-selected .ant-menu-title-content,
 .ant-menu-item .ant-menu-item-selected svg {
     font-size: 1rem;

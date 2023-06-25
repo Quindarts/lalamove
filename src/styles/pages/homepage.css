@@ -2,15 +2,11 @@
     padding: 1rem;
     color: white;
 }
-.chart_music {
-    border-radius: 0.5rem;
-    background: linear-gradient(to right, #3d3c3c, #131212);
-    background-size: cover;
-    animation: background-animation 0.2s infinite linear;
-}
+
 .title_ranking_number {
     font-size: 1.2nprem;
 }
+
 @keyframes background-animation {
     0% {
         background-position: 0% 50%;
@@ -19,6 +15,7 @@
         background-position: 100% 50%;
     }
 }
+
 @media (min-width: 1079px) {
     .homePage {
         padding: 1rem;
@@ -27,11 +24,13 @@
         min-width: calc(100vw - 200px);
     }
 }
+
 @media (min-width: 600px) {
     .title_ranking_number {
         font-size: 2rem;
     }
 }
+
 @media (max-width: 600px) {
     h1 {
         font-size: 1rem !important;

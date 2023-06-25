@@ -1,6 +1,6 @@
 import axiosConfig from "./axiosconfig";
 
-export const fetchAllNewsMusicByParams = async (
+export const apiGetListNewsMusic = async (
     limit: number,
     page: number,
 ) => {

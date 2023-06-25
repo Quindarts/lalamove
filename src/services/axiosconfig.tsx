@@ -3,7 +3,7 @@ import { APP_API } from "types/constants";
 
 const axiosConfig = axios.create({
     baseURL: APP_API,
-    timeout: 10000,
+    timeout: 30000,
     headers: {
         "Context-Type": "application/json",
     },
@@ -30,4 +30,5 @@ axiosConfig.interceptors.response.use(
         return error.response;
     },
 );
+
 export default axiosConfig;

@@ -5,7 +5,7 @@ export interface NewMusicPlaylistAccountType {
     _id_music: String;
     nameList: String;
 }
-export const fethAllPlaylistAccount = async () => {
+export const apiGetPlaylistAccount = async () => {
     return await axiosConfig.get("/list-music/get-list?Params");
 };
 

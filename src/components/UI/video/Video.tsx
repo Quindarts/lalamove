@@ -8,7 +8,6 @@ type VideoPropsType = {
 function Video(props: VideoPropsType) {
     const { srcMV, isOpenMV } = props;
     const [isPaused, setIsPaused] = useState(false);
-    console.log("src:", srcMV);
 
     const opts: YouTubeProps["opts"] = {
         height: "98%",
@@ -17,10 +16,12 @@ function Video(props: VideoPropsType) {
             autoplay: 0,
         },
     };
+
     const _onReady = (event: YouTubePlayer) => {
         videoElement = event;
         videoElement.target.pauseVideo();
     };
+
     useEffect(() => {
         if (videoElement) {
             isPaused
@@ -28,16 +29,18 @@ function Video(props: VideoPropsType) {
                 : videoElement.target.playVideo();
         }
     }, [isPaused]);
+
     useEffect(() => {
         if (videoElement) {
             videoElement.target.pauseVideo();
         }
     }, [isOpenMV]);
+
     return (
-        <div className="w-[90vw] h-[80vh] d-flex justify-center ">
+        <div className="w-[80vw] h-[80vh] d-flex justify-center ">
             {
                 <YouTube
-                    className="h-[98%]"
+                    className="h-[90%]"
                     videoId={srcMV}
                     opts={opts}
                     onReady={_onReady}

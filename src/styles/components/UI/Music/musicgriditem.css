@@ -10,9 +10,6 @@
     border-bottom: 2px solid var(--main_cl);
 }
 
-.music_Grid_Item-img img {
-    border-radius: 0.5rem;
-}
 .music_Grid_Item-img {
     width: 3.2rem;
     height: 3.2rem;
@@ -20,26 +17,29 @@
     background-position: 0 0, center;
     background-image: cover;
 }
+
+.music_Grid_Item-img img {
+    border-radius: 0.5rem;
+}
+
 .music_Grid_Item-content {
     display: none;
 }
 
-@media (min-width: 768px) {
-    .music_Grid_Item-content {
-        display: flex;
-    }
-}
 .music_Grid_Item .music_Grid_Item-content div{ 
     width: 3rem;
 }
+
 .music_Grid_Item button svg {
     font-size: 1.5rem;
 }
+
 .music_Grid_Item button svg:hover {
     color: var(--cancel_btn_cl);
     font-size: 2rem;
     transition: 0.2s ease-in;
 }
+
 .mplaylist {
     cursor: pointer;
     margin: 1rem 0 1rem 0;
@@ -47,13 +47,21 @@
     border-radius: 0.3rem;
     padding: 0.3rem;
 }
+
 .mplaylist:hover {
     background-color: rgba(134, 132, 132, 0.5);
 }
+
 @media (max-width: 600px) {
     .music_Grid_Item,
     h6 {
         font-size: 80%;
         line-height: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .music_Grid_Item-content {
+        display: flex;
     }
 }

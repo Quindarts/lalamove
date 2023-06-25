@@ -1,9 +1,16 @@
+.main_footer_mobile{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+}
+
 .footer_mobile{
     position: fixed;
     bottom: 2rem;
     right: 2rem;
     z-index: 10000;
 }
+
 .ctl_footer_mobile{
     background-color: black;
     font-size: 2rem;   
@@ -12,11 +19,7 @@
     border: 2px solid var(--cancel_btn_cl);
     animation: playingMusic 0.3 ease-in;
 }
-.main_footer_mobile{
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-}
+
 @keyframes playingMusic {
     0%{
     border: 2px solid var(--cancel_btn_cl);

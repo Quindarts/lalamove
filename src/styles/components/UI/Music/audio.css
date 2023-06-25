@@ -4,16 +4,14 @@
     border-radius: 100%;
     object-fit: cover;
 }
+
 .Control-Button-Group {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-@media (min-width: 1079px) {
-    .Control-Button-Group {
-        padding-left: 3rem;
-    }
-}
+
+
 .Control-Button-Group svg {
     color: white;
     cursor: pointer;
@@ -26,15 +24,24 @@
     align-items: center;
     margin: 0 32px;
 }
+
 .time_current {
     color: #828080;
     min-width: 3rem;
 }
+
 .css-13ukp1p-Slider {
     margin-top: 10px;
 }
+
 .App svg:hover {
     transition: 0.3s ease-in;
     color: var(--cancel_btn_cl);
     font-size: 2.4rem;
+}
+
+@media (min-width: 1079px) {
+    .Control-Button-Group {
+        padding-left: 3rem;
+    }
 }

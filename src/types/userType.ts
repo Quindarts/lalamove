@@ -2,11 +2,13 @@ export interface UserLoginFormDataType {
     email: String;
     password: String;
 }
+
 export interface UserRegisterFormDataType {
     userName: String;
     password: String;
     email: String;
 }
+
 export interface UserDetailType {
     image: String;
     role: 1;
@@ -21,6 +23,7 @@ export interface UserDetailType {
     email: String;
     __v: number;
 }
+
 export interface ResponseUserDataType {
     accessToken: String;
     data: UserDetailType;

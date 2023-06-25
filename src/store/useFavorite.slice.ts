@@ -1,9 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState: any = {
     favorite: [],
     favoriteDetail: [],
 };
+
 export const useFavorite = createSlice({
     name: "favoriteSlice",
     initialState,
@@ -22,6 +24,7 @@ export const useFavorite = createSlice({
         },
     },
 });
-export const { setAllFavoriteAccount, setFavoriteDetailAcccount } =
-    useFavorite.actions;
+
+export const { setAllFavoriteAccount, setFavoriteDetailAcccount } = useFavorite.actions;
+
 export default useFavorite.reducer;

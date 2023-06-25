@@ -3,41 +3,18 @@ import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { MusicFavoriteAccountType } from "types/favoriteType";
 import { MusicItemType } from "types/musicType";
-import { getAllFavoriteMusicAccount } from "services/favoriteApi";
 import useMusic from "hooks/useMusic";
 import useFavorite from "hooks/useFavoriteAccount";
 import MusicItem from "components/UI/Music/MusicItem";
 import MusicGridItem from "components/UI/Music/MusicGridItem";
-import { AxiosResponse } from "axios";
 import "styles/pages/favoritepage.css";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
+import { MusicItemBreakpoints } from "types/constants";
 function FavoritePage() {
     const { favorite, getAllListFavoriteAccount } = useFavorite();
     const { musics } = useMusic();
-    const [renderInfinitySlide, setRenderInfinitySlide] = useState<number>(3);
-    const [widthApp, setWidthApp] = useState<number>(0);
     useEffect(() => {
-        window.addEventListener("resize", () => {
-            setWidthApp(window.innerWidth);
-        });
-        if (window.innerWidth > 1200) setRenderInfinitySlide(6);
-        if (window.innerWidth > 1000 && window.innerWidth <= 1200)
-            setRenderInfinitySlide(4);
-        if (window.innerWidth > 600 && window.innerWidth <= 1000)
-            setRenderInfinitySlide(2);
-        if (window.innerWidth <= 600) setRenderInfinitySlide(1);
-    }, [widthApp]);
-    useEffect(() => {
-        getAllFavoriteMusicAccount().then((res: AxiosResponse) => {
-            if (res.status === 200 || res.status === 204) {
-                getAllListFavoriteAccount(res.data.data);
-            }
-        });
+        getAllListFavoriteAccount();
     }, []);
-
     return (
         <div className="favoritePage">
             <>
@@ -57,8 +34,8 @@ function FavoritePage() {
                 )}
                 <h1 className="text-[25px] font-bold my-5">Gợi ý cho bạn</h1>
                 <Swiper
-                    slidesPerView={renderInfinitySlide}
-                    spaceBetween={15}
+                    slidesPerView={1}
+                    spaceBetween={30}
                     navigation={true}
                     modules={[Navigation, Autoplay]}
                     autoplay={{
@@ -68,6 +45,7 @@ function FavoritePage() {
                         stopOnLastSlide: false,
                         reverseDirection: false,
                     }}
+                    breakpoints={MusicItemBreakpoints}
                 >
                     {musics?.listFavorite.map(
                         (music: MusicItemType, index: number) =>

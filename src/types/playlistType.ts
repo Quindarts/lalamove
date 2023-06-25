@@ -3,6 +3,7 @@ import { MusicItemType } from './musicType';
 export interface ParamsType {
     pagination: { _limit: string; _page: string; _total: string };
 }
+
 export interface PlaylistAccountType {
     image_list: string;
     createdAt: string;
@@ -12,10 +13,12 @@ export interface PlaylistAccountType {
     name_list: string;
     __v: number;
 }
+
 export interface ListPlaylistAccountType {
     pagination: ParamsType;
     data: PlaylistAccountType[];
 }
+
 export interface MusicPlaylistAccountType {
     createdAt: string;
     updatedAt: string;
@@ -26,6 +29,7 @@ export interface MusicPlaylistAccountType {
     id_list: string;
     __v: 0;
 }
+
 export interface ListDetailPlaylistAccountType {
     pagination: ParamsType;
     data: {
@@ -39,14 +43,18 @@ export interface ListDetailPlaylistAccountType {
         __v: number;
     };
 }
+
 export interface CreatePlaylistAccountType {
     idMusic: string;
     nameList: string;
 }
+
 export interface UpdatePlaylistAccountType {
     nameList: string;
     _id: string;
 }
+
+
 export interface AddPlaylistAccountType{
     _id: string,
     _id_music: string,

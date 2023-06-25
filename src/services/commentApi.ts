@@ -9,6 +9,7 @@ export async function fetchAllCommentByMusicID(
         `/comment/get-by-id-music?_id=${_id}&_limit=${_limit}&_page=${_page}`,
     );
 }
+
 export async function createCommentAccount(content: string, id_music: string) {
     return axiosConfig.post("/comment/create", {
         content: content,

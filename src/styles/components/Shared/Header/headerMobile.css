@@ -16,9 +16,11 @@
     font-size: 20px;
     border-radius: 6px;
 }
+
 .input_search {
     max-width: 250px;
 }
+
 @media (min-width: 498px) {
     .input_search {
         max-width: 100%;

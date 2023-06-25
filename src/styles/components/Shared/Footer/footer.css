@@ -10,12 +10,14 @@ footer {
     background-color: rgba(31, 31, 32, 0.5);
     z-index: 999;
 }
+
 footer .icon_control svg {
     color: white;
     font-size: 24px;
     margin-right: 20px;
     transition: 0.2s;
 }
+
 footer .icon_control svg:hover {
     color: var(--cancel_btn_cl);
     font-size: 29px;

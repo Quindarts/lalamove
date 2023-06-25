@@ -2,7 +2,8 @@ import { Image } from "antd";
 import React from "react";
 import { CommentAccountDataType } from "types/commentType";
 import { convertJsonDateToDate } from "utils/helpers";
-import 'styles/components/UI/Comment/comment.css'
+import "styles/components/UI/Comment/comment.css";
+
 type CommentDetailPropsType = {
     size?: "md" | "lg" | "sm";
     content?: String;
@@ -12,6 +13,7 @@ type CommentDetailPropsType = {
 
 function Comment(props: CommentDetailPropsType) {
     const { size, content, account, create_date, ...rest } = props;
+
     return (
         <div {...rest} className={`comment cmt_${size}  text-white mx-2 my-5`}>
             <div className="comment_user flex">
@@ -22,10 +24,8 @@ function Comment(props: CommentDetailPropsType) {
                     </h1>
                     <div className="date text-[#908f8f] pb-1">
                         <i> {convertJsonDateToDate(create_date)}</i>
-                    </div>  
-                    <div className="text-[1.1rem]">
-                        {content}
                     </div>
+                    <div className="text-[1.1rem]">{content}</div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 .watch_MV {
     padding: 1rem;
 }
+
 @media (max-width: 1079px) {
     .watch_MV {
         min-height: calc(100vh - 45px);

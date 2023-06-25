@@ -13,6 +13,7 @@
 .zoomImage-container:hover .zoomImage {
     transform: scale(1.2);
 }
+
 .zoom_overlay {
     position: absolute;
     top: 0;

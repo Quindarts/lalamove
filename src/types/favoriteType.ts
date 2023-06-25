@@ -1,5 +1,6 @@
 import { MusicItemType, UserFavoriteMusicType } from "./musicType";
 import { ParamsType } from "./playlistType";
+
 export interface AccountFavoriteType {
     image: String;
     role: number;
@@ -8,6 +9,7 @@ export interface AccountFavoriteType {
     user_name: String;
     id_music: String;
 }
+
 export interface MusicFavoriteItemType {
     link_mv: String;
     sum_comment: null;
@@ -32,10 +34,12 @@ export interface MusicFavoriteItemType {
     slug_subscribe: String;
     slug_alias: String;
 }
+
 export interface FavoriteListParamsMusicType {
     pagination: ParamsType;
     data: MusicFavoriteItemType[];
 }
+
 export interface MusicFavoriteAccountType {
     createdAt: String;
     updatedAt: String;
@@ -45,6 +49,7 @@ export interface MusicFavoriteAccountType {
     music: MusicItemType;
     __v: number;
 }
+
 export interface ListMusicFavoriteAccountType {
     panigation: ParamsType;
     data: MusicFavoriteAccountType[];

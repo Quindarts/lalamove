@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 export type PlaylistDetailType = {
     pagination: {
         _limit: number;
@@ -16,6 +17,7 @@ export type PlaylistDetailType = {
         __v: number;
     };
 };
+
 export type AllPlaylistAccountType = {
     pagination: {
         _limit: number;
@@ -24,11 +26,13 @@ export type AllPlaylistAccountType = {
     };
     data: [];
 };
+
 const initialState: any = {
     playlist: [],
     createPlaylist: [],
     playlistDetail: [],
 };
+
 export const usePlaylist = createSlice({
     name: "playlistSlice",
     initialState,
@@ -47,6 +51,5 @@ export const usePlaylist = createSlice({
         },
     },
 });
-export const { setAllPlaylistAccount, setPlaylistDetailAcccount } =
-    usePlaylist.actions;
+export const { setAllPlaylistAccount, setPlaylistDetailAcccount } = usePlaylist.actions;
 export default usePlaylist.reducer;

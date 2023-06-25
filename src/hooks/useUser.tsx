@@ -8,9 +8,11 @@ import { removeAccessToken } from "utils/helpers";
 export default function useUSer() {
     const user = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch();
+
     const getLoginAccount = (data: any) => {
         dispatch(setLogin(data));
     };
+    
     const getLogoutAccount = () => {
         dispatch(setLogin({}));
         dispatch(setAllFavoriteAccount([]));

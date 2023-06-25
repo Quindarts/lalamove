@@ -1,3 +1,4 @@
+
 export const color = {
     main_cl: "#15181b",
     bg_temp_cl:"linear-gradient(247.87deg, #EC38BC 31.02%, #7303C0 69.78%, #03001E 91.18%)",
@@ -10,6 +11,7 @@ export const color = {
     white_cl: "#FFFFFF",
     text_grey_cl: "#A9ABAD",
 };
+
 export const text = {
     title_item: "32px",
     h1: "24px",
@@ -19,6 +21,7 @@ export const text = {
     normal: "16px",
     normal_sm: "14px",
 };
+
 export const radius = {
     sm: "6px",
     md: "32.4001px",
